@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+form {
+	border: 2px solid cadetblue;
+	padding: 5px;
+	width: 50%;
+}
+
+pre {
+	font-size: 20px;
+}
+</style>
+
+<script type="text/javascript">
+	function f1() {
+		//alert("Hello");
+
+		// script에서 html요소를 가져오기
+		var vid = document.querySelector("#id");
+		var vpw = document.querySelector("#pw");
+
+		// 해당 요소에서 입력값을 가져오기
+		var idValue = vid.value;
+		var pwValue = vpw.value;
+
+		alert("id = " + idValue + ", password = " + pwValue);
+		console.log("id = " + idValue + ", password = " + pwValue);
+	}
+</script>
+
+</head>
+<body>
+
+	<form action="inputProcess.jsp" method="get">
+		아이디&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="id" class="id" name="id" placeholder="아이디"> <br> 비밀번호 <input type="password" id="pw" class="pw" name="pw" placeholder="비밀번호"> <br> <input type="submit" value="전송"> <input type="reset"> <input type="button" value="확인" onclick="f1()"> <br>
+
+		<button type="submit">전송</button>
+		<button type="reset">취소</button>
+		<button type="button" onclick="f1()">확인</button>
+		<br>
+	</form>
+
+</body>
+</html>

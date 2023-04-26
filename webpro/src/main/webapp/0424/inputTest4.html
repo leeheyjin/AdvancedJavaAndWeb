@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+div {
+	border: 3px solid lavenderblush;
+	margin: 10px;
+	padding: 10px;
+}
+</style>
+
+<script type="text/javascript">
+	function calc() {
+
+		// html요소에 접근하기
+		vprice = document.getElementById("price");
+		vsu = document.getElementById("su");
+
+		// 요소에서 입력한 값 가져오기 - .value 사용
+		priceValue = vprice.value;
+		suValue = vsu.value;
+
+		/*
+		// 위 두 내용을 한번에 처리할 수 있음
+		priceValue = document.getElementById("price").value;
+		suValue = document.getElementById("su").value;
+		 */
+
+		// 계산
+		result = priceValue * suValue;
+
+		// 출력
+		alert(result)
+		console.log("result = " + priceValue * suValue);
+		
+		// div요소를 검색하여 출력
+		vdiv = document.querySelector("div");
+		vdiv.innerHTML = result;
+		
+		/*
+		// 위 내용을 한번에 작성할 수 있음
+		document.querySelector("div").innerHTML = result;
+		*/
+		
+	}
+</script>
+
+
+</head>
+<body>
+	<form>
+		물품가격 <input type="text" name="price" id="price"><br> 수량 <input type"text" name="su" id="su"><br> <input type="button" value="결과" onclick="calc()">
+	</form>
+	<h2>결과</h2>
+	<div></div>
+</body>
+</html>

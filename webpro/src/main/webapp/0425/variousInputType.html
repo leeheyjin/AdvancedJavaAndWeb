@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<pre>
+정규식: 입력데이터의 형식을 규정
+[0-9]: 0~9 사이
+{3}: 3자리
+[0-9]{3}-[0-9]{4}-[0-9]{4}
+
+[a-z]: 소문자만
+[a-zA-z]: 소문자나 대문자 중 한글자
++: 한번 이상
+*: 0번 이상
+?: 0번 또는 한번
+(): 그룹으로 묶음
+.: 모든 글자 한글자에 대응시킬 수 있음
+\.: . 자체를 의미
+
+</pre>
+	<input type="month">
+	<br>
+	<input type="time">
+	<br>
+	<input type="week">
+	<br>
+	<br>
+
+	<form action="telCheck.jsp" method="">
+		전화번호(text) <input type="text" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"><br> 
+		전화번호(tel) <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"><br>
+		<br>
+		
+		이메일(text) <input type="text"><br>
+		이메일(email) <input type="email"><br>
+		<br>
+		
+		신발사이즈 <input type="number" min="190" max="300" step="5">
+		<input type="range" min="190" max="300" step="5"><br>
+		<input type="submit">
+	</form>
+</body>
+</html>
