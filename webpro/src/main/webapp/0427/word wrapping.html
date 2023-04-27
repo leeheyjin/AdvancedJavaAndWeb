@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	width: 50%;
+	height: auto;
+	margin: 10px auto;
+	border: 2px solid turquoise;
+	padding: 20px
+}
+
+.div2 {
+	word-wrap: break-word;
+}
+
+.div3 {
+	word-wrap: break-word;
+}
+
+span {
+	font: italic bold 1.2rem serif;
+}
+</style>
+
+<script type="text/javascript">
+	function add() {
+		// #div3 글자를 추가한다
+		// 글자를 text object(객체)로 생성
+		vtext = document.createTextNode("hello");
+
+		// #div3 요소 검색
+		// vdiv3 = document.getElementsByClassName("div3");
+		// vdiv3[0]과 document.getElementsByClassName("div3")[0]는 같은 의미
+		vdiv3 = document.querySelector(".div3");
+
+		// 검색 요소에 text 객체 추가
+		vdiv3.appendChild(vtext);
+
+	}
+</script>
+</head>
+<body>
+	<div class="div1">
+		hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello
+	</div>
+	<div class="div2">
+		<span>word-wrap: break-word;</span>
+		hellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohellohello
+	</div>
+	<div class="div3">
+		<span>word-wrap: break-word;</span><br> hello <input
+			type="button" value="확인" onclick="add()"><br>
+	</div>
+
+</body>
+</html>
