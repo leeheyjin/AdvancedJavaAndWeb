@@ -16,7 +16,7 @@ class TargetThread extends Thread {
 	@Override
 	public void run() {
 		long sum = 0;
-		for (long i = 1; i <= 50_000_000_000l; i++) {
+		for (long i = 1; i <= 1_000_000_000l; i++) {
 			sum += i;
 		}
 
@@ -28,7 +28,7 @@ class TargetThread extends Thread {
 		}
 
 		sum = 0;
-		for (long i = 1; i <= 50_000_000_000l; i++) {
+		for (long i = 1; i <= 1_000_000_000l; i++) {
 			sum += i;
 		}
 	}

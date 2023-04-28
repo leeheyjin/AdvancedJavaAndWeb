@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+	border: 5px solid lightgray;
+}
+
+header, footer, aside, section {
+	box-sizing: border-box;
+	background-color: lightblue;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+header {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+aside {
+	height: 400px;
+	float: left;
+}
+
+#left {
+	background-color: lightcoral;
+	width: 30%;
+	margin: 5px;
+	margin-left: 0px;
+}
+
+#right {
+	background-color: lightcyan;
+	width: 69%;
+	margin: 5px;
+	margin-right: 0px;
+}
+
+section {
+	border: 3px dotted green;
+	background-color: lightskyblue;
+	margin: 10px;
+	height: 45%;
+}
+
+footer {
+	background-color: lightyellow;
+	clear: both;
+	text-align: center;
+	margin-top: 5px;
+}
+
+img {
+	width: 95%;
+	height: 95%;
+}
+
+a {
+	font-weight: bold;
+}
+
+a:link {
+	color: white;
+	text-decoration: none;
+}
+
+a:visited {
+	color: yellow;
+}
+
+a:hover, a:active {
+	text-decoration: underline;
+	color: lightcoral;
+}
+
+@media screen and (max-width: 800px) {
+	aside {
+		width: 100%;
+	}
+}
+</style>
+</head>
+<body>
+	<header>
+		<h1>My Blog Page</h1>
+		<p>시맨틱 태그로 만들어진 페이지입니다.</p>
+	</header>
+	<aside id="left">
+		<h2>Links</h2>
+		<ul>
+			<li><a href="https://www.w3schools.com/" target="_blank">w3schools</a></li>
+			<li><a href="https://www.naver.com/" target="_blank">Naver</a></li>
+			<li><a href="https://www.daum.net/" target="_blank">Daum</a></li>
+		</ul>
+		<figure>
+			<img alt="spongebob.png" src="../images/spongebob.png">
+			<figcaption>스폰지밥</figcaption>
+		</figure>
+	</aside>
+	<aside id="right">
+		<section>
+			<h2>Semantic Tags</h2>
+			<p>시맨틱 요소(Semantic elements)들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다.
+				레이아웃을 만들 때 쓰는 것. 의미가 있는 요소라면 div보다는 시맨틱 태그를 사용해준다.</p>
+		</section>
+		<section>
+			<h2>div와 span</h2>
+			<p>div는 divde의 약자로서 페이지를 논리적인 섹션으로 분리하는데 사용되는 태그이다. span요소는 인라인
+				요소로서 텍스트를 위한 컨테이너로 사용할 수 있다.</p>
+		</section>
+	</aside>
+	<footer> Copyright (c)2023 leehyejin </footer>
+</body>
+</html>

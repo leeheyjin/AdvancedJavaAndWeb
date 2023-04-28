@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	border: 2px solid green;
+	width: 200px;
+	height: 200px;
+	margin: 10px;
+	text-align: center;
+}
+
+.cd1 {
+	background-color: palegreen;
+}
+
+.cd2 {
+	background-color: palegoldenrod;
+}
+
+.cd3 {
+	background-color: paleturquoise;
+}
+
+.cd4 {
+	background-color: palevioletred;
+}
+
+#d6 {
+	position: relative;
+	top: 80px;
+	left: 80px;
+}
+
+#d11 {
+	position: absolute;
+	top: 150px;
+	left: 220px;
+}
+
+#d13 {
+	position: fixed;
+	top: 150px;
+	right: 220px;
+}
+</style>
+</head>
+<body>
+	<div id="d1" class="cd1">d1</div>
+	<div id="d2" class="cd2">d2</div>
+	<div id="d3" class="cd3">d3</div>
+	<div id="d4" class="cd4">d4</div>
+	<hr color="olive">
+
+	<div id="d5" class="cd1">d5</div>
+	<div id="d6" class="cd2">
+		d6 <br> position: relative; <br> top: 80px <br> left
+		:80px <br>
+	</div>
+	<div id="d7" class="cd3">d7</div>
+	<div id="d8" class="cd4">d8</div>
+
+	<hr color="olive">
+
+	<div id="d9" class="cd1">d9</div>
+	<div id="d10" class="cd2">d10</div>
+	<div id="d11" class="cd3">
+		d11 <br> position: absolute; <br> top: 150px; <br>
+		left: 220px; <br>
+	</div>
+	<div id="d12" class="cd4">d12</div>
+	<div id="d13" class="cd3">
+		d13 <br> position: fixed; <br> top: 150px; <br> right:
+		220px; <br>
+	</div>
+
+</body>
+</html>
