@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function() {
+	let today = new Date();
+	let day1 = today.toLocaleString();
+	// document.write("Hello world");
+
+	var vRes = document.querySelector("#res");
+	vRes.innerHTML = today + "<br>";
+	vRes.innerHTML += day1;
+}
+</script>
+
+<style type="text/css">
+#res {
+	border: 2px solid firebrick;
+	margin: 5px;
+	padding: 5px;
+}
+</style>
+</head>
+<body>
+	<div id="res"></div>
+</body>
+</html>

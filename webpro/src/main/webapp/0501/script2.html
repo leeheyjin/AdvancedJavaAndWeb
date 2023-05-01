@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div {
+	border: 5px solid olive;
+	padding: 20px;
+}
+
+</style>
+</head>
+<body>
+	<input type="button" value="확인" onclick="proc()">
+	<br>
+	<div id="res"></div>
+	<script type="text/javascript">
+		function proc() {
+			let today = new Date();
+
+			document.querySelector("#res").innerHTML = today;
+			document.querySelector("#res").innerText = today;
+			console.log(today);
+		}
+	</script>
+</body>
+</html>
