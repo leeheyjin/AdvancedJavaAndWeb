@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h3>
+			리터럴 배열<br>const fruits = ["apple", "banana", "mango"];
+		</h3>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h3>
+			Array 배열 객체<br> 1. <br> const sweetFruits = new Array(); <br>
+			sweetFruits[0] = "strawberry"; <br> sweetFruits[1] = "peach"; <br>
+			sweetFruits[2] = "plum"; <br> 2. <br> const favoriteFruits
+			= new Array("apple", "banana", "mango");
+		</h3>
+		<input type="button" value="확인" onclick="proc2()">
+		<div id="result2" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+	proc1 = () => {
+		arr = ["바나나", "사과", "복숭아"];
+		arrPrint(arr, "#result1");
+	}
+	
+	proc2 = () => {
+		arr2 = new Array("망고", "두리안", "망고스틴");
+		arrPrint(arr2, "result2");
+	}
+	
+	arrPrint = (arr, result) => {
+		document.querySelector(result).innerHTML = arr;
+	}
+	</script>
+</body>
+</html>

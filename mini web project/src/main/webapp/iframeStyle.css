@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+
+
+h1 {
+    font-family: serif;
+    font-style: italic;
+}
+
+div#items {
+    display: flex;
+}
+
+div#product {
+    width: 100%;
+    border: 1px solid rgb(240, 240, 240);
+    margin: 2px;
+}
+
+div#img {
+    text-align: center;
+    width: 100%;
+    height: 350px;
+}
+
+img {
+    display: inline-block;
+    width: 350px;
+}
+
+div#info {
+    display: flex;
+}
+
+h2#productName {
+    margin-bottom: 0px;
+}
+
+p#info, h2#productName {
+    padding-left: 20px;
+    width: 90%;
+}
+
+input#cart {
+    margin: 5px;
+}

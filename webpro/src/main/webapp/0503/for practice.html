@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h3>1. 1부터 10까지의 합</h3>
+		<input type="button" value="확인" onclick="sum1to10()">
+		<div id="sum1to10" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h3>2. 1부터 200까지 짝수의 합(continue 사용)</h3>
+		<input type="button" value="확인" onclick="sum1to200()">
+		<div id="sum1to200" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h3>3. 사용자가 입력한 값을 계속 더하다가 0을 입력하면 그때 누적된 값을 출력</h3>
+		<input type="button" value="확인" onclick="sumUntil0()">
+		<div id="sumUntil0" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h3>4. 다중 for문을 이용해 1~10 중 i와 k의 합이 3의 배수일 때에만 출력(continue 사용)</h3>
+		<input type="button" value="확인" onclick="sum3multiple()">
+		<div id="sum3multiple" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h3>5. 1~100 중 2의 배수이면서 3의 배수인 수를 출력</h3>
+		<input type="button" value="확인"
+			onclick="multipleOfTwoAndMultipleOfThree()">
+		<div id="multipleOfTwoAndMultipleOfThree" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h3>6. 두 수를 입력받고 두 수의 합이 100이상일 경우 출력(continue 이용, 두 수 모두 0이 입력되면
+			종료)</h3>
+		<input type="button" value="확인" onclick="sumGreaterThan100()">
+		<div id="sumGreaterThan100" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		// 1.
+		sum1to10 = () => {
+			sum = 0;
+			for(let i = 1; i <= 10; i++) {
+				sum += i;	
+			}		
+			document.querySelector("#sum1to10").innerHTML = sum;
+		}		
+
+		// 2.
+		sum1to200 = () => {
+			sum = 0;
+			for (let i = 1; i <= 200; i++) {
+				if (i%2 != 0) {
+					continue;
+				}
+			sum += i;
+			}
+			document.querySelector("#sum1to200").innerHTML = sum;
+		}
+
+		// 3.
+		sumUntil0 = () => {
+			sum = 0;
+			numStr = "";
+			while(true) {
+				inputNum = parseInt(prompt("더할 값을 입력하세요(0 입력 시 합계 출력)"));
+				if (inputNum == 0) {
+					break;
+				}
+				sum += inputNum;
+				numStr += inputNum + " ";
+			}
+			str = "입력한 값: " + numStr + "<br>";
+			str += "합계: " + sum + "<br>";
+			document.querySelector("#sumUntil0").innerHTML = str;	
+		}
+		
+		// 4.
+		sum3multiple = () => {
+			output = "";
+			for (let i = 1; i <= 10; i++) {
+				for (let k = 1; k <= 10; k++) {
+					if ((i + k) % 3 != 0) {
+						continue;
+					}
+					output += i + " + " + k + " = " + (i + k) + "<br>";
+				}
+			}
+			document.querySelector("#sum3multiple").innerHTML = output;	
+		}
+		
+		// 5.
+		multipleOfTwoAndMultipleOfThree = () => {
+			output = "";
+			for (let i = 1; i <= 100; i++) {
+				if ((i % 2 == 0) && (i % 3 == 0)) {
+					output += i + "<br>";
+				}
+			}
+			document.querySelector("#multipleOfTwoAndMultipleOfThree").innerHTML = output;	
+		}
+		
+		// 6.
+		sumGreaterThan100 = () => {
+			result = "";
+			while(true) {
+				num1 = parseInt(prompt("첫 번째 수를 입력하세요"));
+				num2 = parseInt(prompt("두 번째 수를 입력하세요"));
+				
+				if (num1 == 0 && num2 == 0) {
+					break;
+				} 
+				
+				if ((num1 + num2) < 100) {
+					continue;
+				} 
+				result = num1 + num2;
+			}
+			document.querySelector("#sumGreaterThan100").innerHTML = result;
+		}
+
+</script>
+</body>
+</html>

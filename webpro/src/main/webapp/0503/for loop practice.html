@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+<style type="text/css">
+table {
+	border-collapse: collapse;
+}
+
+td {
+	width: 60px;
+	height: 60px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<h3>
+			다중 for문을 이용해<br>구구단 테이블 출력
+		</h3>
+
+		<input type="button" value="확인" onclick="proc1()"> <br> <br>
+		<div id="result1" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h3>
+			for~in<br>객체의 열거할 수 있는 속성 이름을 지정 변수에 대입
+		</h3>
+
+		<input type="button" value="확인" onclick="proc2()"> <br> <br>
+		<div id="result2" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		proc1 = () => {
+			vtable = "<table border=1>";
+			for(let i = 1; i < 10; i++) {
+				vtable += "<tr>";
+				for (let j = 1; j < 10; j++) {
+					vtable += "<td>" + i * j +"</td>";
+				}
+				vtable += "</tr>";
+			}
+			vtable += "</table>";
+			
+			document.querySelector("#result1").innerHTML = vtable;
+		}
+		
+		proc2 = () => {
+			// 객체 선언: {}
+			myCar = {make: "현대", model: "아반떼", year: 2022};
+			
+			/* str = "자동차 회사: " + myCar.make + "<br>";
+			str += "자동차 모델: " + myCar.model + "<br>";
+			str += "자동차 연식: " + myCar.year + "<br>"; */
+
+			str = "";
+			for (let x in myCar) {
+				str += `myCar[${x}]: ${myCar[x]} <br>`;
+				
+			} 
+			document.querySelector("#result2").innerHTML = str;
+		}
+	</script>
+</body>
+</html>
