@@ -7,7 +7,7 @@ body {
 
 header, aside, section, nav, footer {
     margin: 10px;
-    padding: 10px;     
+    padding: 10px; 
 }
 
 img#logo {
@@ -54,13 +54,16 @@ ul#category li {
 }
 
 section#content {
+    position: relative;
     flex: 80%;
 }
 
 iframe {
-    width: 95%;
+    position: absolute;
+    width: 100%;
     border: none;
-    height: 600px;
+    overflow-x: hidden;
+    overflow: auto;
 }
 
 aside#right {

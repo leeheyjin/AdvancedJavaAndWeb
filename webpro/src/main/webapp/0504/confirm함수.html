@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h3>
+			사용자가 입력한 값을 계속 더하고, 누적된 값을 출력<br>계속 입력 여부를 묻는다(confirm)
+		</h3>
+		<input type="button" value="확인" onclick="proc1()">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h3>
+			입력한 수의 구구단을 출력<br>계속 입력 여부를 묻는다(confirm)
+		</h3>
+		<input type="button" value="확인" onclick="proc2()"><br> <br>
+		<div id="result2" class="result"></div>
+	</div>
+	<script type="text/javascript">
+	proc1 = () => {
+		sum = 0;
+		str = "";
+		while(true) {
+			// 입력받기
+			inputNum = parseInt(prompt("더할 값을 입력하세요"));
+			
+			// 입력한 값 누적하기
+			sum += inputNum;
+			str += inputNum + " ";
+			
+			// confirm? - true/false
+			conf = confirm("계속 진행하시겠습니까?");
+			if (conf == false) {
+				break;
+			}
+		}
+		result = `입력한 값: ${str}<br>총합: ${sum}`;
+		document.querySelector("#result1").innerHTML = result;
+	}
+	
+	proc2 = () => {
+		result = "";
+		while(true) {
+			// 구구단수 입력
+			inputNum = parseInt(prompt("구구단을 출력할 수를 입력하세요"));
+			
+			// 1~9
+			result += `입력한 수: ${inputNum}<br>`;
+			for (let i = 1; i <= 9; i++){
+				gugudan = inputNum * i;
+				result += `${inputNum} * ${i} = ${gugudan}<br>`;
+			}
+			
+			conf = confirm("계속 진행하시겠습니까?");
+			if (conf == false) {
+				break;
+			}
+			result += `<br>`;
+		}
+		document.querySelector("#result2").innerHTML = result;
+	}
+	</script>
+</body>
+</html>

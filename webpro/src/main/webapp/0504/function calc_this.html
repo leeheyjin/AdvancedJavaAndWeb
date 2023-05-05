@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/calcfunction.js"></script>
+</head>
+<body>
+	<form action="">
+		첫번째: <input id="x"><br> 두번째: <input id="y"><br>
+		결과: <input id="sum"><br> <input type="button"
+			onclick="calc(this)" value="+"> <input type="button"
+			onclick="calc(this)" value="-"> <input type="button"
+			onclick="calc(this)" value="*"> <input type="button"
+			onclick="calc(this)" value="/">
+		<p>
+			첫번째 값: <span id="sp1"></span>
+		</p>
+		<p>
+			두번째 값: <span id="sp2"></span>
+		</p>
+		<p>
+			결과: <span id="sp3"></span>
+		</p>
+	</form>
+
+	<script type="text/javascript">
+	calc = (button) => {
+		v1 = button.getAttribute('value');
+		// v2 = button.value;
+		// console.log(v1, v2);
+		
+		num1Value = parseInt(document.querySelector("#x").value);
+		num2Value = parseInt(document.querySelector("#y").value);
+		switch(v1) {
+		case "+": 
+			sum = add(num1Value, num2Value)
+			break;
+			
+		case "-": 
+			sum = sub(num1Value, num2Value)
+			break;
+			
+		case "*": 
+			sum = mul(num1Value, num2Value)
+			break;
+			
+		case "/": 
+			sum = div(num1Value, num2Value)
+			break;
+		}
+		
+		str = `${num1Value} ${v1} ${num2Value} = ${sum}`;
+		document.getElementById("sum").value = str;
+		
+		document.querySelector("#sp1").innerHTML = num1Value;
+		document.querySelector("#sp2").innerHTML = num2Value;
+		document.querySelector("#sp3").innerHTML = str;
+		
+	}
+	</script>
+</body>
+</html>

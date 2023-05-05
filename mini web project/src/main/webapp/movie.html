@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="iframeStyle.css">
 </head>
+
 <body>
-<h1>Movie</h1>
-</body>
-</html>
+    <h1>Movie</h1>
+    <div id="movie">
+        <video id="player" src="" controls autoplay/>
+    </div>
+    <div id="items">
+        <div id="product">
+            <div id="img">
+                <img src="images/movie1.jpeg" alt="movie1.jpeg" onclick="fPlay('../images/movie1.mp4')">
+            </div>
+            <h2 id="productName">중경삼림</h2>
+        </div>
+        <div id="product">
+            <div id="img">
+                <img src="./images/movie2.webp" alt="movie2" onclick="fPlay('../images/movie2.mp4')">
+            </div>
+            <h2 id="productName">박쥐</h2>
+        </div>
+        <div id="product">
+            <div id="img">
+                <img src="./images/movie3.webp" alt="movie3" onclick="fPlay('../images/movie3.mp4')">
+            </div>
+            <h2 id="productName">메기</h2>
+        </div>
+    </div>
+
+    <script>
+        const movie = document.querySelector("#player");
+        const fPlay = function(pMV) {
+            movie.src = pMV;
+        }
+    </script>
+</body></html>
