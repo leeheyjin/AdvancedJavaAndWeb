@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
 
-
-h1 {
+h1, h3#category {
     font-family: serif;
     font-style: italic;
 }
@@ -21,19 +20,22 @@ video {
 
 div#items {
     display: flex;
+    margin-bottom: 10px;
+    
 }
 
 div#product {
     width: 100%;
     border: 1px solid rgb(240, 240, 240);
     margin: 2px;
-
 }
 
 div#img {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: auto;
+    height: 350px;
 }
 
 img {
@@ -46,22 +48,20 @@ div#info {
     display: flex;
 }
 
-h2#productName {
-    margin-bottom: 0px;
-}
-
 p#info, h2#productName {
     padding-left: 20px;
     width: 90%;
 }
 
 div#music {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 audio {
     margin-top: 10px;
-    width: 95%;
+    width: 99%;
 }
 
 input#cart {
@@ -73,3 +73,51 @@ img#com {
     height: auto;
 }
 
+table {
+    border-collapse: collapse;
+    border: 1px solid rgb(240, 240, 240);
+}
+
+td, th {
+    height: 50px;
+    width: 300px;
+    text-align: center;
+    padding: 2px;
+    font-size: 0.8em;
+}
+
+div#cart {
+    margin: 0px auto;
+    width:80%;
+}
+
+div#buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+input#button {
+    margin: 5px;
+    margin-right: 0px;
+}
+
+div#form {
+    width: 50%;
+    margin: 0px auto;
+}
+
+td#request, td#respond, td#button, td#submit, td#reset{
+    width:100px;
+    text-align: left;
+    padding-right: 10px;
+}
+
+
+table#form {
+    margin: 0px auto;
+    border: none;
+}
+
+input.full {
+    width: 99%;
+}

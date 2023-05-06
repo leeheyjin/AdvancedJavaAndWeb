@@ -1,10 +1,153 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="iframeStyle.css">
 </head>
+
 <body>
-<h1>Shopping Cart</h1>
-</body>
-</html>
+    <h1>Shopping Cart</h1>
+    <div id="cart">
+        <table border="1" id="com">
+            <tr>
+                <th id="category">카테고리</th>
+                <th>품목</th>
+                <th>가격</th>
+                <th>수량</th>
+                <th>합계</th>
+            </tr>
+            <tr>
+                <td rowspan="3" id="category">
+                    <h3 id="category">Computer</h3>
+                </td>
+                <td>M1 칩이 탑재된 MacBook Air</td>
+                <td id="amount1">₩1,390,000</td>
+                <td><input id="count1" type="number" min="0" max="20" value="0"></td>
+                <td id="total1"></td>
+            </tr>
+            <tr>
+                <td>iMac 24</td>
+                <td id="amount2">₩1,790,000</td>
+                <td><input id="count2" type="number" min="0" max="20" value="0"></td>
+                <td id="total2"></td>
+            </tr>
+            <tr>
+                <td>Mac mini</td>
+                <td id="amount3">₩850,000</td>
+                <td><input id="count3" type="number" min="0" max="20" value="0"></td>
+                <td id="total3"></td>
+            </tr>
+            <tr>
+                <td rowspan="3" id="category">
+                    <h3 id="category">Clothes</h3>
+                </td>
+                <td>레이업 반소매 티셔츠</td>
+                <td id="amount4">₩27,500</td>
+                <td><input id="count4" type="number" min="0" max="20" value="0"></td>
+                <td id="total4"></td>
+            </tr>
+            <tr>
+                <td>포드 배색 스트라이프 셔츠</td>
+                <td id="amount5">₩48,500</td>
+                <td><input id="count5" type="number" min="0" max="20" value="0"></td>
+                <td id="total5"></td>
+            </tr>
+            <tr>
+                <td>[생활한복] 담청색 저고리 셔츠</td>
+                <td id="amount6">₩32,500</td>
+                <td><input id="count6" type="number" min="0" max="20" value="0"></td>
+                <td id="total6"></td>
+            </tr>
+            <tr>
+                <td rowspan="3" id="category">
+                    <h3 id="category">Furniture/Interior</h3>
+                </td>
+                <td>비라인 보비 트롤리</td>
+                <td id="amount7">₩530,000</td>
+                <td><input id="count7" type="number" min="0" max="20" value="0"></td>
+                <td id="total7"></td>
+            </tr>
+            <tr>
+                <td>까시나 LC3 3인용 소파</td>
+                <td id="amount8">₩15,876,000</td>
+                <td><input id="count8" type="number" min="0" max="20" value="0"></td>
+                <td id="total8"></td>
+            </tr>
+            <tr>
+                <td>헤이 슬릿 오브롱 커피테이블</td>
+                <td id="amount9">₩517,000</td>
+                <td><input id="count9" type="number" min="0" max="20" value="0"></td>
+                <td id="total9"></td>
+            </tr>
+            <tr>
+                <td rowspan="3" id="category">
+                    <h3 id="category">Sport/Leisure</h3>
+                </td>
+                <td>[롤링힐스] 프라이빗 요트 패키지</td>
+                <td id="amount10">₩399,000</td>
+                <td><input id="count10" type="number" min="0" max="20" value="0"></td>
+                <td id="total10"></td>
+            </tr>
+            <tr>
+                <td>[리버랜드] 번지점프</td>
+                <td id="amount11">₩40,000</td>
+                <td><input id="count11" type="number" min="0" max="20" value="0"></td>
+                <td id="total11"></td>
+            </tr>
+            <tr>
+                <td>[문글램핑] 1인~6인 랜덤배정</td>
+                <td id="amount12">₩139,000</td>
+                <td><input id="count12" type="number" min="0" max="20" value="0"></td>
+                <td id="total12"></td>
+            </tr>
+            <tr>
+                <td rowspan="3" id="category">
+                    <h3 id="category">Product</h3>
+                </td>
+                <td>[레오나르디] 콘티멘토 화이트 발사믹</td>
+                <td id="amount13">₩29,000</td>
+                <td><input id="count13" type="number" min="0" max="20" value="0"></td>
+                <td id="total13"></td>
+            </tr>
+            <tr>
+                <td>에비앙</td>
+                <td id="amount14">₩1,200</td>
+                <td><input id="count14" type="number" min="0" max="20" value="0"></td>
+                <td id="total14"></td>
+            </tr>
+            <tr>
+                <td>[최현석의 쵸이닷] 트러플 크림 뇨끼</td>
+                <td id="amount15">₩7,500</td>
+                <td><input id="count15" type="number" min="0" max="20" value="0"></td>
+                <td id="total15"></td>
+            </tr>
+        </table>
+        <div id="buttons">
+            <input type="button" value="계산" id="button" onclick="calculate()">
+            <input type="submit" value="구매" id="button">
+            <input type="reset" id="button" onclick="reset()">
+        </div>
+    </div>
+
+    <script>
+        calculate = () => {
+            for (let i = 1; i <= 15; i++) {
+                const amount = parseInt(document.querySelector("#amount" + i).innerText.replaceAll(",", "").substring(1));
+                const count = document.querySelector("#count" + i).value;
+                const total = amount * count;
+                const finalTotal = "₩" + total.toLocaleString("ko-KR");
+                document.querySelector("#total" + i).innerHTML = finalTotal;
+            }
+        }
+
+        reset = () => {
+            for (let i = 1; i <= 15; i++) {
+                var count = document.querySelector("#count" + i);
+                count.value = null;
+                document.querySelector("#count" + i).innerText = count;
+                document.querySelector("#total" + i).innerText = null;
+            }
+        }
+    </script>
+</body></html>
