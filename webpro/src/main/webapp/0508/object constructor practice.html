@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>circle1</h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>동글이</h2>
+		<input type="button" onclick="proc2()" value="확인">
+		<div id="result2" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>동글동글</h2>
+		<input type="button" onclick="proc3()" value="확인">
+		<div id="result3" class="result"></div>
+	</div>
+	<script type="text/javascript">
+		/* 1. 생성자 함수를 이용한 객체를 정의한다
+		 * 함수 이름은 Circle로 한다
+		 * 속성: rad(반지름)
+		 * 메서드: getArea() - 면적을 반환함
+		 * 
+		 * 2. getPeriment() 함수는 prototype에 추가한다
+		 *
+		 * 3. Circle객체를 생성한다. 각 객체에 이름 속성을 추가한다(prototype 아님)
+		 * 
+		 * 4. 이름, 반지름, 면적, 둘레를 출력한다
+		 */
+
+		function Circle(radius) {
+			this.radius = radius;
+
+			this.getArea = function() {
+				return Math.PI * this.radius * this.radius;
+			}
+		}
+
+		Circle.prototype.getPeriment = function() {
+			return Math.PI * this.radius * 2;
+		}
+		
+		proc1 = () => {
+			circle1 = new Circle(12);
+			circle1.name = "circle1";
+			str = `이름: ${circle1.name}<br>`;
+			str += `반지름: ${circle1.radius}<br>`;
+			str += `면적: ${circle1.getArea()}<br>`;
+			str += `둘레: ${circle1.getPeriment()}<br>`;
+			
+			document.querySelector("#result1").innerHTML = str;
+		}
+		
+		proc2 = () => {
+			circle2 = new Circle(6);
+			circle2.name = "동글이";
+			str = `이름: ${circle2.name}<br>`;
+			str += `반지름: ${circle2.radius}<br>`;
+			str += `면적: ${circle2.getArea()}<br>`;
+			str += `둘레: ${circle2.getPeriment()}<br>`;
+			
+			document.querySelector("#result2").innerHTML = str;
+		}
+		
+		proc3 = () => {
+			circle3 = new Circle(3);
+			circle3.name = "동글동글";
+			str = `이름: ${circle3.name}<br>`;
+			str += `반지름: ${circle3.radius}<br>`;
+			str += `면적: ${circle3.getArea()}<br>`;
+			str += `둘레: ${circle3.getPeriment()}<br>`;
+			
+			document.querySelector("#result3").innerHTML = str;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>
+			객체의 속성과 메서드를 동적으로 추가<br>생성자 함수를 이용한 객체 선언<br>new를 이용해 객체를
+			생성한다<br>r1 = new Rect(12, 12)
+		</h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>
+			객체의 속성과 메서드를 동적으로 추가<br>생성자 함수를 이용한 객체 선언<br>new를 이용해 객체를
+			생성한다<br>r1 = new Rect(14, 14)
+		</h2>
+		<input type="button" onclick="proc2()" value="확인">
+		<div id="result2" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		// 객체 선언
+		function Rect(width, height) {
+			this.width = width; // script는 this 꼬옥 있어야되
+			this.height = height;
+
+			/* this.getArea = function() {
+				return this.width * this.height;
+			}
+
+			this.getPerimeter = function() {
+				return 2 * (parseInt(this.width) + parseInt(this.height));
+			} */
+		}
+
+		Rect.prototype.getArea = function() {
+			return this.width * this.height;
+		}
+
+		Rect.prototype.getPeriment = function() {
+			return 2 * (parseInt(this.width) + parseInt(this.height));
+		}
+
+		function proc1() {
+			rect1 = new Rect(12, 12);
+			str = `가로: ${rect1.width}<br>`;
+			str += `세로: ${rect1.height}<br>`;
+
+			/* // 메서드 추가
+			rect1.getArea = function() {
+				return this.width * this.height;
+			}
+
+			rect1.getPeriment = function() {
+				return 2 * (parseInt(this.width) + parseInt(this.height));
+			} */
+
+			str += `너비: ${rect1.getArea()}<br>`;
+			str += `둘레: ${rect1.getPeriment()}<br>`;
+			document.getElementById("result1").innerHTML = str;
+		}
+
+		function proc2() {
+			rect2 = new Rect(14, 14);
+			str = `가로: ${rect2.width}<br>`;
+			str += `세로: ${rect2.height}<br>`;
+
+			/* // 메서드 추가
+			rect2.getArea = function() {
+				return this.width * this.height;
+			}
+
+			rect2.getPeriment = function() {
+				return 2 * (parseInt(this.width) + parseInt(this.height));
+			} */
+
+			str += `너비: ${rect2.getArea()}<br>`;
+			str += `둘레: ${rect2.getPeriment()}<br>`;
+			document.getElementById("result2").innerHTML = str;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>객체의 기본 속성값을 출력</h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>이름과 색상을 입력, 속도를 10 증가해 출력</h2>
+		<input type="button" onclick="proc2()" value="확인">
+		<div id="result2" class="result"></div>
+	</div>
+	
+
+	<script type="text/javascript">
+		const myCar = {
+			color : "red",
+			name : "bmw",
+			speed : 100,
+
+			brake : function() {
+				this.speed -= 10;
+			},
+
+			accel : function() {
+				this.speed += 10;
+			}
+		}
+		
+		printObj = (result) => {
+			str = `이름: ${myCar.name}<br>`;
+			str += `색상: ${myCar.color}<br>`;
+			str += `속도: ${myCar.speed}<br>`;
+			
+			document.getElementById(result).innerHTML = str;
+		}
+		
+		proc1 = () => { 
+			printObj("result1");
+		}
+		
+		proc2 = () => {
+			// name과 color를 입력받음
+			myCar.name = prompt("차의 제조사를 입력하세요");
+			myCar.color = prompt("차의 색상을 입력하세요");
+			
+			// 스피드 10증가: 메서드 호출
+			myCar.accel();
+			printObj("result2");
+		}
+	</script>
+</body>
+</html>

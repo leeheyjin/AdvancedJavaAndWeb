@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>찾기</h2>
+		<input type="button" onclick="proc1()" value="indexOf">
+		<div id="result1" class="result"></div>
+		<input type="button" onclick="proc2()" value="lastIndexOf">
+		<div id="result2" class="result"></div>
+		<input type="button" onclick="proc3()" value="여러개 찾기">
+		<div id="result3" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		arr = [ "사과", "바나나", "복숭아", "참외", "수박", "메론", "딸기", "사과" ];
+		
+		proc1 = () => {
+			// 찾고자 하는 과일의 이름 입력
+			fruit = prompt("원하는 과일의 이름을 입력하세요");
+			
+			// 입력한 이름의 과일이 배열에서 몇 번재에 위치하는지 찾아라!: indexOf
+			idx = arr.indexOf(fruit);
+			str = "";
+			if (idx < 0) {
+				str += "없습니다";
+			} else {
+			// 결과를 출력
+			str += `찾는 과일 ${fruit}는 `;
+			str += `${idx}번째에 있습니다.`;
+			}
+			
+			document.getElementById("result1").innerHTML = str;
+		}
+		
+		proc2 = () => {
+			
+		}
+		
+		proc3 = () => {
+			
+		}
+	</script>
+</body>
+</html>
