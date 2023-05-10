@@ -7,7 +7,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class POITest3 {
+public class PrintExcelDataToConsole {
 	public static void main(String[] args) {
 		try {
 			FileInputStream fin = new FileInputStream(new File("./src/", "excel.xlsx"));

@@ -10,7 +10,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class POITest2 {
+public class InsertDataIntoExcelFile {
 	public static void main(String[] args) {
 		// 빈 Workbook 생성
 		XSSFWorkbook workbook = new XSSFWorkbook();

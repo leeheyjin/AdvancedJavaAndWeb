@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>prompt()를 이용해 이름을 계속 입력받아 배열에 저장하고 출력하는 프로그램을 작성하시오. 입력의 마지막은
+			공백 문자를 입력하거나 취소 버튼을 눌렀을 때로 한다</h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>서로 중복되지 않는 정수 5개를 입력받아 출력하는 프로그램을 작성하시오</h2>
+		<input type="button" onclick="proc2()" value="확인">
+		<div id="result2" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		proc1 = () => {
+			let arr = [];
+			while(true) {
+				let name = prompt("이름을 입력하세요.");
+				if (name === " " || name == null) {
+					break;
+				}
+				arr.push(name);
+			}
+			document.querySelector("#result1").innerHTML = arr;
+		}
+		
+		proc2 = () => {
+			let arr = [];
+			inputValue = "";
+			for (let i = 0; i < 5; i++) {
+				let number = parseInt(prompt("정수를 입력하세요"));
+				inputValue += `${number} `;
+				if (arr.indexOf(number) == -1) {
+					arr.push(number);	
+				} else {
+					i--;
+				}
+			}
+			str = `입력한 값: ${inputValue}<br>`;
+			str += `배열: ${arr}`;
+			document.querySelector("#result2").innerHTML = str;
+		}
+	</script>
+</body>
+</html>
