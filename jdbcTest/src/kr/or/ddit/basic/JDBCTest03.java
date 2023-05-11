@@ -10,7 +10,7 @@ import java.sql.SQLException;
 /*
  * 문제: lprod_id값을 2개 입력 받아서 두 값중 작은값부터 큰값사이의 자료들을 출력하시오
  */
-public class JdbcTest03 {
+public class JDBCTest03 {
 	public static void main(String[] args) {
 		Connection connection = null;
 		Statement statement = null;

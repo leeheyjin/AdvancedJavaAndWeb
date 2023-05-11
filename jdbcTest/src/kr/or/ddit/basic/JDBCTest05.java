@@ -17,7 +17,7 @@ import java.util.Scanner;
  * 입력받은 lprod_gu가 이미 등록되어 있으면 다시 입력 받아서 처리한다. 
  * 
  */
-public class JdbcTest05 {
+public class JDBCTest05 {
 	public static void main(String[] args) {
 		Connection connection = null;
 		Statement statement = null;

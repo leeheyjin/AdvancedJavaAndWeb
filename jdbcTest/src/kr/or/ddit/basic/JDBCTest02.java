@@ -11,7 +11,7 @@ import java.util.Scanner;
 /*
  * 문제: 사용자로부터 lprod_id값을 입력받아 입력한 값보다 lprod_id가 큰 자료들을 출력하시오
  */
-public class JdbcTest02 {
+public class JDBCTest02 {
 	public static void main(String[] args) {
 		Connection connection = null;
 		Statement statement = null;

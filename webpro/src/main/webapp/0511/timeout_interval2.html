@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>setTimeout함수를 호출하여 result1인 요소의 배경색을 변경</h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		proc1 = () => {
+			vres = document.querySelector("#result1");
+			
+			setTimeout(timeRun(), 500); // 이럼 안됨
+
+//			setTimeout(timeRun, 500); // 변수처럼 그냥데려와야됨(이게먼구조임??)	
+//			setTimeout(function() {}, 500); // 호출할 함수 바로 정의1
+//			setTimeout(() => {}, 500);  // 2
+		}
+		
+		timeRun = () => {
+			vres.style.backgroundColor = "pink";
+		}
+	</script>
+</body>
+</html>

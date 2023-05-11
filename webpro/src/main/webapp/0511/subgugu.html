@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2></h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		proc1 = () => {
+			res = " ";
+			gusu = window.prompt("구구단수를 입력하세요");
+			for (i = 1; i < 10; i++) {
+				res += `${gusu} * ${i} = ${gusu * i}<br>`;
+			}
+			
+			// 부모창의 #result2에 출력
+			opener.document.querySelector("#result2").innerHTML = res;
+			window.close();
+		}
+	</script>
+</body>
+</html>

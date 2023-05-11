@@ -26,7 +26,7 @@ import java.sql.SQLException;
  * 5. 사용한 자원 반납하기: close()메서드 이용
  * 
  */
-public class JdbcTest01 {
+public class JDBCTest01 {
 	public static void main(String[] args) {
 		Connection connection = null;
 		Statement statement = null;

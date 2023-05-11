@@ -22,10 +22,10 @@
 	proc2 = () => {
 		ssl = prompt("주민번호를 입력하세요(000000-0000000)");
 		ssl = ssl.replace("-", "");
-		
+	
 		sum = 0;
-		for (let i = 0; i < arr.length; i++) {
-			sum += ssl.substr(i, 1) * multi.substr(i, 1);
+		for (let i = 0; i < ssl.length; i++) {
+			sum += ssl.substr(i, 1) * ssl.substr(i, 1);
 		}
 		res = 11 - sum % 11;
 		if (res == 10) {

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>
+			랜덤을 발생시켜 맞추는 프로그램<br>힌트를 작성한다
+		</h2>
+		<input type="text" id="rnum"> <input type="button"
+			onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h2>가위바위보 프로그램</h2>
+		<input type="button" onclick="proc2()" value="확인">
+		<div id="result2" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h2>로또 번호 생성 프로그램</h2>
+		<input type="button" onclick="proc3()" value="확인">
+		<div id="result3" class="result"></div>
+	</div>
+
+	<script>
+	proc3 = () => {
+		loarr = [];	// loarr = new Array();
+		
+		while (true) {
+			rand = parseInt(Math.random() * 45 + 1);
+			
+			// 배열에 추가 
+			// 배열에 존재하는 값인지 비교 - indexOf() == -1 이면 추가 
+			if (loarr.indexOf(rand) == -1) {
+				loarr.push(rand);
+			}
+			// 비교 - break
+			if (loarr.length == 6) {
+				break;
+			}
+		}
+		
+		//출력
+		document.getElementById('result3').innerHTML = loarr;
+	}
+		// 랜덤 발생 (1~100)
+		rand = parseInt(Math.random() * 100 + 1);
+		count = 0;
+		inputs = "";   // 입력한 값들을 문자열로 누적시키는 변수
+
+		proc1 = () => {
+   			// 입력한 값 가져오기 -> id가 runm인 요소에 접근 -> 값 가져오기 -> value
+   			numvalue = parseInt(document.querySelector('#rnum').value);
+   			count ++;
+			inputs += numvalue + " ";
+   
+   			// 비교
+   			if(numvalue == rand) {
+      			str = `랜덤 : ${rand} <br>`;
+      			str += `입력값들 : ${inputs} <br>`;
+      			str += `입력횟수 : ${count} <br>`;
+      			str += "정답입니다!"
+   			} else if (numvalue > rand) {
+ 	     		str = "힌트: 더 작은 수를 입력하세요."
+   			} else {
+      			str = "힌트: 더 큰 수를 입력하세요."
+   			}
+   
+   			document.querySelector('#result1').innerHTML = str;
+		}
+		
+		arr = ["가위", "바위", "보"];	
+		proc2 = () => {
+			vrandom = parseInt(Math.random() * 3);
+			com = arr[vrandom];
+			user = prompt("가위, 바위, 보 중 하나를 입력하세요");
+			if (com === user) {
+				res = "비겼습니다.";
+			} else if ((com == "가위" && user == "바위")|| 
+					   (com == "바위" && user == "보" )|| 
+					   (com == "보" && user == "가위")) {
+				res = "컴퓨터가 이겼습니다."
+				
+			} else if ((user == "가위" && com == "바위")|| 
+					   (user == "바위" && com == "보" )|| 
+					   (user == "보" && com == "가위")) {
+				res = "사용자가 이겼습니다."
+			}
+			
+			str = `사용자: ${user}<br>`;
+			str += `컴퓨터: ${com}<br>`;
+			str += `결과: ${res}<br>`;
+			document.querySelector("#result2").innerHTML = res;
+		}
+</script>
+
+</body>
+</html>
