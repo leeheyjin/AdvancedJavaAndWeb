@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>prompt로 주민등록번호를 입력받아 생년월일과 성별, 나이를 출력하는 프로그램을 작성하시오</h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h2>주민등록번호를 입력받아 주민등록번호의 유효성을 검사하는 프로그램을 작성하시오</h2>
+		<input type="button" onclick="proc2()" value="확인">
+		<div id="result2" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+	proc2 = () => {
+		ssl = prompt("주민번호를 입력하세요(000000-0000000)");
+		ssl = ssl.replace("-", "");
+		
+		sum = 0;
+		for (let i = 0; i < arr.length; i++) {
+			sum += ssl.substr(i, 1) * multi.substr(i, 1);
+		}
+		res = 11 - sum % 11;
+		if (res == 10) {
+			res = 0;
+		} else if (res == 11) {
+			res = 1;
+		}
+		
+		str = "";
+		if (res == ssl.charAt(12)) {
+			str += "진짜";
+		} else {
+			str += "가짜";
+		}
+		
+		document.querySelector("#result2").innerHTML = str;
+		
+	}
+	
+	proc1 = () => {
+		ssl = prompt("주민번호를 입력하세요");
+		identifier = ssl.charAt(7); // 뒷자리 첫글자
+		
+		birth = "생일: ";
+		if (identifier == 1 || identifier == 2) {
+			birth += "19";
+		} else if(identifier == 3 || identifier == 4) {
+			birth += "20";
+		}
+		birth += ssl.substr(0, 2) + "년 " + ssl.substr(2, 2) + "월 " + ssl.substr(4,2) + "일";
+		
+		gender = "성별: ";
+		if (identifier == 1 || identifier == 3) {
+			gender += "남자";
+		} else if (identifier == 2 || identifier == 4) {
+			gender += "여자";
+		}
+		
+		age = "나이: ";
+		birthYear = birth.substr(4, 4);
+		birthMonth = birth.substr(10, 2);
+		birthDay = birth.substr(14, 2);
+		
+		birthDate = new Date(birthYear, birthMonth-1, birthDay);
+		today = new Date();
+		
+		calcAge = today.getTime() - birthDate.getTime();
+		console.log(calcAge);
+		nowAge = calcAge / 1000 / 60 / 60 / 24 / 365;
+		age += parseInt(nowAge);
+		
+		result = `${birth}<br>${gender}<br>${age}<br>`;
+		
+		document.querySelector("#result1").innerHTML = result;
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>문자열 추출 및 자르기</h2>
+		<input type="button" onclick="proc1()" value="substring">
+		<div id="result1" class="result"></div>
+		<input type="button" onclick="proc2()" value="slice">
+		<div id="result2" class="result"></div>
+		<input type="button" onclick="proc3()" value="substr">
+		<div id="result3" class="result"></div>
+		<input type="button" onclick="proc4()" value="split">
+		<div id="result4" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>textarea에 입력한 엔터기호를 &lt;br&gt;로 바꿔서 div에 출력</h2>
+		<textarea rows="" cols="" id="input"></textarea>
+		<br> <input type="button" onclick="proc5()" value="replace">
+		<div id="result5" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		vstr = "배고파 오늘의 점심은 바질바게트크림치즈머시기빵이랑 우유 먹을까"
+		
+		proc5 = () => {
+			inputValue = document.querySelector("#input").value;
+			
+			inputValue = inputValue.replaceAll("\n", "&lt;br&gt;");
+			printObj("#result5", inputValue);
+		}
+		
+		proc4 = () => {
+			splitStr = vstr.split(" "); // 자른 값들은 배열로 저장
+			str = `원래 문장: ${vstr}<br>vstr.split(2, 8)를 한 문장: ${splitStr}`;
+			printObj("#result4", str);
+		}
+		
+		proc1 = () => {
+			substringStr = vstr.substring(2, 8);
+			str = `원래 문장: ${vstr}<br>vstr.substring(2, 8)를 한 문장: ${substringStr}`;
+			printObj("#result1", str);
+		}
+		
+		proc2 = () => {
+			sliceStr = vstr.slice(2, 8);
+			str = `원래 문장: ${vstr}<br>vstr.slice(2, 8)를 한 문장: ${sliceStr}`;
+			printObj("#result2", str);
+		}
+		
+		proc3 = () => {
+			substrStr = vstr.substr(2, 8);
+			str = `원래 문장: ${vstr}<br>vstr.substr(2, 8)를 한 문장: ${substrStr}`;
+			printObj("#result3", str);
+		}
+			
+		printObj = (id, str) => {
+			document.querySelector(id).innerHTML = str;
+		}
+	</script>
+</body>
+</html>

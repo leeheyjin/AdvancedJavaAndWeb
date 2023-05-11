@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>내가 태어난지 d+?</h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h2>오늘부터 500일 후 날짜는?</h2>
+		<input type="button" onclick="proc2()" value="확인">
+		<div id="result2" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h2>
+			구입날짜를 선택하여 7일이 경과했는지 비교<br>7일 이전: 교환/환불 가능<br>7일 이후: 교환/환불
+			불가능
+		</h2>
+		<label for="buyDate">구입날짜 </label><input type="date" id="sel">
+		<input type="button" onclick="proc3()" value="확인">
+		<div id="result3" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		today = new Date();
+		todayMilliSec = today.getTime();
+		
+		proc3 = () => {
+			// id = sel인 요소로 접근
+			selValue = document.querySelector("#sel").value;
+			
+			selDate = new Date(selValue);
+			selDateMilliSec = selDate.getTime();
+			sevenDays = 7 * 24 * 60 * 60 * 1000;
+			
+			str = `오늘 날짜: ${today.toLocaleDateString()}<br>`;
+			str += `구입 날짜: ${selDate.toLocaleDateString()}<br><br>`;
+			if ((todayMilliSec - selDateMilliSec) <= sevenDays) {
+				str += `구매 후 ${new Date(todayMilliSec - selDateMilliSec) / 1000 / 60 / 60 / 24}일 경과 <br>교환 가능합니다`;
+			} else {
+				str += `구매 후 ${new Date(todayMilliSec - selDateMilliSec) / 1000 / 60 / 60 / 24}일 경과 <br>교환 불가능합니다`;
+			}
+			document.querySelector("#result3").innerHTML = str;
+		}
+	
+		proc1 = () => {
+			myDay = new Date("1999.01.02");
+			myDay = new Date(1998, 01-1, 02);
+			
+			// getTime()을 이용해서 밀리초 구하기
+			myDayMilliSec = myDay.getTime();
+			
+			console.log(todayMilliSec, myDayMilliSec);
+			
+			todayMinusMyDayMilliSec = todayMilliSec - myDayMilliSec;
+			todayMinusMyDay = todayMinusMyDayMilliSec / 1000 / 60 / 60 / 24;
+			
+			str = `오늘: ${today.toLocaleString()}<br>
+				   생일: ${myDay.toLocaleString()}<br>
+				   내가 태어난 후 ${todayMinusMyDay}일 지남`;
+				   
+			document.querySelector("#result1").innerHTML = str;
+		}
+		
+		proc2 = () => {
+			after500 = 500 * 24 * 60 * 60 * 1000;
+			dPlus500 = new Date(todayMilliSec + after500);
+			
+			str = `오늘: ${today.toLocaleString()}<br>
+				   500일 후 날짜: ${dPlus500.toLocaleString()}`;
+				   
+			document.querySelector("#result2").innerHTML = str;
+		}
+	</script>
+</body>
+</html>
