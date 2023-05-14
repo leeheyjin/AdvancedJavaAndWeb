@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+<style type="text/css">
+img {
+	width: 50px;
+	height: 50px;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<h2></h2>
+		<ul>
+			<li>list item1</li>
+			<li>list item2</li>
+			<li>list item3</li>
+			<li>list item4</li>
+			<li>list item5</li>
+		</ul>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>
+			새로운 노드 추가<br>createElement("태그이름")<br>createTextNode("문자열")<br>태그이름변수.appendChild(문자열변수)
+		</h2>
+		<input type="button" onclick="proc2()" value="확인">
+		<div id="result2" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>새로운 html요소 생성(이미지)</h2>
+		<pre>
+버튼을 클릭하명 이미지를 표시한다
+1. 각list의 문자를 가져온다. - firstChild.data
+2. 이미지 객체를 생성한다. - createElement('img')
+3. 각 list의 자식으로 이미지를 추가한다 - appendChild()
+		</pre>
+		<input type="button" onclick="proc3()" value="확인">
+		<div id="result3" class="result">
+			<ul>
+				<li>펭귄.jpg</li>
+				<li>spongebob.png</li>
+				<li>핫초코.jpg</li>
+				<li>카푸치노.jpg</li>
+				<li>사자2.jpg</li>
+			</ul>
+		</div>
+	</div>
+	<div class="box">
+		<h2>
+			새로운 노드 추가<br>이미지태그변수 = createElement("태그이름")<br>li.appendChild(이미지태그변수)<br>각
+			li항목을 클릭했을 때 해당 항목의 이미지만 추가한다
+		</h2>
+		<div id="result4" class="result">
+			<ul>
+				<li onclick="proc4(this)">펭귄.jpg</li>
+				<li onclick="proc4(this)">spongebob.png</li>
+				<li onclick="proc4(this)">핫초코.jpg</li>
+				<li onclick="proc4(this)">카푸치노.jpg</li>
+				<li onclick="proc4(this)">사자2.jpg</li>
+			</ul>
+		</div>
+	</div>
+	<div class="box">
+		<h2>
+			새로운 노드 추가<br>이미지태그변수 = createElement("태그이름")<br>li.appendChild(이미지태그변수)<br>이벤트
+			일괄 등록 - addEventListener(이벤트이름, 함수이름);
+		</h2>
+		<div id="result5" class="result">
+			<ul id="addImg">
+				<li>펭귄.jpg</li>
+				<li>spongebob.png</li>
+				<li>핫초코.jpg</li>
+				<li>카푸치노.jpg</li>
+				<li>사자2.jpg</li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	window.onload = () => {
+	// body가 생성되기 전에 실행됨
+		ulTag = document.querySelector("#addImg");
+	addList = ulTag.getElementsByTagName("li");
+	
+	for(i = 0; i<addList.length; i++) { 
+		addList[i].addEventListener('click', addImage);
+	}
+	// body가 생성되기 전에 실행됨
+	}
+	
+	
+	addImage = () => {
+		// 현재함수를 실행하는 addList[i]의 객체를 this로 사용
+		vdata = this.firstChild.data;
+		// img객체를 생성한다
+		imgTag = document.createElement("img");
+		imgTag.src = "../images/" + vdata;
+		imgTag.alt = vdata;
+		
+		// addList[i]의 객체에 이미지 객체를 추가한다
+		this.appendChild(imgTag);
+	}
+	
+	proc4 = (target) => {
+		// target을 대상으로 문자열 데이터를 가져온다
+		data = target.firstChild.data;		
+		// img태그를 생성
+		imgTag = document.createElement("img");
+		// src속성과 alt속성을 설정
+		imgTag.src = "../images/" + data;
+		imgTag.alt = data;
+		// target에 img를 추가함
+		target.appendChild(imgTag);
+	}
+	
+	proc3 = () => {
+		// ul 검색
+		ul = document.getElementsByTagName("ul")[1];
+		// li검색 -> 배열 반환
+		li = ul.getElementsByTagName("li");
+		for (let i = 0; i < li.length; i++) {
+			// li문자열 가져오기
+			data = li[i].firstChild.data;
+			// 변수 = img 태그 생성
+			imgTag = document.createElement("img");
+			// 변수.src = 
+			imgTag.src = "../images/" + data;
+			// 변수.alt = 
+			imgTag.alt = data;
+			// li에 img태그 추가
+			li[i].appendChild(imgTag);
+		}
+	}
+	
+	proc2 = () => {
+		// p태그를 생성
+		ptag = document.createElement("p");
+		
+		// 문자열 객체를 생성
+		vtext = document.createTextNode("Hello");
+		
+		// p태그에 문자열을 추가한다
+		ptag.appendChild(vtext);
+		
+		// p태그를 result2에 추가한다
+//		str = "<p>hello</p>";
+		document.getElementById("result2").appendChild(ptag);
+	}
+	
+		function proc1() {
+
+			//검색
+			vul = document.getElementsByTagName('ul')[0];
+			vlist = vul.getElementsByTagName('li');
+
+			res = "";
+
+			for (i = 0; i < vlist.length; i++) {
+				res += vlist[i].firstChild.data + "<br>"
+			}
+
+			document.getElementById('result1').innerHTML = res;
+		}
+	</script>
+</body>
+</html>

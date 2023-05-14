@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>
+			location객체<br>url의 정보를 가져오거나 설정
+		</h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>
+			location객체<br>location.href 사용<br> <br>특정 페이지로 이동할 때
+		</h2>
+		<input type="button" onclick="proc2()" value="페이지이동"> 
+		<input type="button" onclick="location.href='../0508/array method.html'" value="페이지이동">
+		<div id="result2" class="result"></div>
+		<br>
+		<h2>a태그 이용</h2>
+		<a href="../0510/Date.html">a href="../0510/Date.html"</a><br> 
+		<a href="#" onclick="proc2()">a href="#" onclick="proc2()"</a><br>
+		<a href="javascript:proc2()">a href="javascript:proc2()"</a><br>
+		<a href="#" onclick="location.href='../0510/Date.html'">a href="#" onclick="location.href='../0510/Date.html'"</a><br> 
+		<a href="#" onclick="location.href='http://localhost/webpro/0421/inputProcess.jsp?id=id&pw=pasword'">a href="#" onclick="location.href='http://localhost/webpro/0421/inputProcess.jsp?id=id&pw=pasword'"</a>
+	</div>
+	<div class="box">
+		<h2>
+			location객체<br>location.replace 사용
+		</h2>
+		<input type="button" onclick="proc3()" value="페이지대체">
+		<input type="button" onclick="location.replace('../0510/Date.html')" value="페이지대체">
+		<div id="result3" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>
+			location객체<br>location.reload 사용<br>랜덤으로 문자열 발생하여 #result4에 출력하고 3초(3000) 후에 현재 페이지를 다시 로드한다
+		</h2>
+		<button type="button" onclick="proc4()">페이지 새로고침</button>
+		<div id="result4" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+	proc4 = () => {
+		arr = ["Hello", "javascript", "jquery", "이브, 프시케 그리고 푸른 수염의 아내", "unforgiven"];
+		random = parseInt(Math.random() * arr.length);
+		str = `<h1>랜덤: ${arr[random]}</h1>`;
+		document.querySelector("#result4").innerHTML = str;
+		
+		setTimeout(() => {
+			location.reload();
+		}, 3000);
+	}
+
+	
+	proc3 = () => {
+		location.replace("../0510/Date.html");
+	}
+	
+	proc2 = () => {
+		location.href = "../0510/Date.html";
+	}
+	
+	proc1 = () => {
+		vprotocol = location.protocol;
+		vhostname = location.hostname;
+		vport = location.port;
+		vhost = location.host;
+		vpathname = location.pathname;
+		vhref = location.href;
+			
+		str = `protocol: ${vprotocol}<br>
+		       hostname: ${vhostname}<br>
+		       port: ${vport}<br>
+		       host: ${vhost}<br>
+		       pathname: ${vpathname}<br>
+		       href: ${vhref}<br>`;
+			       
+		document.querySelector("#result1").innerHTML = str;
+	}
+	</script>
+</body>
+</html>

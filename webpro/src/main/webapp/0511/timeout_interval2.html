@@ -16,11 +16,10 @@
 		proc1 = () => {
 			vres = document.querySelector("#result1");
 			
-			setTimeout(timeRun(), 500); // 이럼 안됨
-
-//			setTimeout(timeRun, 500); // 변수처럼 그냥데려와야됨(이게먼구조임??)	
-//			setTimeout(function() {}, 500); // 호출할 함수 바로 정의1
-//			setTimeout(() => {}, 500);  // 2
+//			setTimeout(timeRun(), 5000); // 권장하지 않음. 오류는 안나도 실행이 정상적으로 되진 않음
+			setTimeout(timeRun, 5000); // 변수처럼 그냥데려와야됨(이게먼구조임??)	
+//			setTimeout(function() {}, 5000); // 호출할 함수 바로 정의1
+//			setTimeout(() => {}, 5000);  // 2
 		}
 		
 		timeRun = () => {
