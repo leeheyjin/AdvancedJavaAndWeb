@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Scanner;
 
-import kr.or.ddit.util.DBUtil;
+import kr.or.ddit.util.DBUtil3;
 import oracle.net.aso.r;
 
 /*
@@ -39,7 +39,7 @@ public class JDBCTest06 {
 	private Scanner scanner;
 
 	public JDBCTest06() {
-		connection = DBUtil.getConnection();
+		connection = DBUtil3.getConnection();
 		scanner = new Scanner(System.in);
 	}
 

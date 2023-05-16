@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+</head>
+<body>
+	<div class="box">
+		<h2>추가 버튼 클릭 시 랜덤으로 문자열 추가</h2>
+		<h2>삭제 버튼 클릭 시 아래서부터 문자열 삭제</h2>
+		<input type="button" onclick="proc1()" value="추가"> <input
+			type="button" onclick="proc2()" value="삭제">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>추가 버튼 클릭 시 랜덤으로 문자열 추가, 삭제버튼 추가</h2>
+		<h2>삭제 버튼 클릭 시 해당 p태그 삭제</h2>
+		<input type="button" onclick="proc3()" value="추가삭제">
+		<div id="result3" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		arr = ["hello", "happy", "즐거운 주말", "맛있는 점심", "javascript"];
+		
+		proc3 = () => {
+			// 랜덤 발생
+			random = parseInt(Math.random() * arr.length);
+			// arr[랜덤] 문자열로 text객체 생성 = createTextNode()
+			node = document.createTextNode(arr[random]);
+			// p 태그 객체 생성 - createElement("p")
+			pTag = document.createElement("p");
+			// p객체에 text객체 추가 - appendChild()
+			pTag.appendChild(node);
+			// button객체 생성
+			buttonTag = document.createElement("input");
+			buttonTag.type = "button";
+			buttonTag.value = "삭제";
+			/* 
+			buttonTag = document.createElement("button");
+			buttonTag.type = button;
+			buttonTag.appendChild(document.createNode("삭제"));
+//			buttonTag.innerText = "삭제";
+			*/
+			
+			buttonTag.onclick = function() { // 람다함수는 부모가 함수 자체가 되므로 사용불가능함. 
+				this.parentNode.remove(); // 해당 삭제 버튼의 부모인 p태그를 찾아야 함
+			};
+			
+			// p객체에 button객체 추가
+			pTag.appendChild(buttonTag);
+			// p객체를 result3에 추가
+			res = document.querySelector("#result3");
+			res.appendChild(pTag);
+		}
+		
+		proc1 = () => {
+			// 랜덤 발생
+			random = parseInt(Math.random() * arr.length);
+			// arr[랜덤] 문자열로 text객체 생성 = createTextNode()
+			node = document.createTextNode(arr[random]);
+			// p 태그 객체 생성 - createElement("p")
+			pTag = document.createElement("p");
+			// p객체에 text객체 추가 - appendChild()
+			pTag.appendChild(node);
+			// result1에 p객체 추가
+			vres = document.querySelector("#result1");
+			vres.appendChild(pTag);
+		}
+		
+		proc2 = () => {
+			lastChild = vres.lastChild;
+			vres.removeChild(lastChild);
+		}
+	</script>
+</body>
+</html>

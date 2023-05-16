@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import kr.or.ddit.util.DBUtil;
+import kr.or.ddit.util.DBUtil2;
+import oracle.net.aso.p;
 
 public class JDBCTest06Answer {
 	private Scanner scanner = new Scanner(System.in);
@@ -34,7 +35,7 @@ public class JDBCTest06Answer {
 				displayAll();
 				break;
 			case 5:
-				update2();
+				updateMember2();
 				break;
 			case 0:
 				System.out.println("작업을 마칩니다");
@@ -88,7 +89,7 @@ public class JDBCTest06Answer {
 		PreparedStatement preparedStatement = null;
 
 		try {
-			connection = DBUtil.getConnection();
+			connection = DBUtil2.getConnection();
 			String sql = "INSERT INTO MYMEMBER VALUES (?, ?, ?, ?, ?)";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, memId);
@@ -130,7 +131,7 @@ public class JDBCTest06Answer {
 		ResultSet resultSet = null;
 
 		try {
-			connection = DBUtil.getConnection();
+			connection = DBUtil2.getConnection();
 			String sql = "SELECT COUNT(*) COUNT FROM MYMEMBER WHERE MEM_ID = ?";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, memId);
@@ -170,7 +171,7 @@ public class JDBCTest06Answer {
 		PreparedStatement preparedStatement = null;
 
 		try {
-			connection = DBUtil.getConnection();
+			connection = DBUtil2.getConnection();
 			String sql = "DELETE FROM MYMEMBER WHERE MEM_ID = ?";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, memId);
@@ -222,7 +223,7 @@ public class JDBCTest06Answer {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		try {
-			connection = DBUtil.getConnection();
+			connection = DBUtil2.getConnection();
 			String sql = "UPDATE MYMEMBER SET MEM_PASS = ?, MEM_NAME = ?, MEM_TEL = ?, MEM_ADDR = ? WHERE MEM_ID = ?";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, newMemPass);
@@ -260,7 +261,7 @@ public class JDBCTest06Answer {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			conn = DBUtil.getConnection();
+			conn = DBUtil2.getConnection();
 			String sql = "select * from mymember";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -291,7 +292,7 @@ public class JDBCTest06Answer {
 		}
 	}
 
-	private void update2() {
+	private void updateMember2() {
 		System.out.println("--------------------------");
 		System.out.println("수정할 회원 정보를 입력하세요");
 		System.out.print("회원ID >> ");
@@ -303,95 +304,166 @@ public class JDBCTest06Answer {
 			return;
 		}
 
-		Connection conn = null;
-		PreparedStatement prepareStatement = null;
-		conn = DBUtil.getConnection();
+		// 쌤답
+		int choice; // 수정을 원하는 항목의 선택 번호가 저장될 변수
+		String updateField = null; // 수정할 컬럼명이 저장될 변수
+		String updateTitle = null; // 입력할 때 보여줄 제목
 
-		try {
-			System.out.println("수정 가능한 항목입니다.");
-			System.out.println("1. 비밀번호");
-			System.out.println("2. 이름");
-			System.out.println("3. 전화번호");
-			System.out.println("4. 주소");
-			System.out.print("수정할 항목을 선택하세요 >> ");
-			String choice = scanner.nextLine();
+		do {
+			System.out.println("수정할 항목을 선택하세요");
+			System.out.println("1. 비밀번호\t2. 회원이름\t3. 전화번호\t4. 회원주소");
+			System.out.print("수정할 항목 선택 >> ");
+			choice = scanner.nextInt();
+
 			switch (choice) {
-			case "1": // 비밀번호
-				System.out.print("수정할 비밀번호를 입력하세요 >> ");
-				String memPass = scanner.nextLine();
-				String sql = "UPDATE MYMEMBER SET MEM_PASS = ? WHERE MEM_ID = ?";
-				prepareStatement = conn.prepareStatement(sql);
-				prepareStatement.setString(1, memPass);
-				prepareStatement.setString(2, memId);
-				int num = prepareStatement.executeUpdate();
-				if (num > 0) {
-					System.out.println("비밀번호 수정이 완료되었습니다.");
-				} else {
-					System.out.println("비밀번호 수정을 실패했습니다. 이전으로 돌아갑니다.");
-				}
-				return;
+			case 1:
+				updateField = "MEM_PASS";
+				updateTitle = "비밀번호";
+				break;
+			case 2:
+				updateField = "MEM_NAME";
+				updateTitle = "회원이름";
+				break;
+			case 3:
+				updateField = "MEM_TEL";
+				updateTitle = "전화번호";
+				break;
+			case 4:
+				updateField = "MEM_ADDR";
+				updateTitle = "회원주소";
 
-			case "2": // 비밀번호
-				System.out.print("수정할 이름을 입력하세요 >> ");
-				String memName = scanner.nextLine();
-				sql = "UPDATE MYMEMBER SET MEM_NAME = ? WHERE MEM_ID = ?";
-				prepareStatement = conn.prepareStatement(sql);
-				prepareStatement.setString(1, memName);
-				prepareStatement.setString(2, memId);
-				num = prepareStatement.executeUpdate();
-				if (num > 0) {
-					System.out.println("이름 수정이 완료되었습니다.");
-				} else {
-					System.out.println("이름 수정을 실패했습니다. 이전으로 돌아갑니다.");
-				}
-				return;
+				break;
 
-			case "3": // 비밀번호
-				System.out.print("수정할 전화번호를 입력하세요 >> ");
-				String memTel = scanner.nextLine();
-				sql = "UPDATE MYMEMBER SET MEM_TEL = ? WHERE MEM_ID = ?";
-				prepareStatement = conn.prepareStatement(sql);
-				prepareStatement.setString(1, memTel);
-				prepareStatement.setString(2, memId);
-				num = prepareStatement.executeUpdate();
-				if (num > 0) {
-					System.out.println("전화번호 수정이 완료되었습니다.");
-				} else {
-					System.out.println("전화번호 수정을 실패했습니다. 이전으로 돌아갑니다.");
-				}
-				return;
-
-			case "4": // 비밀번호
-				System.out.print("수정할 주소를 입력하세요 >> ");
-				String memAddr = scanner.nextLine();
-				sql = "UPDATE MYMEMBER SET MEM_ADDR = ? WHERE MEM_ID = ?";
-				prepareStatement = conn.prepareStatement(sql);
-				prepareStatement.setString(1, memAddr);
-				prepareStatement.setString(2, memId);
-				num = prepareStatement.executeUpdate();
-				if (num > 0) {
-					System.out.println("주소 수정이 완료되었습니다.");
-				} else {
-					System.out.println("주소 수정을 실패했습니다. 이전으로 돌아갑니다.");
-				}
-				return;
 			default:
-				System.out.println("잘못된 입력입니다. 이전으로 돌아갑니다.");
+				System.out.println("잘못된 입력입니다. 다시 선택하세요 ");
 				break;
 			}
+		} while (choice < 1 || choice > 4);
+
+		System.out.println();
+		System.out.println("수정할 " + updateTitle + " >> ");
+		String updateData = scanner.nextLine(); // 수정할 데이터 입력
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			connection = DBUtil2.getConnection();
+			String sql = "UPDATE MYMEMBER SET " + updateField + " = ? WHERE MEM_ID = ?";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, updateData);
+			preparedStatement.setString(2, memId);
+
+			int num = preparedStatement.executeUpdate();
+			if (num > 0) {
+				System.out.println("수정 작업 완료");
+			} else {
+				System.out.println("수정 작업 실패");
+			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			try {
-				if (prepareStatement != null) {
-					prepareStatement.close();
+				if (preparedStatement != null) {
+					preparedStatement.close();
 				}
-				if (conn != null) {
-					conn.close();
+				if (connection != null) {
+					connection.close();
 				}
 			} catch (SQLException e2) {
 			}
 		}
+
+		// 내답
+//		Connection conn = null;
+//		PreparedStatement prepareStatement = null;
+//		conn = DBUtil.getConnection();
+//
+//		try {
+//			System.out.println("수정 가능한 항목입니다.");
+//			System.out.println("1. 비밀번호");
+//			System.out.println("2. 이름");
+//			System.out.println("3. 전화번호");
+//			System.out.println("4. 주소");
+//			System.out.print("수정할 항목을 선택하세요 >> ");
+//			String choice = scanner.nextLine();
+//			switch (choice) {
+//			case "1": // 비밀번호
+//				System.out.print("수정할 비밀번호를 입력하세요 >> ");
+//				String memPass = scanner.nextLine();
+//				String sql = "UPDATE MYMEMBER SET MEM_PASS = ? WHERE MEM_ID = ?";
+//				prepareStatement = conn.prepareStatement(sql);
+//				prepareStatement.setString(1, memPass);
+//				prepareStatement.setString(2, memId);
+//				
+//				int num = prepareStatement.executeUpdate();
+//				if (num > 0) {
+//					System.out.println("비밀번호 수정이 완료되었습니다.");
+//				} else {
+//					System.out.println("비밀번호 수정을 실패했습니다. 이전으로 돌아갑니다.");
+//				}
+//				return;
+//
+//			case "2": // 비밀번호
+//				System.out.print("수정할 이름을 입력하세요 >> ");
+//				String memName = scanner.nextLine();
+//				sql = "UPDATE MYMEMBER SET MEM_NAME = ? WHERE MEM_ID = ?";
+//				prepareStatement = conn.prepareStatement(sql);
+//				prepareStatement.setString(1, memName);
+//				prepareStatement.setString(2, memId);
+//				num = prepareStatement.executeUpdate();
+//				if (num > 0) {
+//					System.out.println("이름 수정이 완료되었습니다.");
+//				} else {
+//					System.out.println("이름 수정을 실패했습니다. 이전으로 돌아갑니다.");
+//				}
+//				return;
+//
+//			case "3": // 비밀번호
+//				System.out.print("수정할 전화번호를 입력하세요 >> ");
+//				String memTel = scanner.nextLine();
+//				sql = "UPDATE MYMEMBER SET MEM_TEL = ? WHERE MEM_ID = ?";
+//				prepareStatement = conn.prepareStatement(sql);
+//				prepareStatement.setString(1, memTel);
+//				prepareStatement.setString(2, memId);
+//				num = prepareStatement.executeUpdate();
+//				if (num > 0) {
+//					System.out.println("전화번호 수정이 완료되었습니다.");
+//				} else {
+//					System.out.println("전화번호 수정을 실패했습니다. 이전으로 돌아갑니다.");
+//				}
+//				return;
+//
+//			case "4": // 비밀번호
+//				System.out.print("수정할 주소를 입력하세요 >> ");
+//				String memAddr = scanner.nextLine();
+//				sql = "UPDATE MYMEMBER SET MEM_ADDR = ? WHERE MEM_ID = ?";
+//				prepareStatement = conn.prepareStatement(sql);
+//				prepareStatement.setString(1, memAddr);
+//				prepareStatement.setString(2, memId);
+//				num = prepareStatement.executeUpdate();
+//				if (num > 0) {
+//					System.out.println("주소 수정이 완료되었습니다.");
+//				} else {
+//					System.out.println("주소 수정을 실패했습니다. 이전으로 돌아갑니다.");
+//				}
+//				return;
+//			default:
+//				System.out.println("잘못된 입력입니다. 이전으로 돌아갑니다.");
+//				break;
+//			}
+//		} catch (SQLException e) {
+//			// TODO: handle exception
+//		} finally {
+//			try {
+//				if (prepareStatement != null) {
+//					prepareStatement.close();
+//				}
+//				if (conn != null) {
+//					conn.close();
+//				}
+//			} catch (SQLException e2) {
+//			}
+//		}
 	}
 
 }
