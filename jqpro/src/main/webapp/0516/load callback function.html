@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2></h2>
+		<input type="button" onclick="proc1()" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+	window.onload = function() {
+		$("#result1").css("background", "yellow");
+		/* document.getElementById("result1").style.background = "blue";
+		document.querySelector("#result1").style.background = "blue"; */
+	}
+	
+	$(function() {
+//		$("#result1").css("background", "green");
+		document.querySelector("#result1").style.background = "red";
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+<style type="text/css">
+img {
+	width: 100px;
+	height: 100px;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<h2>새로운 요소를 생성</h2>
+		<p>
+			pTag = $("&lt;p id='p1' onclick='proc1()'>Hello jQuery&lt;/p&gt;");<br>
+			pTag.appendTo($("#result1"));
+		</p>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h2>새로운 요소를 생성</h2>
+		<p>
+			pTag = $("&lt;p&gt;&lt;/p&gt;, {}");<br>
+			pTag.appendTo($("#result1"));
+		</p>
+		<input type="button" id="btn2" value="확인">
+		<div id="result2" class="result"></div>
+	</div>
+
+	<div class="box">
+		<h2>이미지 추가하기</h2>
+		<input type="button" id="btn3" value="이미지 추가">
+		<div id="result3" class="result"></div>
+	</div>
+	<!-- ------------------------------------------------------------------------------------- -->
+	<script type="text/javascript">
+		$("#btn3").on("click", function() {
+			arr = ["Desert.jpg", "Jellyfish.jpg", "Koala.jpg", "Penguins.jpg", "spongebob.png", "Tulips.jpg", "Hydrangeas.jpg"];
+			random = parseInt(Math.random() * arr.length);
+			imgTag = $("<img></img>", {
+				"src": "../images/" + arr[random],
+				"alt": arr[random],
+				"click": function() {
+					$(this).css("border", "2px solid red");
+				} 
+			});
+			imgTag.appendTo("#result3");
+		});
+			
+		$("#btn1").on("click", function() {
+			pTag = $("<p id='p1' onclick='proc1()'>Hello jQuery</p>");				
+			pTag.appendTo($("#result1"));
+		});
+		
+		$("#btn2").on("click", function() {
+			pTag = $("<p></p>", {
+				"id": "p1",
+				"click": proc1,
+				"text": "Hello jQuery"
+			})
+			pTag.appendTo($("#result2"));
+		});
+		
+		proc1 = () => {
+			alert("환영합니다");	
+		}
+		
+		/* // 위 jquery문과 같음 
+		$(document).ready(function() {
+			$("btn1").on("click", function() {
+				pTag = document.createElement("p");
+				text = document.createTextNode("Hello jQuery");
+				pTag.appendChild(text);
+				pTag.id = "p1";
+				pTag.onclick = function() {
+					alert("환영합니다");
+				}
+				
+				document.querySelector("#result1").appendChild(pTag);
+			})
+		});
+		 */
+		 
+	</script>
+</body>
+</html>

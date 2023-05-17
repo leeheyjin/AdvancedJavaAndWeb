@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2>
+			내용 가져오기<br>$("body").html()<br>$("body").text()
+		</h2>
+		<input type="button" id="btn1" value="html"> <input
+			type="button" id="btn2" value="text">
+		<div id="result1" class="result">result1</div>
+	</div>
+	<div class="box">
+		<h2>
+			내용 가져오기<br>$("p").html()<br>$("p").text()
+		</h2>
+		<input type="button" id="btn3" value="html"> <input
+			type="button" id="btn4" value="text">
+		<div id="result2" class="result">result2</div>
+		<p><span>무궁화1</span></p>
+		<p>무궁화2</p>
+	</div>
+	<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$("#btn1").on("click", function() {
+			alert($("body").html()); // body태그의 모든 문장을 가져옴
+		});
+
+		$("#btn2").on("click", function() {
+			alert($("body").text());
+		});
+		
+		$("#btn3").on("click", function() {
+//			alert($("p").html()); // p가 여러개일 경우 첫번째 p만 가져옴. 모두 가져오려면 반복문 사용해야함
+			str = "";
+			$("p").each(function(i, j) { // 매개변수를 굳이 주지 않아도 알아서 작동함. 매개변수1: 반복횟수(인덱스), 매개변수2: 반복되는 요소를 저장하는 변수(this로 대체 가능)
+				str += $(j).html() + "\n";
+			});
+			alert(str);
+		});
+		
+		$("#btn4").on("click", function() {
+			alert($("p").text());
+		});
+	</script>
+</body>
+</html>

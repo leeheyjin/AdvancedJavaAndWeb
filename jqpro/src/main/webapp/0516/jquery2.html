@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/0502.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2>
+			버튼 없이 즉시 실행: <br>window.onload(function() {});<br>$(document).ready(function()
+			{});
+		</h2>
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>onclick이벤트를 jquery에서 실행</h2>
+		<input type="button" id="button1" value="실행">
+		<div id="result2" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>onclick이벤트를 jquery에서 실행</h2>
+		<input type="button" id="button3" value="실행">
+		<div id="result3" class="result">
+			<h3>무궁화 꽃이 피었습니다</h3>
+			<h3>장미 꽃이 피었습니다</h3>
+			<h3>아카시아 꽃이 피었습니다</h3>
+			<h3>수국 꽃이 피었습니다</h3>
+			<h3>라일락 꽃이 피었습니다</h3>
+			<h3>진달래 꽃이 피었습니다</h3>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		/* onload = function() {
+			$("#result1").css("background", "yellow");
+		} */
+
+		$(document).ready(function() {
+			//			$("#result1").css("background", "blue");
+			document.querySelector("#result1").style.background = "red";
+			
+			$("#button1").on("click", function() {
+				$("#result2").css("background", "skyblue");
+			});
+			
+			$("#button3").on("click", function() {
+				// result3안의 h3을 검색 후 전부 red로 바꿈
+				/* 
+				// script방식
+				res3 = document.querySelector("#result3");
+				hTag = res3.getElementsByTagName("h3");
+				for (i = 0; i < hTag.length; i++) {
+					hTag[i].style.color = "red";
+				}
+				// h3의 3번째 요소만 blue로 바꿈
+				h3[2].style.color = "blue";
+				 */
+				$("#result3 h3").css("color", "red"); // h3 전부 red로 바꿈
+				$("#result3 h3").eq(2).css("color", "blue"); // h3의 세번째 요소만 blue로 바꿈
+				
+			});
+		});
+	</script>
+</body>
+</html>

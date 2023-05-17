@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2>h3의 클릭 이벤트</h2>
+		&lt;h3 onclick="proc1(this)"&gt;클릭하면 사라집니다1&lt;/h3&gt;
+		<div id="result1" class="result">
+			<h3 onclick="proc1(this)">클릭하면 사라집니다1</h3>
+			<h3 onclick="proc1(this)">클릭하면 사라집니다2</h3>
+			<h3 onclick="proc1(this)">클릭하면 사라집니다3</h3>
+			<h3 onclick="proc1(this)">클릭하면 사라집니다4</h3>
+			<h3 onclick="proc1(this)">클릭하면 사라집니다5</h3>
+			<h3 onclick="proc1(this)">클릭하면 사라집니다6</h3>
+			<h3 onclick="proc1(this)">클릭하면 사라집니다7</h3>
+			<h3 onclick="proc1(this)">클릭하면 사라집니다8</h3>
+			<h3 onclick="proc1(this)">클릭하면 사라집니다9</h3>
+			<h3 onclick="proc1(this)">클릭하면 사라집니다10</h3>
+		</div>
+	</div>
+	<div class="box">
+		<h2>
+			h3의 클릭 이벤트<br>script에서 일괄 이벤트 등록<br>.addEventListener("click",
+			함수이름);
+		</h2>
+		&lt;h3&gt;클릭하면 사라집니다1&lt;/h3&gt;
+		<div id="result2" class="result">
+			<h3>클릭하면 사라집니다1</h3>
+			<h3>클릭하면 사라집니다2</h3>
+			<h3>클릭하면 사라집니다3</h3>
+			<h3>클릭하면 사라집니다4</h3>
+			<h3>클릭하면 사라집니다5</h3>
+			<h3>클릭하면 사라집니다6</h3>
+			<h3>클릭하면 사라집니다7</h3>
+			<h3>클릭하면 사라집니다8</h3>
+			<h3>클릭하면 사라집니다9</h3>
+			<h3>클릭하면 사라집니다10</h3>
+		</div>
+	</div>
+	<div class="box">
+		<h2>
+			h3의 클릭 이벤트<br>script에서 jquery 이용해 일괄 이벤트 등록<br>$("h1").on("click",
+			function() {});
+		</h2>
+		&lt;h3&gt;클릭하면 사라집니다1&lt;/h3&gt;
+		<div id="result3" class="result">
+			<h3>클릭하면 사라집니다1</h3>
+			<h3>클릭하면 사라집니다2</h3>
+			<h3>클릭하면 사라집니다3</h3>
+			<h3>클릭하면 사라집니다4</h3>
+			<h3>클릭하면 사라집니다5</h3>
+			<h3>클릭하면 사라집니다6</h3>
+			<h3>클릭하면 사라집니다7</h3>
+			<h3>클릭하면 사라집니다8</h3>
+			<h3>클릭하면 사라집니다9</h3>
+			<h3>클릭하면 사라집니다10</h3>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		// result1
+		proc1 = (target) => {
+			// target: 클릭한 h1객체 this를 매개변수로 받은 지역변수
+			target.style.display = "none";
+		}
+		
+		// result2
+		window.onload = function() { // $(document).ready(function() {}); 가능
+			vres = document.querySelector("#result2");
+			vh3 = vres.getElementsByTagName("h3");
+			for (i = 0; i < vh3.length; i++) {
+				vh3[i].addEventListener("click", proc2);
+			}
+		}
+		
+		function proc2() {
+			this.style.display = "none";
+		}
+		
+		// result3
+		$("#result3 h3").on("click", function() { // jquery방식
+//			this.style.display = "none"; // script방식
+//			$(this).css("display", "none"); // jquery방식
+			$(this).hide();
+		});
+	</script>
+</body>
+</html>

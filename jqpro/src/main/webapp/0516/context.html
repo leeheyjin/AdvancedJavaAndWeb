@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2></h2>
+		<p>무궁화 꽃이 피었습니다</p>
+		<input type="button" id="btn" value="확인">
+		<div id="result1" class="result">
+			<p>무궁화 꽃이 피었습니다</p>
+		</div>
+		<div id="result2" class="result">
+			<p>무궁화 꽃이 피었습니다</p>
+		</div>
+
+		<form action="">
+			<p>무궁화 꽃이 피었습니다</p>
+		</form>
+		<form action="">
+			<p>무궁화 꽃이 피었습니다</p>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		$(function() { // $(document).ready(function(){})과 동일
+			// id가 btn1인 요소 검색
+			$("#btn").on("click", () => {
+				$("p").css("color", "red");
+			});
+			
+			// class가 result인 요소 선택: 클릭 이벤트
+			$(".result").on("click", function() {
+				// 클릭한 result요소 내부에 있는 p태그를 선택
+				// this: 클릭한 result요소 div
+//				$(this).css("color", "blue");
+				// 클릭한 result요소 div는 p태그의 부모 요소
+				rr = parseInt(Math.random() * 256);
+				rg = parseInt(Math.random() * 256);
+				rb = parseInt(Math.random() * 256);
+				$("p", this).css("color", `rgb(${rr}, ${rg}, ${rb})`); // this: p태그의 부모
+			});
+		
+			$("p", document.forms[0]).css("font-size", "3.0em");
+		});
+	</script>
+</body>
+</html>
