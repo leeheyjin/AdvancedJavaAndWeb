@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2>선택한 항목을 처리 후 서버(jsp)로 보내기</h2>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1" class="result">
+			<form id="f1" action="checked.jsp" method="post"> 
+				이름: <input type="text" name="user"><br>
+				취미:
+				<input type="checkbox" name="hobby" value="여행" checked >여행 
+				<input type="checkbox" name="hobby" value="장기">장기
+				<input type="checkbox" name="hobby" value="바둑">바둑
+				<input type="checkbox" name="hobby" value="독서">독서
+				<input type="checkbox" name="hobby" value="낚시">낚시
+				<br><br> 
+				<input type="submit" value="전송" >
+			</form>
+		</div>
+	</div>
+<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+	
+		$("form#f1").on("submit", function() {
+			/* alert("전송 완"); */
+			str = "";
+			$("input[type=checkbox]:checked").each(function(i) {
+				/* str += 	$(j).val() + " "; */
+				str += $(this).val() + " "; // 매개변수1만 지정할 대 사용
+			});
+			alert(str);
+		});
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis에서 처리할 sql문을 처리하는 문서 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성에 지정된 값은 이 파일에 작성된 쿼리문을 호출해서 사용할 때 같이 사용되는 이름이다 -->
+<mapper namespace="lprod">
+	<!-- 
+	이 부분에 처리할 쿼리문에 맞는 태그를 사용해 쿼리문을 작성한다 
+	사용할 수 있는 태그: <select>select할 내용</select> 
+					<insert>insert할 내용</insert> 
+					<update>update할 내용</update> 
+					<delete>delete할 내용</delete> 
+	-->
+
+	<!-- 
+	id속성: 실행할 태그를 자바 소스에서 호출할 때 사용되는 이름으로 <mapper>의 namespace속성과 연결해 사용한다 
+		ex)lprod.insertLprod 
+	-->
+	<!-- 
+	parameterType속성: 작성된 쿼리문에 사용될 데이터가 들어있는 객체
+	이 속성에는 <typeAlias>에서 지정한 alias명을 사용할 수 있다 VO클래스 등을 기술할 때는 해당 클래스의 패키지명을 포함한 전체 이름을 기술해야 함 
+	-->
+	
+	<!-- <insert id="insertLprod" parameterType="kr.or.ddit.vo.LprodVO"> -->
+	<insert id="insert" parameterType="lprodVO">
+		INSERT INTO LPROD VALUES (#{lprodId}, #{lprodGu}, #{lprodNm})
+	</insert>
+
+	<update id="update" parameterType="lprodVO">
+		UPDATE LPROD SET LPROD_ID = #{lprodId}, LPROD_NM = #{lprodNm} WHERE LPROD_GU = #{lprodGu}
+	</update>
+
+	<!-- parameterType에 설정되는 값이 단일값이면 SQL문에 이 값을 나타내는 변수의 이름은 특별히 정해지지 않았으므로 사용자가 임의로 지정할 수 있다(근데 똑같이할래걍) -->
+	<delete id="delete" parameterType="String"> <!--parameterType에 설정되는 값이 단일값일 경우 해당 값의 자료형을 입력한다 -->
+		DELETE LPROD WHERE LPROD_GU = #{lprodGu}
+	</delete>
+	
+	<!-- resultType속성: select문을 처리한 결과를 저장할 객체(보통 VO클래스, 자바의 기본자료형, Map객체 등)를 지정할 수 있다.
+		 select한 결과가 여러 레코드이면 selectList()메서드를 이용해 호출한다. 그럼 검색된 결과 데이터를 자동으로 List에 담아 반환한다. 
+		 그래서 결과가 여러개일 경우에도 이 속성에는 한개의 레코드가 저장될 클래스나 자료형 이름을 지정하면 된다  -->
+	<select id="selectAll" resultType="lprodVO">
+		SELECT * FROM LPROD
+	</select>
+	
+	<select id="selectOne" parameterType="String" resultType="lprodVO">
+		SELECT * FROM LPROD WHERE LPROD_GU = #{lprodGu}
+	</select>
+</mapper>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2>폼 상태 필터<br>사용불가능으로 변경: prop("disabled", true);<br>사용 가능으로 변경: prop("disabled", false);</h2>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1" class="result">
+			<form>
+				<input type="text" name="id" ><br> 
+				<input type="password" name="pass" ><br> 
+				<select name="disSelect" disabled>
+					<option>Option1</option>
+					<option>Option2</option>
+					<option>Option3</option>
+					<option>Option4</option>
+				</select> 
+				<br>
+				<textarea name="enTextarea" rows=10 cols=20>text</textarea>
+				<br> 
+				<input type="button" value="확인" onclick="alert('hello!!')" disabled> <br>
+			</form>
+		</div>
+	</div>
+	<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$("#btn1").on("click", function() {
+		 // $("#result1 form:input") // 아래와 동일: 폼 내 모든 요소를 선택
+			$("#result1 form *:enabled").css("border", "5px solid green");
+			$("#result1 form *:disabled").css("border", "5px solid orange");
+			
+			// 상태 변경
+			$("#result1 form *:disabled").prop("disabled", false);
+		});
+	</script>
+</body>
+</html>
