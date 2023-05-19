@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<p class="pp	" id="p1">별빛같은 나의 사랑아</p>
+		<p class="pp	" id="p2">우리들의 블루스</p>
+		<input type="button" id="btn1" value="clone">
+		<input type="button" id="btn2" value="clone(true)">
+		<div id="result1" class="result"></div>
+		<div id="result2" class="result"></div>
+	</div>
+	<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$(".pp").on("click", function() { // $(".pp").click(function() {}); possible
+			$(this).css("font-size", "+=3px");
+		})
+		
+		$("#btn1").click(function() {
+			$("#result1").append($("#p1").clone());
+		})
+	</script>
+</body>
+</html>

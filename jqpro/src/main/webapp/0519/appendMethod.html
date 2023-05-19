@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+<style type="text/css">
+img {
+	width: 100px;
+	height: 100px;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<h2>
+			append: 해당 선택 요소의 맨 뒤에 새로운 요소를 추가<br>prepend: 해당 선택 요소의 맨 앞에 새로운
+			요소를 추가
+		</h2>
+		<input type="button" id="btn1" value="append"> <input
+			type="button" id="btn2" value="prepend">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2></h2>
+		<input type="button" id="btn3" value="divAfterImg">
+		<div id="result3" class="result"></div>
+	</div>
+	<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		imgArr = ["coffee1.jpg", "ccc.jpg", "Chrysanthemum.jpg", "circle-dot-o.png", "cloud03.jpg", "Hydrangeas.jpg", "spongebob.png", "Penguins.jpg", "shopping.jpg", "maxresdefault.jpg", "Lighthouse.jpg", "Koala.jpg", "Jellyfish.jpg"];
+		$("#btn1").on("click", () => {
+			pTag = $("<p class='pp'>Hello</p>");
+			/* $("#result1").append(pTag); */
+			pTag.appendTo($("#result1"));
+		})
+		$("#btn2").on("click", () => {
+			pTag = $("<p class='pp'>Hi</p>");
+			pTag.prependTo($("#result1"));
+		})
+		$("#btn3").on("click", () => {
+			random = parseInt(Math.random() * imgArr.length);
+			imgName = imgArr[random];
+			let vimg = "<img src='../images/"+ imgName + "' alt=' "+ imgName +"'>";
+			$("#result3").after(vimg);
+		})
+	</script>
+</body>
+</html>

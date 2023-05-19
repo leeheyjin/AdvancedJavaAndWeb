@@ -1,4 +1,4 @@
-package kr.or.ddit.board.util;
+package kr.or.ddit.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,7 +11,7 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 
 // JDBC드라이버를 로딩하고 Connection객체를 생성하여 반환하는 메서드로 구성된 클래스
-public class DBUtil {
+public class DBUtil3 {
 	private static ResourceBundle bundle;
 
 	static {

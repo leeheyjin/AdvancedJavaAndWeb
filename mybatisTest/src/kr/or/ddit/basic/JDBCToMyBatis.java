@@ -47,16 +47,15 @@ public class JDBCToMyBatis {
 			lprodGu = scanner.nextLine();
 			count = session.selectOne("LPROD.isExists", lprodGu);
 			if (count > 0) {
-				if (count > 0) {
-					System.out.println("입력한 상품 분류 코드 " + lprodGu + "는 이미 등록된 코드입니다");
-					System.out.println("다시 입력하세요");
-				}
+				System.out.println("입력한 상품 분류 코드 " + lprodGu + "는 이미 등록된 코드입니다");
+				System.out.println("다시 입력하세요");
 			}
 		} while (count > 0);
 
 		// lprod_nm
 		System.out.print("상품 분류명(LPROD_NM) 입력 >> ");
 		String lprodNm = scanner.nextLine();
+		
 		LprodVO vo = new LprodVO();
 		vo.setLprodId(lprodId);
 		vo.setLprodGu(lprodGu);

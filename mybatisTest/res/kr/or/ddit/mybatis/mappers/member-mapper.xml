@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis에서 처리할 sql문을 처리하는 문서 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<insert id="insert" parameterType="memberVO">
+		INSERT INTO MYMEMBER VALUES (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_tel}, #{mem_addr})
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM MYMEMBER WHERE MEM_ID = #{mem_id}
+	</delete>
+
+	<update id="updateAll" parameterType="memberVO">
+		UPDATE MYMEMBER SET MEM_PASS = #{mem_pass}, MEM_NAME = #{mem_name}, MEM_TEL = #{mem_tel}, MEM_ADDR = #{mem_addr} WHERE MEM_ID = #{mem_id}
+	</update>
+	<!-- Map을 파라미터로 받아서 처리할 때 변수명 역할은 Map의 key값으로 한다 
+		파라미터로 가져온 값을 *컬럼명* 등의 자리에서 사용할 경우 $기호를 사용한다 -->
+	<update id="updateOne" parameterType="Map"> 
+		UPDATE MYMEMBER SET ${field} = #{data} WHERE MEM_ID = #{mem_id}
+	</update>
+	
+	<select id="selectAll" resultType="memberVO"> 
+		SELECT * FROM MYMEMBER 
+	</select>
+
+	<select id="isExists" resultType="int" parameterType="String">
+		SELECT COUNT(*) COUNT FROM MYMEMBER WHERE MEM_ID = #{mem_id}
+	</select>
+</mapper>
