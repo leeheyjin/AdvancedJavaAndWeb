@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis에서 처리할 sql문을 처리하는 문서 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+	<insert id="insert" parameterType="boardVO">
+		INSERT INTO JDBC_BOARD
+		VALUES(BOARD_SEQ.NEXTVAL, #{board_title}, #{board_writer}, SYSDATE, 0, #{board_content})
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM JDBC_BOARD
+		WHERE BOARD_NO = #{BOARD_NO}
+	</delete>
+
+	<update id="update" parameterType="boardVO">
+		UPDATE JDBC_BOARD
+		SET
+		BOARD_TITLE = #{BOARD_TITLE}, BOARD_CONTENT = #{BOARD_CONTENT}, BOARD_DATE = SYSDATE
+		WHERE BOARD_NO = #{BOARD_NO}
+	</update>
+
+	<select id="getBoard" parameterType="int" resultType="boardVO">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_WRITER, BOARD_CNT, TO_CHAR(BOARD_DATE, 'YYYY-MM-DD') BOARD_DATE, BOARD_CONTENT
+		FROM JDBC_BOARD 
+		WHERE BOARD_NO = #{BOARD_NO}
+	</select>
+
+	<select id="getAllBoard" resultType="boardVO">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_WRITER, BOARD_CNT, TO_CHAR(BOARD_DATE, 'YYYY-MM-DD') BOARD_DATE, BOARD_CONTENT
+		FROM JDBC_BOARD
+		ORDER BY BOARD_NO DESC
+	</select>
+
+	<select id="getSearchBoard" parameterType="String" resultType="boardVO">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_WRITER, BOARD_CNT, TO_CHAR(BOARD_DATE, 'YYYY-MM-DD') BOARD_DATE, BOARD_CONTENT
+		FROM JDBC_BOARD
+		WHERE BOARD_TITLE LIKE '%' || #{board_title} || '%' 
+		ORDER BY BOARD_NO DESC
+	</select>
+
+	<update id="setCountIncrement" parameterType="int">
+		UPDATE JDBC_BOARD SET BOARD_CNT = BOARD_CNT + 1 WHERE BOARD_NO = #{BOARD_NO}
+	</update>
+</mapper>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2></h2>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1" class="result">
+			<form>
+				체크박스(라디오버튼) : 
+				<input type="checkbox" id="checkTest" checked>
+				<br><br> 
+				리스트박스(select객체) : 
+				<select id="selTest">
+					<option value="1">하나</option>
+					<option value="2">둘</option>
+					<option value="3" selected >셋</option> 
+					<option value="4">넷</option>
+				</select>
+				<br><br> 
+				text객체 (readonly) : 
+				<input type="text" value="가나다" id="txtTest">
+				<br><br> 
+				button객체(disabled) : 
+				<input type="button" value="실행" id="runBtn">
+			</form>
+		</div>
+	</div>
+	<div class="box">
+		<h2></h2>
+		<input type="button" id="btn2" value="확인">
+		<div id="result2" class="result">
+			<form>
+				체크박스(전체선택/해제):<br>
+				<input type="checkbox" id="all"> 전체선택
+				<input type="checkbox" class="check" name="check"> 1
+				<input type="checkbox" class="check" name="check"> 2
+				<input type="checkbox" class="check" name="check"> 3
+				<input type="checkbox" class="check" name="check"> 4
+				<input type="checkbox" class="check" name="check"> 5
+			</form>
+		</div>
+	</div>
+<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$("#all").on("change", function() {
+			vcheck = $(".check").prop("checked");
+			vcheck = $(".check").prop("checked", !vcheck);
+		})
+		
+		$("#btn1").on("click", function() {
+			// 현재 상태값을 가져오기
+			vcheck = $("#checkTest").prop("checked");
+			vsel = $("#selTest option").eq(2).prop('selected');
+			vread = $('#txtTest').prop('readonly');
+			vrun = $('#runBtn').prop('disabled');
+			console.log("전: " + vcheck, vsel, vread, vrun);
+
+			// 상태값을 변경
+			vcheck = $("#checkTest").prop("checked", !vcheck);
+			vsel = $("#selTest option").eq(2).prop('selected', !vsel);
+			vread = $('#txtTest').prop('readonly', !vread);
+			vrun = $('#runBtn').prop('disabled', !vrun);
+
+			console.log("후: " + vcheck, vsel, vread, vrun);
+		})
+	</script>
+</body>
+</html>

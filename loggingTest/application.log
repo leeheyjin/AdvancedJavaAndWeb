@@ -1,0 +1,40 @@
+[2023-05-22 15:38:31] TRACE (basic.SimpleLog - main:13) - 이것은 Log4j의 [TRACE]모드의 출력입니다.
+[2023-05-22 15:38:31] DEBUG (basic.SimpleLog - main:14) - 이것은 Log4j의 [DEBUG]모드의 출력입니다.
+[2023-05-22 15:38:31]  INFO (basic.SimpleLog - main:15) - 이것은 Log4j의 [INFO]모드의 출력입니다.
+[2023-05-22 15:38:31]  WARN (basic.SimpleLog - main:16) - 이것은 Log4j의 [WARN]모드의 출력입니다.
+[2023-05-22 15:38:31] ERROR (basic.SimpleLog - main:17) - 이것은 Log4j의 [ERROR]모드의 출력입니다.
+[2023-05-22 15:38:31] FATAL (basic.SimpleLog - main:18) - 이것은 Log4j의 [fatal]모드의 출력입니다.
+[2023-05-22 16:18:51]  INFO (util.DBUtil - <clinit>:15) - 드라이버 로딩 성공
+[2023-05-22 16:18:52]  INFO (util.DBUtil - getConnection:25) - 드라이버 연결 성공
+[2023-05-22 16:19:06]  INFO (util.DBUtil - getConnection:25) - 드라이버 연결 성공
+[2023-05-22 16:19:06]  INFO (dao.MemberDAO - insertMember:40) - Connection객체 생성 완료
+[2023-05-22 16:19:06]  INFO (dao.MemberDAO - insertMember:43) - PreparedStatement객체 생성 완료
+[2023-05-22 16:19:06] DEBUG (dao.MemberDAO - insertMember:49) - 실행 SQL: INSERT INTO MYMEMBER VALUES (?, ?, ?, ?, ?)
+[2023-05-22 16:19:06] DEBUG (dao.MemberDAO - insertMember:50) - 사용 데이터 : [m010, m010, m010, 010-1010-1010, 대전]
+[2023-05-22 16:19:06]  INFO (dao.MemberDAO - insertMember:54) - 작업 성공
+[2023-05-22 16:19:06]  INFO (dao.MemberDAO - insertMember:61) - PreparedStatement객체 반납 완료
+[2023-05-22 16:19:06]  INFO (dao.MemberDAO - insertMember:65) - Connection객체 반납 완료
+[2023-05-22 16:30:52]  INFO (util.DBUtil - <clinit>:15) - 드라이버 로딩 성공
+[2023-05-22 16:30:53]  INFO (util.DBUtil - getConnection:25) - 드라이버 연결 성공
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:220) - Connection객체 생성 완료
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:223) - PreparedStatement객체 생성 완료
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:225) - ResultSet객체 생성 완료
+[2023-05-22 16:30:53] DEBUG (dao.MemberDAO - getAllMember:226) - 실행 SQL: select * from mymember
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:237) - 작업 성공
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:237) - 작업 성공
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:237) - 작업 성공
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:237) - 작업 성공
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:237) - 작업 성공
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:237) - 작업 성공
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:237) - 작업 성공
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:245) - ResultSet객체 반납 완료
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:249) - PreparedStatement객체 반납 완료
+[2023-05-22 16:30:53]  INFO (dao.MemberDAO - getAllMember:253) - Connection객체 반납 완료
+[2023-05-22 16:31:16]  INFO (util.DBUtil - getConnection:25) - 드라이버 연결 성공
+[2023-05-22 16:31:16]  INFO (dao.MemberDAO - deleteMember:79) - Connection객체 생성 완료
+[2023-05-22 16:31:16]  INFO (dao.MemberDAO - deleteMember:82) - PreparedStatement객체 생성 완료
+[2023-05-22 16:31:16] DEBUG (dao.MemberDAO - deleteMember:84) - 실행 SQL: DELETE FROM MYMEMBER WHERE MEM_ID = ?
+[2023-05-22 16:31:16] DEBUG (dao.MemberDAO - deleteMember:85) - 사용 데이터 : [m010]
+[2023-05-22 16:31:16]  INFO (dao.MemberDAO - deleteMember:87) - 작업 성공
+[2023-05-22 16:31:16]  INFO (dao.MemberDAO - deleteMember:94) - PreparedStatement객체 반납 완료
+[2023-05-22 16:31:16]  INFO (dao.MemberDAO - deleteMember:98) - Connection객체 반납 완료

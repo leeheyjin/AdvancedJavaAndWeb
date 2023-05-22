@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<style>
+.pp1 {
+	color: red;
+}
+</style>
+<body>
+	<div class="box">
+		<h2></h2>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1" class="result">
+			<p class="pp1">사랑은 늘 도망가</p>
+			<p>사랑해 진짜</p>
+			<p>별빛 같은 나의 사랑아</p>
+			<p>우리들의 블루스</p>
+			<p>폴라로이드</p>
+		</div>
+	</div>
+	<div class="box">
+		<h2></h2>
+		<input type="button" id="btn1" value="확인">
+		<div id="result2" class="result">
+			<p class="pp1">사랑은 늘 도망가</p>
+			<p>사랑해 진짜</p>
+			<p>별빛 같은 나의 사랑아</p>
+			<p>우리들의 블루스</p>
+			<p>폴라로이드</p>
+		</div>
+	</div>
+	<div class="box">
+		<h2></h2>
+		<input type="button" id="btn1" value="확인">
+		<div id="result3" class="result">
+			<p class="pp1">사랑은 늘 도망가</p>
+			<p>사랑해 진짜</p>
+			<p>별빛 같은 나의 사랑아</p>
+			<p>우리들의 블루스</p>
+			<p>폴라로이드</p>
+		</div>
+	</div>
+<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$("#result3 p").on("click", function() {
+			if($(this).hasClass('pp1')) {
+				$(this).removeClass('pp1'); 
+			} else {
+				$(this).addClass('pp1');
+			}
+		})
+		
+		$("#result1 p").on("mouseover", function() {
+			$(this).addClass('pp1');
+		})
+
+		$("#result1 p").on("mouseout", function() {
+			$(this).removeClass('pp1');
+		})
+
+		$("#result2 p").on("click", function() {
+			$(this).toggleClass('pp1');
+		})
+	</script>
+</body>
+</html>
