@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<div id="result1" class="result">
+		<label for="name">이름</label>
+		<input type="text" id="name" name="user"><br>
+		<label for="file">첨부파일</label>
+		<input type="file" id="file" name="file">
+		<input type="button" class="btnAdd" value="추가"><br>
+		
+		</div>
+	</div>
+<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$(".btnAdd").on('click', function() {
+			$("#result1").append(
+					`<p><label for="file">첨부파일 <input type="file" name="file"><input type="button" value="삭제" class="btnDel"></p>`
+					);
+		})
+		
+		$(document).on('click', '.btnDel', function() {
+			$(this).parent().remove();
+		})
+	</script>
+</body>
+</html>

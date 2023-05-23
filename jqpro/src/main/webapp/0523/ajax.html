@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2>동기방식처리: get</h2>
+		<div id="result1" class="result">
+			<form action="ajaxForm.jsp" method="get">
+				<label for="name">이름</label>
+				<input type="text" name="name"><br>
+			
+				<label for="age">나이</label>
+				<input type="text" name="age"><br>
+			
+				<input type="submit">
+			</form>
+		</div>
+	</div>
+	<!--  -->
+	<div class="box">
+		<h2>동기방식처리: post</h2>
+		<div id="result2" class="result">
+			<form action="ajaxForm.jsp" method="post">
+				<label for="name">이름</label>
+				<input type="text" name="name"><br>
+			
+				<label for="age">나이</label>
+				<input type="text" name="age"><br>
+			
+				<input type="submit">
+			</form>
+		</div>
+	</div>
+	<div class="box">
+		<h2>비동기방식처리 GET</h2>
+		<div id="result3" class="result">
+			<form action="ajaxForm.jsp" method="get">
+				<label for="name">이름</label>
+				<input type="text" name="name" id="name"><br>
+			
+				<label for="age">나이</label>
+				<input type="text" name="age" id="age"><br>
+			
+				<input type="button" value="Submit" id="getBtn">
+			</form>
+		</div>
+	</div>
+	<div class="box">
+		<h2>비동기방식처리 POST</h2>
+		<div id="result4" class="result">
+			<form action="ajaxForm.jsp" method="post">
+				<label for="name">이름</label>
+				<input type="text" name="name" id="pname"><br>
+			
+				<label for="age">나이</label>
+				<input type="text" name="age" id="page"><br>
+			
+				<input type="button" value="Submit" id="postBtn">
+			</form>
+		</div>
+		<div class=""></div>
+	</div>
+<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$("#postBtn").on("click", function() {
+			// 입력한 값 가져오기
+			let name = $("#pname").val();
+			let age = $("#page").val();
+			
+			var xhttp = new XMLHttpRequest();
+			data = "name=" + name + "&age=" + age;
+			xhttp.open("POST", "ajaxForm.jsp", true);
+			xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhttp.send(data);
+			
+			xhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200) { // 4: 서버 처리 끝, 200: 성공
+					res = this.responseText;
+					$("#result4").append(res);	
+				}
+			}
+		})
+		
+		$("#getBtn").on("click", function() {
+			// 입력한 값 가져오기
+			let name = $("#name").val();
+			let age = $("#age").val();
+			
+			var xhttp = new XMLHttpRequest();
+			xhttp.open("GET", `ajaxForm.jsp?name=${name}&age=${age}`, true);
+			xhttp.send();
+			
+			xhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200) { // 4: 서버 처리 끝, 200: 성공
+					res = this.responseText;
+					$("#result3").append(res);	
+				}
+			}
+		})
+	</script>
+</body>
+</html>

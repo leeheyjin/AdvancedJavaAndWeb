@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // 자바스크립트는 동적언어당!
+    // 문자열 ""는 false, 그 외는 전부 true
+    // 숫자는 0만 false고 그 외는 전부 true. !0은 false
+    // let, const가 나중에 추가됨
+    // caniuse.com에서 항상 개발 진행 전에 최신 버전 사용 가능 여부 체크
+
+    var bool = !0; // 문자 개수를 줄이기 위해서 true를 요따구로 표현함
+
+    // let vs var의 차이
+    // let은 scope(범위)가 {}안에 한정됨
+    // var는 scope가 function 안에 있냐 밖에 있냐로 결정
+
+    // const의 오해: 객체(배열이나 제이슨)가 오면 객체 자체는 못바꿔도 속성(내용물)은 바꿀 수 있음
+    const starName1 = "뷔";
+    starName1 = "석일임"; // 이건 안됨. 원시타입(String, Number, Boolean)의 재할당이 불가능함
+
+    const starName2 = {
+        man: "뷔",
+        woman: "제니"
+    }
+    starName2.man = "석일임"; // 이건 됨. 배열[], 제이슨{}은 바꿀 수 있음. 객체(배열 -> 제이슨)를 바꿀 수 없지만 속성은 바꿀 수 있음
+    const starName2 = {}; // new Object();를 단축한 표현. starName2를 제이슨으로 초기화했는데 Object객체로 바꿀 수 없어서 에러발생.
+    console.log("체크: ", starName2);
+
+    function fTest() {
+        for (var i = 1; i <= 10; i++) {
+        }
+    }
+    // fTest();
+    // alert(i);
+
+    if(!bool) { // 자동으로 형변환이 발생
+        alert("그렇당!")
+    }
+</script>

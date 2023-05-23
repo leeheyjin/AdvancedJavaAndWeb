@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2>bind방식<br>실행 전에 미리 구성되어 있는 요소에만 이벤트 핸들러가 적용됨<br>$(셀렉터).on(이벤트 이름, 동작(핸들러))</h2>
+		<input type="button" class="btnAdd" value="Add">
+		<input type="button" class="btnClear1" value="Clear">
+		<div id="result1" class="result"></div>
+	</div>
+	<div class="box">
+		<h2>delegate방식<br>실행 전에 미리 구성되어 있는 요소와 실행 중에 동적으로 생성된 요소에도 이벤트 핸들러가 적용됨<br>$(document).on(이벤트 이름, 셀렉터, 동작(핸들러))</h2>
+		<input type="button" class="btnDelegate" value="Delegate">
+		<input type="button" class="btnClear2" value="Clear">
+		<div id="result2" class="result"></div>
+	</div>
+<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$('.btnClear1').on('click', function() {
+				$('.btnAdd').off('click');
+		})
+		$('.btnClear2').on('click', function() {
+				$(document).off('click', '.btnDelegate');
+		})
+	
+		$(document).delegate('btnDelegate', 'click', function() {
+			
+		})
+		
+		dcount = 0;
+		$(document).on('click', '.btnDelegate', function() {
+			let newBtn = $(`	<input type="button" class="btnDelegate" value="new${++dcount}">`);
+			$("#result2").append(newBtn);
+		})
+	
+		$('.btnAdd').on("click", function() { 
+			count = 0;
+			let newBtn = $(`	<input type="button" class="btnAdd" value="new${++count}">`);
+			$("#result1").append(newBtn);			
+		})
+		/*
+		$('.btnAdd').click(function() {
+			
+		})
+		
+		$(".btnAdd").bind('click', function() {
+			count = 0;		
+			let newBtn = $(`	<input type="button" class="btnAdd" value="new${++count}">`);
+			$("#result1").append(newBtn);
+		}) */
+	</script>
+</body>
+</html>
