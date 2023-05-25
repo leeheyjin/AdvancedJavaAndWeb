@@ -16,7 +16,7 @@ div#resultParent, div#inputParent {
 
 div.result {
 	width: 100%;
-	height: 300px;
+	height: 200px;
 }
 </style>
 </head>
@@ -39,15 +39,71 @@ div.result {
 <!-------------------------------------------------------------------->
 	<script type="text/javascript">
 		xhttp = new XMLHttpRequest();
+		$("#objArr").on('click', function() {
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					res = JSON.parse(this.responseText);
+					code = ``;
+					$.each(res, function(i, v) {
+						 code += `<p>${i+1}번째 회원 자료<br>
+							 		  <b>이름</b>: ${v.이름}<br>
+									  <b>나이</b>: ${v.나이}<br>
+									  <b>전화번호</b>: ${v.전화번호}<br>
+									  <b>주소</b>: ${v.주소}<br>
+								  </p>`;
+					})
+					$("#result4").html(code); 
+				}
+			}
+			// 전송
+			xhttp.open("get", "objArr.jsp", true);
+			xhttp.send();
+		})
+		
+		$("#obj").on("click", function() {
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					res = JSON.parse(this.responseText);
+					code = `<p><b>이름</b>: ${res.이름}<br>
+							   <b>전화번호</b>: ${res.전화번호}<br>
+							   <b>우편번호</b>: ${res.우편번호}<br>
+							   <b>주소</b>: ${res.주소}<br></p>`;
+					$("#result3").html(code);
+				}
+			}
+			// 전송
+			xhttp.open("get", "obj.jsp", true);
+			xhttp.send();
+		})
+		
+		$("#arr").on("click", function() {
+			// 응답 먼저 작성해도 됨 ㄷㄷ;
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					res = JSON.parse(this.responseText); // 배열을 문자열로(responseText), 문자열을 제이슨배열로(JSON.parse())
+					
+					code = `<ol>`;
+					$.each(res, function(i) {
+						code += `<li>${res[i]}</li>`;
+					})
+					code += `</ol>`;
+					$("#result2").html(code);
+				}
+			}
+			// 전송
+			xhttp.open("get", "arr.jsp", true);
+			xhttp.send();
+		})
+
 		$(document).on("click", "#text", function() {
 			// 전송
 			xhttp.open("get", "text.jsp", true);
 			xhttp.send();
 			// 응답
 			xhttp.onreadystatechange = function() {
-				if(this.readyState == 4 && this.status == 200) {
+				if (this.readyState == 4 && this.status == 200) {
 					res = this.responseText;
-					names = res.split("/"); 
+					names = res.split("/");
 					code = "<ul>";
 					$.each(names, function(i) { /* $(name).each(function() {}) 동일 */
 						code += "<li>" + names[i] + "</li>";

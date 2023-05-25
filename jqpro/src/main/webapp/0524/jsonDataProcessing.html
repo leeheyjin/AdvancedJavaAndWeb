@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+<style type="text/css">
+div#resultParent, div#inputParent {
+	display: flex;
+}
+
+.box input[type=button] {
+	width: 24%;
+}
+
+div.result {
+	width: 100%;
+	height: 200px;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<h2></h2>
+		<div class="inputParent">
+			<input type="button" id="text" value="Text">
+			<input type="button" id="arr" value="JSONArray">
+			<input type="button" id="obj" value="JSONObj">
+			<input type="button" id="objArr" value="JSONObjArray">
+		</div>
+		<div id="resultParent">
+			<div id="result1" class="result"></div>
+			<div id="result2" class="result"></div>
+			<div id="result3" class="result"></div>
+			<div id="result4" class="result"></div>
+		</div>
+	</div>
+<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$("#objArr").on("click", function() {
+			$.get('../0523/objArr.jsp', function(res) {
+				code = ``;
+				$.each(res, function(i, v) {
+					 code += `<p>${i+1}번째 회원 자료<br>
+						 		  <b>이름</b>: ${v.이름}<br>
+								  <b>나이</b>: ${v.나이}<br>
+								  <b>전화번호</b>: ${v.전화번호}<br>
+								  <b>주소</b>: ${v.주소}<br>
+							  </p>`;
+				})
+				$("#result4").html(code); 
+			}, 'json')
+		})
+		
+		$("#obj").on('click', function() {
+			$.get('../0523/obj.jsp', function(res){
+				code = `<p><b>이름</b>: ${res.이름}<br>
+						   <b>전화번호</b>: ${res.전화번호}<br>
+						   <b>우편번호</b>: ${res.우편번호}<br>
+						   <b>주소</b>: ${res.주소}<br></p>`; 
+				$("#result3").html(code);
+			}, 'json')
+		})
+		
+		$("#arr").on("click", function() {
+			$.get('../0523/arr.jsp', function(res) {
+				code = `<ol>`;
+				$.each(res, function(i) {
+					code += `<li>${res[i]}</li>`;
+				})
+				code += `</ol>`;
+				$("#result2").html(code)
+			}, 'json')
+		})
+
+		$("#text").on("click", function() {
+			$.ajax({
+				url : "../0523/text.jsp",
+				type : 'get',
+				success : function(res) {
+					names = res.split("/");
+					code = `<ul>`;
+					$.each(names, function(i) {
+						code += `<li>${names[i]}</li>`;
+					})
+					code += `</ul>`;
+					$("#result1").html(code);
+				},
+				error : function(xhr) {
+					alert("상태: ", xhr.status);
+				},
+				dataType : 'text'
+			})
+		})
+	</script>
+</body>
+</html>
