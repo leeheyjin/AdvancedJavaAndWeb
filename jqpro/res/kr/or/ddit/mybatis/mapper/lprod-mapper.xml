@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mybatis에서 처리할 sql문을 처리하는 문서 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성에 지정된 값은 이 파일에 작성된 쿼리문을 호출해서 사용할 때 같이 사용되는 이름이다 -->
+<mapper namespace="lprod">
+	<select id="selectAll" resultType="lprodVO">
+		select * from lprod
+	</select>
+</mapper>

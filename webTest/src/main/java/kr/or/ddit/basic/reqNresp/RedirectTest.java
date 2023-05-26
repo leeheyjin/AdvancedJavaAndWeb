@@ -9,50 +9,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/requestTest02.do")
-public class RequestTest02 extends HttpServlet {
+@WebServlet("/redirectTest.do")
+public class RedirectTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-
-		String inputNum1 = request.getParameter("num1");
-		String operator = request.getParameter("operator");
-		String inputNum2 = request.getParameter("num2");
-		int num1 = Integer.parseInt(inputNum1);
-		int num2 = Integer.parseInt(inputNum2);
+		String userName = request.getParameter("userName");
+		String tel = (String) request.getParameter("tel"); // getAttribute의
 
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
+
 		PrintWriter writer = response.getWriter();
 		writer.println("<html>");
 		writer.println("<head>");
 		writer.println("<meta charset='UTF-8'>");
-		writer.println("<title>RequestTest01</title>");
+		writer.println("<title>RedirectTest</title>");
 		writer.println("</head>");
 		writer.println("<body>");
-		writer.println("<h2>계산 결과</h2><hr>");
-		writer.println("<p>" + inputNum1 + " " + operator + " " + inputNum2 + " = ");
-		double result = 0;
-		switch (operator) {
-		case "+":
-			result = num1 + num2;
-			break;
-		case "-":
-			result = num1 - num2;
-			break;
-		case "*":
-			result = num1 * num2;
-			break;
-		case "/":
-			result = (double) (num1 / num2);
-			break;
-		case "%":
-			result = num1 % num2;
-			break;
-		}
-		writer.println(result + "<br>");
+		writer.println("<h2>Forward방식 결과</h2><hr>");
+		writer.println("<table border=1>"
+						+ "<tr>"
+							+ "<td>이름</td>"
+							+ "<td>" + userName + "</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>전화</td>"
+							+ "<td>" + tel + "</td>"
+						+ "</tr>");
+		writer.println("</table></body></html>");
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

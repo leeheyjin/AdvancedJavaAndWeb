@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="tsch">
+    <input type="button" value="이미지 찾깅" onclick="fsch()"><br><br>
+    <div id="disp"></div>
+    
+    <script>
+        function fsch() {
+            // script태그를 맹글어 줘야 함
+            var vscript = document.createElement("script");
+            vscript.src = preURL + vtsch.value + postURL;
+            document.body.append(vscript);
+        }
+        var preURL = "https://www.flickr.com/services/feeds/photos_public.gne?tags=";
+        var postURL = "&format=json";
+        var vtsch = document.querySelector("#tsch");
+        var vdisp = document.querySelector("#disp");
+        // 함수를 미리 정의해둠!
+        // 왜냐면 호출 당할 걸 알고 있으니까 미리 준비하는거임
+        function jsonFlickrFeed(pData) {
+            var bumjins = pData.items;
+            vdisp.innerHTML = "";
+            for (let i = 0; i < bumjins.length; i++) {
+                console.log("이미지URL", bumjins[i].media.m);
+                var vImg = document.createElement("img");
+                vImg.src = bumjins[i].media.m;
+                vdisp.appendChild(vImg);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<style type="text/css">
+table {
+	border: 2px solid blue;
+	border-collapse: collapse;
+}
+
+td {
+	width: 200px;
+	height: 50px;
+	text-align: center;
+}
+
+tr:first-child {
+	background-color: skyblue;
+}
+</style>
+
+</head>
+<body>
+
+	<div class="box">
+		<h3></h3>
+		<input type="button" value="jsp" id="btn1"> 
+		<input type="button" value="ajax" id="btn2">
+		<div id="result1" class="result"></div>
+	</div>
+
+	<script src="../js/jquery-3.7.0.min.js"></script>
+	<script>
+		$("#btn1").on("click", function() {
+			location.href = "./member.jsp"; // 응답_출력 모양 다 가지고 있어야함
+		})
+
+		// 비동기방식
+   $('#btn2').on('click', function(){
+       $.ajax({
+          url: 'memberAjax.jsp',
+          type: 'get',
+          success: function(res){
+             code = `<table border="1">
+                <tr>
+                  <td>아이디</td>
+                  <td>이름</td>
+                  <td>전화번호</td>
+                  <td>주소</td>
+               </tr>`
+               
+            $.each(res, function(i, v) {
+               code += `
+                  <tr>
+                     <td>${v.id}</td>
+                     <td>${v.name}</td>
+                     <td>${v.tel}</td>
+                     <td>${v.addr}</td>
+                  </tr>`
+            })
+            
+            code += `</table>`
+            
+            $('#result1').html(code);
+            
+          },
+          error: function(xhr){
+             alert("상태: " + xhr.status);
+             
+          },
+          dataType: 'json'
+       })
+   })
+
+	</script>
+</body>
+</html>

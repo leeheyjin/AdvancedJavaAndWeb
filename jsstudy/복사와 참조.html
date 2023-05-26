@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // 자바스크립트를 잘 해야 하는 1가지 이유: 현재 브라우저를 컨트롤할 수 있는 언어는 오직 하나의 자바스크립트로 대체 언어가 없음
+    // 복사(copy)와 참조(reference)는 무지 무지 중요
+    // 원시타입(primitive type)는 복사 / 객체(object)는 참조 방식으로 동작
+    
+    var jungSuji = "정수지";
+    var kimSuji = jungSuji;
+    kimSuji = "김수지";
+    alert(jungSuji); // 정수지(복사)
+
+    var oJungSuJi = { name: "정수지" };
+    var oKimSuJi = oJungSuJi;
+    oKimSuJi.name = "김수지"; 
+    alert(oKimSuJi.name); // 김수지(참조)
+</script>

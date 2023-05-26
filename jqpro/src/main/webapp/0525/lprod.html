@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<h2></h2>
+		<input type="button" id="btn1" value="확인">
+		<div id="result1" class="result"></div>
+		<div id="result2" class="result"></div>
+	</div>
+<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$("#btn1").on("click", function() {
+			$.ajax({
+				url: 'lprod.jsp',
+				type: 'get',
+				success: function(res) {
+					code = ``;
+					$.each(res, function(i, j) {
+						code += `LPROD_ID: ${j.id}<br>
+								 LPROD_GU: ${j.gu}<br>
+								 LPROD_NM: ${j.nm}<br><hr>`;	
+					})
+					$("#result1").html(code);
+				}, 
+				error: function(xhttp) {
+					alert("상태: ", xhttp.status);
+				},
+				dataType: 'json'
+			})
+		})
+		
+		document.querySelector("#btn1").addEventListener("click", function() {
+			xhttp = new XMLHttpRequest();
+			xhttp.open("get", "lprod.jsp", true);
+			xhttp.send();
+			
+			xhttp.onreadystatechange = function() {
+				if(this.readyState == 4 && this.status == 200) {
+					res = JSON.parse(this.responseText);
+					code = `<table border=1>`;
+					code += `<tr><td>LPROD_ID</td><td>LPROD_GU</td><td>LPROD_NM</td>`;
+					$.each(res, function(i, j) {
+						code += `<tr><td>${j.id}</td><td>${j.gu}</td><td>${j.nm}</td></tr>`;
+					});
+					code += `</table>`;
+					document.querySelector("#result2").innerHTML = code;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

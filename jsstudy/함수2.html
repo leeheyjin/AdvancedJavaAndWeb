@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 배열과 콜백함수를 매개변스로 받는 함수
+        function fForEach(p_arr, p_callback) {
+            for (let i = 0; i < p_arr.length; i++) {
+                p_callback(i, p_arr[i]); // callback
+            }
+        }
+
+        // 배열과 콜백함수를 매개변수로 넘겨 줌
+        fForEach([3, 6, 9], function (index, value) {
+            alert(index + " " + value);
+        });
+
+        // 함수의 매개변수로 어떤 데이터타입이 와도 상관없당!
+        // function f_check(pArg1) {
+        //     alert(typeof(pArg1));
+        //     pArg1(); // pArg1의 자료형이 function이기 때문에 매개변수 이름에 함수 호출 형식을 작성하면 해당 함수가 동작한다.
+        // }
+
+        // // f_check("메롱");
+        // // f_check(272);
+        // // f_check([1, 2, 3]);
+        // f_check(function() {
+        //     alert("난 넘어간 함수양");
+        // });
+    </script>
+</body>
+
+</html>
