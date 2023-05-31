@@ -5,10 +5,10 @@
 
 <mapper namespace="prod">
 	<select id="selectIdName" resultType="prodVO" parameterType="String">
-		SELECT PROD_ID, PROD_NAME FROM PROD PROD_LGU = #{PROD_LGU};
+		SELECT PROD_ID, PROD_NAME FROM PROD WHERE PROD_LGU = #{PROD_LGU}
 	</select>
 
 	<select id="selectOne" resultType="prodVO" parameterType="String">
-		SELECT * FROM PROD WHERE PROD_ID = #{PROD_ID};
+		SELECT * FROM PROD WHERE PROD_ID = #{PROD_ID}
 	</select>
 </mapper>

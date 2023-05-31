@@ -9,15 +9,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.prod.service.IProdService;
 import kr.or.ddit.prod.service.ProdService;
+import kr.or.ddit.prod.vo.ProdVO;
 
-@WebServlet("/prodLGU.do")
-public class ProdLGU extends HttpServlet {
+/**
+ * Servlet implementation class ProdDetail
+ */
+@WebServlet("/prodDetail.do")
+public class ProdDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 전송된 데이터 받기
-		String prod_id = request.getParameter("");
+		String prodId = request.getParameter("prod_id");
+		System.out.println(prodId);
 		IProdService service = ProdService.getInstance();
+		ProdVO selectOne = service.selectOne(prodId);
+		request.setAttribute("one", selectOne);
+		request.getRequestDispatcher("/0530/prodDetail.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
