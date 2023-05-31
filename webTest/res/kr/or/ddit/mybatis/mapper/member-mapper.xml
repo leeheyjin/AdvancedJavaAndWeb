@@ -3,8 +3,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace속성에 지정된 값은 이 파일에 작성된 쿼리문을 호출해서 사용할 때 같이 사용되는 이름이다 -->
-<mapper namespace="lprod">
-	<select id="selectAll" resultType="lprodVO">
-		SELECT * FROM LPROD
+<mapper namespace="member">
+	<select id="getLoginMember" parameterType="memVO" resultType="memVO">
+		select * from mymember where mem_id=#{mem_id} and mem_pass=#{mem_pass}
 	</select>
+
 </mapper>

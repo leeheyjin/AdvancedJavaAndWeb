@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%
 	// 서블릿에서 저장한 데이터 꺼내기 	
-	BuyerVO vo = (BuyerVO)request.getAttribute("selectOne");
+	BuyerVO vo = (BuyerVO)request.getAttribute("save");
 %>
 {
 	"id"	 	: "<%= vo.getBuyer_id() %>",

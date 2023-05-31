@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>css position 속성 탐구</title>
+    <style>
+        #disp {
+            /* position: static; 기본값이 static. 브라우저에게 맡김 */
+            /* position: relative; 브라우저가 위치를 잡아주면 그 뒤에 조정하겠다(top, left) */
+            /* position: absolute; 브라우져 너 하지마 내가 위치 잡을개(top, left) */
+            /* position: fixed; 화면의 특정 위치에 고정, 보통 메뉴바를 많이 고정시킴. Modal 만들 때 많이 씀 */
+            position: relative; /* 부모: relative, 자식: absolute 아주 많이 쓰임 */
+            /* 
+                레이아웃 잡을 대 
+                1. 세로로 몇칸이 필요한지 보고 기본적으로 static으로 구성함
+                2. 필요한 영역에 relative나 absolute를 이용해 구성
+                3. div를 아끼지 않는다.(영역으로 지정하고 싶으면 아낌없이 쓴다)
+            */
+            border: 30px groove gold;
+            height: 200px;
+            width: 50%;
+            top: 100px;
+            left: 100px;
+        }
+
+        .merong {
+            border: 2px solid blue;
+            position: absolute; /* 부모: relative, 자식: absolute 아주 많이 쓰임 */
+        }
+
+        #sjs {
+            left: 50px;
+        }
+
+        #ksj {
+            top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>난 그냥 곁다리</h1>
+    <h1>수지 머리 멋짐!</h1>
+    <div id="disp">
+        <div class="merong" id="ksj">김수지</div>
+        <div class="merong">임석일</div>
+        <div class="merong">강서주</div>
+        <div class="merong" id="sjs">신진수</div>
+    </div>
+
+    <script>
+        // for(let i = 1; i <= 100; i++) {
+        //     document.write(`<h1> 김수지 머리 짱${i}</h1>`);
+        // }
+    </script>
+</body>
+
+</html>

@@ -34,7 +34,7 @@ public class BuyerIdName extends HttpServlet {
 		request.setAttribute("allBuyer", list);
 		
 		// 컨트롤러에서 view로 데이터를 공유하면서(엄연히 말하면 request 객체를 공유하는것) 페이지 이동 ==> forward / redirect 방식 중 선택
-		request.getRequestDispatcher("/0526/idName.jsp").forward(request, response);;
+		request.getRequestDispatcher("/0526/idName.jsp").forward(request, response);
 	}
 
 }

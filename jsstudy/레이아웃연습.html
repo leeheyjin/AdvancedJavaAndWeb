@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 레이아웃 자체를 정말 잘 짜고 싶다면 grid를 공부해야함(추천)*/
+        /* div {
+            border: 2px solid blue;
+        } */
+
+        #container {
+            width: 96vw;
+            height: 96vh;
+        }
+
+        .row {
+            height: 33%;
+        }
+
+        .col {
+            display: inline-block;
+            width: 48%;
+            height: 100%;
+            vertical-align: top;
+        }
+
+        .lee {
+            height: 32%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="row">흥</div>
+        <div class="row">
+            <div class="col">칫</div>
+            <div class="col">
+                <div class="lee">이</div>
+                <div class="lee">헤</div>
+                <div class="lee">진</div>
+            </div>
+        </div>
+        <div class="row">뿡</div>
+    </div>
+</body>
+</html>

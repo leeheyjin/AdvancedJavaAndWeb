@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<select id="lprod"></select> 
+		<select id="prod"></select> 
+		<input type="button" id="btn1" value="확인">
+		<div id="result1" class="result"></div>
+	</div>
+	<!-------------------------------------------------------------------->
+	<script type="text/javascript">
+		$(function() {
+			$.ajax({
+				url : "/jqpro/lprodList.do",
+				type : 'get',
+				success : function(res) {
+					code = ``;
+					$.each(res, function(i) {
+						code += `<option value=${res[i].nm}>${res[i].nm}</option>`;
+					});
+					$("#lprod").html(code);
+				},
+				error : function(xhr) {
+					alert("상태: ", xhr.status);
+				},
+				dataType : 'json'
+			})
+			
+			
+		})
+	</script>
+</body>
+</html>

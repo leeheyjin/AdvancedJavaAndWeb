@@ -8,14 +8,14 @@ import kr.or.ddit.buyer.vo.BuyerVO;
 import kr.or.ddit.mybatis.config.MyBatisSqlSessionFactory;
 
 public class BuyerDAO implements IBuyerDAO {
-	private static BuyerDAO dao;
+	private static IBuyerDAO dao;
 	private SqlSession session;
 
 	private BuyerDAO() {
 		
 	}
 
-	public static BuyerDAO getInstance() {
+	public static IBuyerDAO getInstance() {
 		if (dao == null) {
 			dao = new BuyerDAO();
 		}
