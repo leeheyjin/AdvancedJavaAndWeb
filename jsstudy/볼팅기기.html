@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,53 +12,67 @@
         position: absolute;
         width: 100px;
         height: 100px;
-        border-radius: 50%; /* 테두리를 동그랗게 */
+        border-radius: 50%;
+        /* 테두리를 동그랗게 */
         background-color: cadetblue;
         background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyM7ZmTtguWnVnDEUQetvJ0Sk2MWkBjHF15FiWiUhiIw&s");
         background-size: 100% 100%;
         /* left: 10px; top: 50px; */
-        transform: skew(45deg); /* skew(): 뒤틀리기*/
+        transform: skew(45deg);
+        /* skew(): 뒤틀리기*/
     }
 </style>
+
 <body>
-    <button onclick="fMove()">oO(움쥑~이는)</button> 
+    <button onclick="fProxy(this)">oO(움쥑~이는)</button>
     <div id="ball"></div>
-     <!-- div가 빈 공백일 땐 값이 false -->
+    <!-- div가 빈 공백일 땐 값이 false -->
 
     <script>
-    // console.log("보이는 화면넓이", window.innerWidth);
-    // console.log("보이는 화면높이", window.innerHeight);
-    const myBall = document.querySelector('#ball');
-    let mvWidth = 50; // 움직이는 폭
-    let mvHeight = 50;
-    let adRotate = 15;
-    const fMove = () => {
-        if(!myBall.style.left) {    // 값이 설정되어 있지 않다면
-            myBall.style.left = "50px";
-            myBall.style["top"] = "50px";
-            // alert("ppp" + myBall.style.left + "ppp");
-            // alert("qqq" + myBall.style["top"] + "qqq");
+        /*
+            proxy(대리인/대리)패턴(프로그램 디자인 패턴): 알고리즘이 막혔거나 하나의 함수 소스가 너무 길어질 때 대신 해줄 사람을 맹글어볼지 싶을떼ㅐ 사용
+        */
+        var isStart = false; // 시작 안된 상태. 불린값을 갖는 변수를 상태변수 또는 flag변수라 부름. 
+        function fProxy() {
+            if (!isStart) {
+                fMove();
+                isStart = true;
+            }
         }
-        
-        myBall.style.left = parseInt(myBall.style.left) + mvWidth + "px";
-        myBall.style.top = parseInt(myBall.style.top) + mvHeight + "px";
-        adRotate += 15;
-        myBall.style.transform = "rotate(" + adRotate + "deg)";
+        // console.log("보이는 화면넓이", window.innerWidth);
+        // console.log("보이는 화면높이", window.innerHeight);
+        const myBall = document.querySelector('#ball');
+        let mvWidth = 50; // 움직이는 폭
+        let mvHeight = 50;
+        let adRotate = 15;
+        const fMove = () => {
+            if (!myBall.style.left) {    // 값이 설정되어 있지 않다면
+                myBall.style.left = "50px";
+                myBall.style["top"] = "50px";
+                // alert("ppp" + myBall.style.left + "ppp");
+                // alert("qqq" + myBall.style["top"] + "qqq");
+            }
 
-        var leftSu = parseInt(myBall.style.left);
-        var topSu = parseInt(myBall.style.top);
+            myBall.style.left = parseInt(myBall.style.left) + mvWidth + "px";
+            myBall.style.top = parseInt(myBall.style.top) + mvHeight + "px";
+            adRotate += 15;
+            myBall.style.transform = "rotate(" + adRotate + "deg)";
 
-        if((leftSu + 100) >= window.innerWidth || leftSu <= 0) {
-            mvWidth *= -1; // -1 * mvWidth
+            var leftSu = parseInt(myBall.style.left);
+            var topSu = parseInt(myBall.style.top);
+
+            if ((leftSu + 100) >= window.innerWidth || leftSu <= 0) {
+                mvWidth *= -1; // -1 * mvWidth
+            }
+
+            if ((topSu + 100) >= window.innerHeight || topSu <= 0) {
+                mvHeight *= -1;
+            }
+
+            setTimeout(fMove, 500); // 함수이름을 FP(Function Pointer)라 부름
+            // fMove(), 500 <-- 이런식으로 쓰는 건 불가능
         }
-
-        if((topSu + 100) >= window.innerHeight || topSu <= 0) {
-            mvHeight *= -1;
-        }
-        
-        setTimeout(fMove, 500); // 함수이름을 FP(Function Pointer)라 부름
-        // fMove(), 500 <-- 이런식으로 쓰는 건 불가능
-    }
     </script>
 </body>
+
 </html>

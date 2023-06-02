@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/myStyle.css">
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+	<div class="box">
+		<input type="text" id="dong">
+		<input type="button" value="확인" id="checkZip">
+		<div id="result1" class="result"></div>
+	</div>
+
+	<script type="text/javascript">
+		$("input[value=확인]").on("click", function() {
+			dongValue = $("#dong").val();
+			$.ajax({
+				url : '/web&database/zipSearch.do',
+				data : {
+					"dong" : dongValue
+				},
+				type : "post",
+				success : function(res) {
+					code = `<table border=1>`;
+					code += `<tr><td>우편번호</td><td>시/도</td><td>구/군</td><td>동</td><td>번지</td></tr>`;
+					$.each(res, function(i, v) {
+					code += `<tr><td>${v.zip_code}</td><td>${v.sido}</td><td>${v.gugun}</td><td>${v.dong}</td><td>${v.bunji}</td></tr>`;
+					})
+					code += `</table>`;
+					$("#result1").html(code);
+				},
+				error : function(xhr) {
+					alert("상태: ", xhr.status);
+				},
+				dataType : 'json'
+			})
+		})
+	</script>
+</body>
+</html>

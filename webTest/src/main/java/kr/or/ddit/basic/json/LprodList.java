@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import kr.or.ddit.member.vo.LprodVO;
+import kr.or.ddit.basic.vo.LprodVO;
 
 @WebServlet("/lprodList.do")
 public class LprodList extends HttpServlet {

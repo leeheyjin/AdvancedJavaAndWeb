@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kr.or.ddit.member.vo.MemberVO;
+import kr.or.ddit.basic.vo.MemberVO;
 
 @WebServlet("/sessionLoginDB.do")
 public class SessionLoginDB extends HttpServlet {

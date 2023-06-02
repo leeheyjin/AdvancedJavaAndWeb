@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.ddit.member.vo.LprodVO;
+import kr.or.ddit.basic.vo.LprodVO;
 import kr.or.ddit.mybatis.config.MyBatisSqlSessionFactory;
 
 public class LprodDAO implements ILprodDAO {

@@ -1,4 +1,4 @@
-package kr.or.ddit.member.vo;
+package kr.or.ddit.basic.vo;
 
 public class LprodVO {
 	private String lprod_id;

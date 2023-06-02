@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var queryString = location.href.split("?")[1]; // ? 오른쪽 문자열만 가져옴
+        /*
+        인코딩 함수: escape     encodeURI       encodeURIComponent
+        디코딩 함수: unescape   decodeURI       decodeURIComponent
+        */
+        // title=타이틀&writer=지으니&content=내용용
+        var itmes = queryString.split("&");
+        var title = decodeURIComponent(itmes[0].split("=")[1]);
+        var writer = decodeURIComponent(itmes[1].split("=")[1]);
+        var content = decodeURIComponent(itmes[2].split("=")[1]);
+        alert(title+writer+content);
+    </script>
+</body>
+</html>

@@ -2,7 +2,7 @@ package kr.or.ddit.basic.session;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.ddit.member.vo.MemberVO;
+import kr.or.ddit.basic.vo.MemberVO;
 import kr.or.ddit.mybatis.config.MyBatisSqlSessionFactory;
 
 public class MemberDAO {

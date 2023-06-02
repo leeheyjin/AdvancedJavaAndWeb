@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 브라우저 내에도 저장 공간이 있음(Cookie)
+        // 요즘은 쿠키에 질려서 localStorage를 더 많이 사용함
+        localStorage.setItem("name", "정수지");
+        localStorage.setItem("color", "black");
+        localStorage.setItem("color", "pink"); // 같은 키값을 쓰면 덮어씀(update)
+        localStorage.setItem("alias", "swan");
+        localStorage.getItem("name");
+        "개수: " + localStorage.length;
+        localStorage.key(0); // 순서가 입력한대로 보장이 안돼서 잘 안씀(전체를 돌릴 때는 사용함)
+        localStorage.removeItem("alias");
+        localStorage.clear();
+    </script>
+</body>
+</html>

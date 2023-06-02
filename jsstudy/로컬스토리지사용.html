@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // localstorage 제약사항(꼬옥기억): 문자열밖에 저장 안됨. 객체 불가능. 
+        var khinfo = {
+            name: "윤강혁",
+            age: 100,
+            alias: "이상한 사람"
+        }
+        // 객체를 저장할 땐 꼭 문자열화(자바의 serialize라고 함) 해야함
+        // localStorage.setItem("khinfo.name", khinfo.name);
+        // localStorage.setItem("khinfo.age", khinfo.age);
+        localStorage.setItem("khinfo", JSON.stringify(khinfo));
+        // khinfo.alias = "정상인";
+        // localStorage.setItem("khinfo", JSON.stringify(khinfo));
+
+        // 중요. 
+        var readObj = JSON.parse(localStorage.getItem("khinfo"));
+        readObj.alias = '정상인사람';
+        localStorage.setItem("readObj", JSON.stringify(readObj));
+    </script>
+</body>
+</html>
