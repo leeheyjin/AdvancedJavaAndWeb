@@ -5,10 +5,20 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/myStyle.css">
 <script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+<style type="text/css">
+table {
+	width: 100%;
+	border: none;
+	border-collapse: collapse;
+}
+td:last-child, th:last-child {
+	text-align: right;
+}
+</style>
 </head>
 <body>
 	<div class="box">
-		<input type="text" id="dong">
+		<input type="text" id="dong" placeholder="동이름을 입력하세요(예: 탄방)" size="22">
 		<input type="button" value="확인" id="checkZip">
 		<div id="result1" class="result"></div>
 	</div>
@@ -24,9 +34,17 @@
 				type : "post",
 				success : function(res) {
 					code = `<table border=1>`;
-					code += `<tr><td>우편번호</td><td>시/도</td><td>구/군</td><td>동</td><td>번지</td></tr>`;
+					code += `<tr>
+								<th>우편번호</th>
+								<th>주소</th>
+								<th>번지</th>
+							</tr>`;
 					$.each(res, function(i, v) {
-					code += `<tr><td>${v.zip_code}</td><td>${v.sido}</td><td>${v.gugun}</td><td>${v.dong}</td><td>${v.bunji}</td></tr>`;
+						code += `<tr id='choice'>
+									<td>${v.zip_code}</td>
+									<td>${v.juso}</td>
+									<td>${v.bunji}</td>
+								</tr>`;
 					})
 					code += `</table>`;
 					$("#result1").html(code);
@@ -35,8 +53,19 @@
 					alert("상태: ", xhr.status);
 				},
 				dataType : 'json'
-			})
-		})
+			});
+		});
+		
+		$(document).on("click", "#choice", function() {
+			zip = $('td', this).eq(0).text();
+			juso = $('td', this).eq(1).text();
+			//부모창에 출력하기 (부모('#uzip'), 자식(opener.document))
+			$('#uzip', opener.document).val(zip);
+			$('#uadd1', opener.document).val(juso);
+			
+			window.close();
+		});
+		
 	</script>
 </body>
 </html>

@@ -1,11 +1,6 @@
-package kr.or.ddit.member.service;
+package kr.or.ddit.member;
 
 import java.util.List;
-
-import kr.or.ddit.member.dao.IMemberDAO;
-import kr.or.ddit.member.dao.MemberDAO;
-import kr.or.ddit.member.vo.AddressVO;
-import kr.or.ddit.member.vo.MemberVO;
 
 public class MemberService implements IMemberService {
 	private IMemberDAO dao;

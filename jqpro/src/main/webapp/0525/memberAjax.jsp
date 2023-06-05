@@ -1,4 +1,4 @@
-<%@page import="kr.or.ddit.basic.vo.MemberVO"%>
+<%@page import="kr.or.ddit.member.vo.MemberVO"%>
 <%@page import="java.util.List"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@page import="kr.or.ddit.mybatis.config.MyBatisSqlSessionFactory"%>

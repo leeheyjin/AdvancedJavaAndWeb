@@ -12,15 +12,9 @@
 
 	<!-- 회원가입 -->
 	<insert id="insertMember" parameterType="memberVO">
-		INSERT
-		MEM_ID, MEM_PASS, MEM_NAME, MEM_BIRTH, MEM_HP,
-		MEM_MAIL, MEM_ZIP, MEM_ADDR1,
-		MEM_ADDR2
-		VALUES
-		#{MEM_ID}, #{MEM_PASS},
-		#{MEM_NAME}, #{MEM_BIRTH}, #{MEM_HP}, #{MEM_MAIL},
-		#{MEM_ZIP},
-		#{MEM_ADDR1}, #{MEM_ADDR2},
+		INSERT INTO MEMBER 
+(MEM_ID, MEM_PASS, MEM_NAME, MEM_BIR, MEM_HP, MEM_MAIL, MEM_ZIP, MEM_ADD1, MEM_ADD2) 
+VALUES (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_bir}, #{mem_hp}, #{mem_mail}, #{mem_zip}, #{mem_add1}, #{mem_add2})
 	</insert>
 
 	<select id="searchZip" parameterType="String" resultType="addressVO">

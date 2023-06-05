@@ -1,4 +1,4 @@
-package kr.or.ddit.member.controller;
+package kr.or.ddit.member;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,10 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import kr.or.ddit.member.service.IMemberService;
-import kr.or.ddit.member.service.MemberService;
-import kr.or.ddit.member.vo.AddressVO;
 
 @WebServlet("/zipSearch.do")
 public class ZipSearch extends HttpServlet {

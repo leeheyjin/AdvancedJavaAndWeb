@@ -1,9 +1,6 @@
-package kr.or.ddit.member.service;
+package kr.or.ddit.member;
 
 import java.util.List;
-
-import kr.or.ddit.member.vo.AddressVO;
-import kr.or.ddit.member.vo.MemberVO;
 
 public interface IMemberService {
 	public String isExists(String mem_id);

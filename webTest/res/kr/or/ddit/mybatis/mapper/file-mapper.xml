@@ -6,7 +6,7 @@
 <mapper namespace="fileInfo">
 	<insert id="insert" parameterType="fileVO">
 		INSERT INTO FILEINFO 
-		VALUES (FILEINFO_SEQ.NEXTVAL, #{FILE_WRITER}, #{ORIGIN_FILE_NAME}, #{SAVE_FILE_NAME}, #{FILE_SIZE}, #{FILE_DATE})
+		VALUES (FILEINFO_SEQ.NEXTVAL, #{file_writer}, #{origin_file_name}, #{save_file_name}, #{file_size}, SYSDATE)
 	</insert>
 	
 	<select id="getAll" resultType="fileVO">
@@ -14,6 +14,6 @@
 	</select>
 	
 	<select id="getOne" resultType="fileVO" parameterType="int">
-		SELECT * FROM FILEINFO WHERE FILE_NO = #{FILE_NO}
+		SELECT * FROM FILEINFO WHERE FILE_NO = #{file_no}
 	</select>
 </mapper>

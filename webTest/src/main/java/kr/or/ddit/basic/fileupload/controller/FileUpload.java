@@ -3,8 +3,8 @@ package kr.or.ddit.basic.fileupload.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import kr.or.ddit.basic.fileupload.service.FileInfoService;
+import kr.or.ddit.basic.fileupload.service.IFileInfoService;
 import kr.or.ddit.basic.vo.FileInfoVO;
 
 /*
@@ -45,11 +47,11 @@ public class FileUpload extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		// 업로드된 파일이 저장될 폴더 설정
-		String uploadPath = "/webTest/uploadFiles";
+		String uploadPath = "/Users/leehyejin/Project/ddit/ddit/webTest/uploadFiles";
 		// 저장될 폴더가 없으면 새로 만든다.
 		File file = new File(uploadPath);
 		if (!file.exists()) {
-			file.mkdir();
+			file.mkdirs();
 		}
 		// 파일이 아닌 일반 데이터는 getParameter()메서드나 getParameterValues()메서드를 이용한다.
 		String userName = request.getParameter("userName");
@@ -64,8 +66,66 @@ public class FileUpload extends HttpServlet {
 		 * 2. request.getPart("이름"): 지정된 이름(form태그 내 입력요소의 name속성)을 갖는 개별 Part객체를 반환함
 		 */
 		for (Part part : request.getParts()) {
-			
+			fileName = extractFileName(part);
+			System.out.println(fileName);
+			// 추출할 파일명이 공백("")이면 이것은 파일이 아닌 일반 파라미터라는 의미이다.
+			if (!"".equals(fileName)) {
+				// 한개의 파일 정보를 저장할 vo객체 생성
+				FileInfoVO vo = new FileInfoVO();
+				vo.setFile_writer(userName);
+				vo.setOrigin_file_name(fileName);
+
+				// 실제 저장되는 파일 이름이 중복되는 것을 방지하기 위해서 UUID클래스를 이용하여 저장할 파일명(난수+원래파일명)을 만든다.
+				String saveFileName = UUID.randomUUID().toString() + fileName;
+				vo.setSave_file_name(saveFileName);
+				// 파일의 크기는 Part객체의 getSize()로 알 수 있고 byte단위의 값을 반환한다.
+				// 파일의 크기는 kb단위로 변환해서 vo에 세팅한다
+				vo.setFile_size((long) Math.ceil(part.getSize() / 1024.0));
+				try {
+					// upload된 파일 저장하기: part.write()
+					part.write(uploadPath + File.separator + saveFileName);
+					// upload된 파일 정보를 List에 추가한다.
+					list.add(vo);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				IFileInfoService service = FileInfoService.getInstance();
+				// 저장이 완료된 후 파일 목록을 보여준다.
+				System.out.println(list.size());
+				for (FileInfoVO fvo : list) {
+					service.insert(fvo);
+				}
+				response.sendRedirect(request.getContextPath() + "/fileList.do");
+			}
 		}
+	}
+	
+	/*
+	 * Part의 구조
+	 * 1. 파일이 아닌 일반 데이터인 경우
+	 * --------------------dajfpoejq34u3084134ewa 	   => 각각의 파트를 구분하는 선
+	 * content-disposition: form-data; name="userName" => 파라미터명(키): form태그의 name속성
+	 *                                                 => 빈 줄
+	 * hong											   => 파라미터값(밸류)
+	 * 2. 파일일 경우
+	 * --------------------dajfpoejq34u3084134ewa 								=> 각각의 파트를 구분하는 선
+	 * content-disposition: form-data; name="selectOne"; filename="test1.txt"	=> 파일 정보
+	 * content-type: text/plain													=> 파일의 종류
+	 * 							                                                => 빈 줄
+	 * abcd12345안녕하세요															=> 파일 내용
+	 */
+	// Part영역 안에서 fileName을 추출하는 메서드
+	private String extractFileName(Part part) {
+		String fileName = "";
+		// Part에서 'content-disposition'의 헤더 값을 구해온다.
+		String headerValue = part.getHeader("content-disposition");
+		String[] items = headerValue.split(";");
+		for (String item : items) {
+			if (item.trim().startsWith("filename")) { // 공백 제거(trim()) 후 파일(filiename)인지 여부 검사
+				fileName = item.substring(item.indexOf("=") + 2, item.length() - 1); // 파일이름 추출하기
+			}
+		}
+		return fileName;
 	}
 
 }

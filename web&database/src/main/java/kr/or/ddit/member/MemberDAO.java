@@ -1,11 +1,9 @@
-package kr.or.ddit.member.dao;
+package kr.or.ddit.member;
 
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import kr.or.ddit.member.vo.AddressVO;
-import kr.or.ddit.member.vo.MemberVO;
 import kr.or.ddit.mybatis.config.MyBatisSqlSessionFactory;
 
 public class MemberDAO implements IMemberDAO {
@@ -38,10 +36,9 @@ public class MemberDAO implements IMemberDAO {
 	@Override
 	public int insertMember(MemberVO vo) {
 		SqlSession session = MyBatisSqlSessionFactory.getSqlSession();
-		MemberVO insertVo = null;
 		int count = 0;
 		try {
-			count = session.insert("member.insertMember", insertVo);
+			count = session.insert("member.insertMember", vo);
 		} finally {
 			session.commit();
 			if (session != null) {

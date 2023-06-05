@@ -1,4 +1,4 @@
-package kr.or.ddit.member.vo;
+package kr.or.ddit.member;
 
 public class MemberVO {
 	private String mem_id;

@@ -41,7 +41,7 @@ List<FileInfoVO> list = (List<FileInfoVO>) request.getAttribute("fileInfoList");
 			<td><%=vo.getOrigin_file_name()%></td>
 			<td><%=vo.getFile_size()%></td>
 			<td><%=vo.getFile_date()%></td>
-			<td>-</td>
+			<td><a href="<%=request.getContextPath()%>/fileDownload.do?fileno=<%=vo.getFile_no()%>">다운로드</a></td>
 		</tr>
 		<%
 			}
