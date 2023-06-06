@@ -93,7 +93,7 @@ td, th {
 
 
 			<button id="send" type="button" class="btn btn-primary btn-lg">전송</button>
-			<span></span>
+			<span id="joinsp"></span>
 		</form>
 	</div>
 	
@@ -133,7 +133,7 @@ td, th {
 				type: 'post',
 				data: fdata,
 				success: function(res) {
-					alert(res.flag);
+					$("#joinsp").html(res.flag).css("color"="red");
 				},
 				error: function(xhr) {
 					alert("상태: " + xhr.status);
