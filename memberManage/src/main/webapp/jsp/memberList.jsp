@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="/js/jquery-3.7.0.min.js"></script>
 </head>
 <body>
 <h2>회원 목록 보기</h2>

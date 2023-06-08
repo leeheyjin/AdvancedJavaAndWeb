@@ -35,7 +35,7 @@ public class BoardService implements IBoardService {
 	}
 
 	@Override
-	public PageVO pageInfo(int page, String stype, String sword) {
+	public PageVO pageInfo(int page, String stype, String sword) { // db작업이 아니기 대문에 dao에 정의하지 않음
 		// 전체 글 개수 구하기
 		Map<String, Object> map = new HashMap<>();
 		map.put("stype", stype);
@@ -55,9 +55,25 @@ public class BoardService implements IBoardService {
 		// startPage, endPage
 		int perPage = PageVO.getPerPage();
 		int startPage = ((page - 1) / perPage * perPage) + 1;
-		int endPage = 0;
+		int endPage = startPage + perPage - 1;
+		if(endPage > totalPage) {
+			endPage = totalPage;
+		}
+		
+		System.out.println("start: " +  start);
+		System.out.println("end: " +  end);
+		System.out.println("startPage: " +  startPage);
+		System.out.println("endPage: " +  endPage);
+		System.out.println("totalPage: " +  totalPage);
+		
+		PageVO vo = new PageVO();
+		vo.setStart(start);
+		vo.setEnd(end);
+		vo.setStartPage(startPage);
+		vo.setEndPage(endPage);
+		vo.setTotalPage(totalPage);
 
-		return null; // db작업이 아니기 대문에 dao에 정의하지 않음
+		return vo; 
 	}
 
 }

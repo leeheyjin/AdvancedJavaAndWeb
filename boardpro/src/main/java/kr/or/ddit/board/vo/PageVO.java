@@ -5,6 +5,7 @@ public class PageVO {
 	private int end;
 	private int startPage;
 	private int endPage;
+	private int totalPage;
 	private static int perList = 3;
 	private static int perPage = 2;
 
@@ -38,6 +39,14 @@ public class PageVO {
 
 	public void setEndPage(int endPage) {
 		this.endPage = endPage;
+	}
+
+	public int getTotalPage() {
+		return totalPage;
+	}
+
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
 	}
 
 	public static int getPerList() {
