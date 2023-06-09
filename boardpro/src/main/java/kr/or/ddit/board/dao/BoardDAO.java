@@ -50,4 +50,19 @@ public class BoardDAO implements IBoardDAO {
 		return count;
 	}
 
+	@Override
+	public int writePost(BoardVO vo) {
+		SqlSession session = MyBatisSqlSessionFactory.getSqlSession();
+		int count = 0;
+		try {
+			count = session.insert("board.writePost", vo);
+		} finally {
+			session.commit();
+			if (session != null) {
+				session.close();
+			}
+		}
+		return count;
+	}
+
 }

@@ -31,6 +31,19 @@
 	
 	<!-- 조회수 증가하기 -->
 	<!-- 글쓰기(저장하기) -->
+	<insert id="writePost" parameterType="boardVO" >
+		insert into boardtab values (
+			BOARDTAB_NUM_SEQ.nextval, 
+			#{subject}, 
+			#{writer}, 
+			#{mail}, 
+			#{password}, 
+			#{content}, 
+			0, 
+			#{wip}, 
+			sysdate
+		)
+	</insert>
 	<!-- 글 수정하기 -->
 	<!-- 페이지 정보 얻기 -->
 	

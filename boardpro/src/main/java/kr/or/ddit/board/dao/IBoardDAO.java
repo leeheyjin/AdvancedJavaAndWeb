@@ -16,6 +16,7 @@ public interface IBoardDAO {
 
 	// 조회수 증가하기
 	// 글쓰기(저장하기)
+	public int writePost(BoardVO vo);
 	// 글 수정하기
 	// 페이지 정보 얻기 - 시작번호, 끝번호, 시작페이지번호, 끝페이지번호, 홈페이지 개수
 	// 댓글쓰기

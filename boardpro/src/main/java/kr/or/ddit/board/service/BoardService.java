@@ -76,4 +76,9 @@ public class BoardService implements IBoardService {
 		return vo; 
 	}
 
+	@Override
+	public int writePost(BoardVO vo) {
+		return dao.writePost(vo);
+	}
+
 }

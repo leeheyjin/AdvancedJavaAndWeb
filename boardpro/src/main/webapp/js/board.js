@@ -1,11 +1,11 @@
-/**
- * 
- */
-
 listPageServer = function(cpage) {
 
-	vtype = "";
-	vword = "";
+	vtype = $("#stype option:selected").val();
+	vword = $("#sword").val();
+
+	if (vword != null) {
+		vword = vword.trim();
+	}
 
 	$.ajax({
 		url: `/boardpro/boardList.do`,
@@ -21,6 +21,8 @@ listPageServer = function(cpage) {
 	        <h2>Accordion Example</h2>
 	        <div id="accordion">`
 			$.each(res.datas, function(i, v) {
+				content = v.content;
+				content = content.replaceAll("\r\n", "<br>");
 				code += `<div class="card">
 	        <div class="card-header">
 	       <a class="btn" data-bs-toggle="collapse" href="#collapse${v.num}">
@@ -37,14 +39,14 @@ listPageServer = function(cpage) {
 	               날짜: <span class="da">${v.wdate}</span>
 	            </p>
 	            <p class="p2">
-	               <input type="button" value="수정" name="modify" class="action">
-	               <input type="button" value="삭제" name="delete" class="action">
+	               <input type="button" idx="${v.num}" value="수정" name="modify" class="action" data-bs-toggle="modal" data-bs-target="#mModal">
+	               <input type="button" idx="${v.num}" value="삭제" name="delete" class="action">
 	            </p>
 	         </div>
-	         <p class="p3">${v.content}</p>
+	         <p class="p3">${content}</p>
 	         <p class="p4">
 	               <textarea rows="" cols="50"></textarea>
-	               <input type="button" value="등록" name="reply" class="action">
+	               <input type="button" idx="${v.num}" value="등록" name="reply" class="action">
 	         </p>
 	       </div>
 	     </div>
@@ -56,25 +58,19 @@ listPageServer = function(cpage) {
 			$('#result').html(code);
 			// 페이지 처리
 			pager = "";
-			/*
-			<ul class="pagination">
-  
-  <li class="page-item"><a class="page-link" href="#">1</a></li>
-  <li class="page-item active"><a class="page-link" href="#">2</a></li>
-</ul>
-			*/
+
 			pager += `<ul class="pagination">`;
 			if (res.sp > 1) {
 				pager += `<li class="page-item"><a id="prev" class="page-link" href="#">Previous</a></li>`;
 			}
 			for (i = res.sp; i <= res.ep; i++) {
-				if(i == cpage) {
-					  pager += `<li class="page-item active"><a class="page-link pageno" href="#">${i}</a></li>`;
+				if (i == cpage) {
+					pager += `<li class="page-item active"><a class="page-link pageno" href="#">${i}</a></li>`;
 				} else {
-					  pager += `<li class="page-item"><a class="page-link pageno" href="#">${i}</a></li>`;
+					pager += `<li class="page-item"><a class="page-link pageno" href="#">${i}</a></li>`;
 				}
 			}
-			if(res.ep < res.tp) {
+			if (res.ep < res.tp) {
 				pager += `<li class="page-item"><a class="page-link" id="next" href="#">Next</a></li>`;
 			}
 			pager += `</ul>`;
@@ -85,12 +81,21 @@ listPageServer = function(cpage) {
 		},
 		dataType: 'json'
 	})
-
-
-
-
-
-
-
-
 }
+
+boardWriteServer = function() {
+	// 서버로 전송
+	$.ajax({
+		url: `/boardpro/boardWrite.do`,
+		data: fdata,
+		type: 'post',
+		success: function(res) {
+			listPageServer(1);
+		},
+		error: function(xhr) {
+			alert("상태: " + xhr.status);
+		},
+		dataType: 'json'
+	})
+}
+
