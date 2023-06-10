@@ -233,9 +233,7 @@ nav a {
 					$("#uform #uwriter").val(writer);
 					$("#uform #usubject").val(subject);
 					$("#uform #umail").val(mail);
-					content = $("#uform #ucontent").html(content); 
-					console.log(content); 
-					
+					$("#uform #ucontent").html(content); 
 				} else if (vname == "delete") {
 					alert(vidx + "번 글을 삭제합니다");
 				} else if (vname == "reply") {

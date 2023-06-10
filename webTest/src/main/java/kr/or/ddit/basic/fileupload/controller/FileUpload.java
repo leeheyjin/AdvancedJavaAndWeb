@@ -66,7 +66,8 @@ public class FileUpload extends HttpServlet {
 		 * 2. request.getPart("이름"): 지정된 이름(form태그 내 입력요소의 name속성)을 갖는 개별 Part객체를 반환함
 		 */
 		for (Part part : request.getParts()) {
-			fileName = extractFileName(part);
+			Part part2 = request.getPart("selectOne");
+			fileName = extractFileName(part2);
 			System.out.println(fileName);
 			// 추출할 파일명이 공백("")이면 이것은 파일이 아닌 일반 파라미터라는 의미이다.
 			if (!"".equals(fileName)) {
