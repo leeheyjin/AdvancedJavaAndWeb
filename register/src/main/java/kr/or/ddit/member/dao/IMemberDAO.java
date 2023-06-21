@@ -7,8 +7,11 @@ import kr.or.ddit.member.vo.MemberVO;
 public interface IMemberDAO {
 	public List<MemberVO> getAllMembers();
 
-	public String getOneMember(String mem_id);
+	public MemberVO getOneMember(String mem_id);
 
 	public int insertMember(MemberVO vo);
-
+	
+	public int updateMember(String mem_id);
+	
+	public int deleteMember(String mem_id);
 }

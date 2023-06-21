@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%
-int result = (Integer) request.getAttribute("result");
-if (result > 0) {
-	%>
+	//	서블릭에서 저장한 데이터 꺼내기
+	int res = (int) request.getAttribute("result");
+	if(res > 0){
+%>
 	{
-		"flag": "성공"
+		"flag" : "성공"
 	}
-	<%
-} else {
-	%>
+
+<%
+	}else { %>
+	
 	{
-		"flag": "실패"
-	}	
-	<%
-}
+		"flag" : "실패"
+	}
+	
+<%		
+	}
 %>

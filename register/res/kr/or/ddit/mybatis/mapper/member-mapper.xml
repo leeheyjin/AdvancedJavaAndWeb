@@ -5,14 +5,31 @@
 <!-- namespace속성에 지정된 값은 이 파일에 작성된 쿼리문을 호출해서 사용할 때 같이 사용되는 이름이다 -->
 <mapper namespace="member">
 	<select id="getAllMembers" resultType="memberVO">
-		SELECT * FROM MYMEMBER2
+		SELECT * FROM MYMEMBER
 	</select>
-	
-	<select id="getOneMember" resultType="String" parameterType="String">
-		SELECT MEM_ID FROM MYMEMBER2 WHERE MEM_ID = #{mem_id}
+
+	<select id="getOneMember" resultType="memberVO"
+		parameterType="String">
+		SELECT * FROM MYMEMBER WHERE MEM_ID = #{mem_id}
 	</select>
-	
+
 	<insert id="insertMember" parameterType="memberVO">
-		INSERT INTO MYMEMBER2 VALUES (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_tel}, #{mem_addr}, #{mem_photo})
+		INSERT INTO MYMEMBER
+		VALUES (#{mem_id}, #{mem_pass}, #{mem_name}, #{mem_tel}, #{mem_addr},
+		#{mem_photo})
 	</insert>
+
+	<update id="updateMember" parameterType="String">
+		UPDATE MYMEMBER SET
+		MEM_PASS = #{mem_pass},
+		MEM_NAME = #{mem_name},
+		MEM_TEL = #{mem_tel},
+		MEM_ADDR = #{mem_addr},
+		MEM_PHOTO = #{mem_photo}
+		WHERE MEM_ID = #{MEM_ID}
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM MYMEMBER WHERE MEM_ID = #{mem_id}
+	</delete>
 </mapper>

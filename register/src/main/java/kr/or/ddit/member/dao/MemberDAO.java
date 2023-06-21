@@ -35,17 +35,17 @@ public class MemberDAO implements IMemberDAO {
 	}
 
 	@Override
-	public String getOneMember(String mem_id) {
+	public MemberVO getOneMember(String mem_id) {
 		SqlSession session = MyBatisSqlSessionFactory.getSqlSession();
-		String id = null;
+		MemberVO vo = null;
 		try {
-			id = session.selectOne("member.getOneMember", mem_id);
+			vo = session.selectOne("member.getOneMember", mem_id);
 		} finally {
 			if (session != null) {
 				session.close();
 			}
 		}
-		return id;
+		return vo;
 	}
 
 	@Override
@@ -54,6 +54,36 @@ public class MemberDAO implements IMemberDAO {
 		int count = 0;
 		try {
 			count = session.insert("member.insertMember", vo);
+		} finally {
+			session.commit();
+			if (session != null) {
+				session.close();
+			}
+		}
+		return count;
+	}
+
+	@Override
+	public int updateMember(String mem_id) {
+		SqlSession session = MyBatisSqlSessionFactory.getSqlSession();
+		int count = 0;
+		try {
+			count = session.update("member.updateMember", mem_id);
+		} finally {
+			session.commit();
+			if (session != null) {
+				session.close();
+			}
+		}
+		return count;
+	}
+
+	@Override
+	public int deleteMember(String mem_id) {
+		SqlSession session = MyBatisSqlSessionFactory.getSqlSession();
+		int count = 0;
+		try {
+			count = session.delete("member.deleteMember", mem_id);
 		} finally {
 			session.commit();
 			if (session != null) {

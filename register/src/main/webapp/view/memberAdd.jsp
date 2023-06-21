@@ -51,7 +51,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" id="buttons">
-					<input type="button" id="save" name="save" value="저장">
+					<input type="submit" id="save" name="save" value="저장">
 					<input type="reset" value="취소">
 					<input type="button" id="memberList" name="memberList" value="회원목록">
 				</td>
@@ -59,8 +59,16 @@
 		</table>
 	</form>
 	<script type="text/javascript">
+		$("#memberList").on("click", function() {
+			location.href = "<%=request.getContextPath()%>/memberList.do";
+		});
+		
+		$("input[type=reset]").on("click", function() {
+			history.back();
+		});
 		$("#idExists").on("click", function() {
-			idValue = $("#id").val();
+			idValue = $("#mem_id").val();
+			alert(idValue);
 			if (idValue == "") {
 				alert("ID를 입력하세요");
 				return;
@@ -84,13 +92,13 @@
 			});
 		});
 		
-		$("#save").on("click", function() {
-			idValue = $("#id").val();
-			passwordValue = $("#password").val();
-			nameValue = $("#name").val();
-			telValue = $("#tel").val();
-			addressValue = $("#address").val();
-			profileValue = $("#profile").val();
+		$("#save").on("submit", function() {
+			idValue = $("#mem_id").val();
+			passwordValue = $("#mem_pass").val();
+			nameValue = $("#mem_name").val();
+			telValue = $("#mem_tel").val();
+			addressValue = $("#mem_addr").val();
+			profileValue = $("#mem_photo").val();
 			
 			inputData = {
 					"mem_id": idValue,

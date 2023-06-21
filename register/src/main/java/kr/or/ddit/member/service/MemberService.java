@@ -27,13 +27,23 @@ public class MemberService implements IMemberService {
 	}
 
 	@Override
-	public String getOneMember(String mem_id) {
+	public MemberVO getOneMember(String mem_id) {
 		return dao.getOneMember(mem_id);
 	}
 
 	@Override
 	public int insertMember(MemberVO vo) {
 		return dao.insertMember(vo);
+	}
+
+	@Override
+	public int updateMember(String mem_id) {
+		return dao.updateMember(mem_id);
+	}
+
+	@Override
+	public int deleteMember(String mem_id) {
+		return dao.deleteMember(mem_id);
 	}
 
 }

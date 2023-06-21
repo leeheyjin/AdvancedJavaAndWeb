@@ -25,11 +25,11 @@ public class MemberIdCheck extends HttpServlet {
 		String mem_id = request.getParameter("mem_id");
 		
 		IMemberService service = MemberService.getInstance();
-		String oneMember = service.getOneMember(mem_id);
+		MemberVO vo = service.getOneMember(mem_id);
 		
 		Gson gson = new Gson();
 		String result = null;
-		if (oneMember == null) {
+		if (vo == null) {
 			result = gson.toJson("possible");
 		} else {
 			result = gson.toJson("impossible");

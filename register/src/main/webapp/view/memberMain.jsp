@@ -8,6 +8,6 @@
 <link rel="stylesheet" href="../css/myStyle.css">
 </head>
 <body>
-<a href="./memberList.jsp">회원 목록 보기</a>
+<a href="<%=request.getContextPath()%>/memberList.do">회원 목록 보기</a>
 </body>
 </html>
