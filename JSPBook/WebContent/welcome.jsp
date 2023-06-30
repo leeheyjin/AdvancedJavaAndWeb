@@ -31,24 +31,7 @@
 		<div class="text-center">
 			<h3>
 				<%=tagline%>
-				<p>
-					<%
-				Date day = new Date();
-				String am_pm;
-				int hour = day.getHours();
-				int minute = day.getMinutes();
-				int second = day.getSeconds();
-				if (hour / 12 == 0) {
-					am_pm = "AM";
-				} else {
-					am_pm = "PM";
-					hour -= 12;
-				}
-				String currentTime = hour + ":" + minute + ":" + second + " " + am_pm;
-				// jsp의 내장 객체 중 화면에 출력하는 객체: out
-				out.print("현재 접속 시간: " + currentTime + "<br>");
-				%>
-				</p>
+				<p class="time"></p>
 			</h3>
 		</div>
 	</div>
@@ -60,5 +43,25 @@
 	%>
 	<%-- 	<h1><%= greeting %></h1>
 	<h3><%= tagline %></h3> --%>
+	
+	<script type="text/javascript">
+	function gogo() {
+		let today = new Date();
+		
+		let year = today.getFullYear();
+		let month = ('0' + (today.getMonth() + 1)).slice(-2);
+		let day = ('0' + today.getDate()).slice(-2);
+		let dateString = year + "-" + month + "-" + day;
+		
+		let hours = ('0' + today.getHours()).slice(-2);
+		let minutes = ('0' + today.getMinutes()).slice(-2);
+		let seconds = ('0' + today.getSeconds()).slice(-2);
+		let timeString = hours + ":" + minutes + ":" + seconds;
+		
+		document.querySelector(".time").innerHTML = "현재 접속 시간: " + dateString + " " + timeString;
+		
+	}
+	setInterval(gogo, 1000);
+	</script>
 </body>
 </html>

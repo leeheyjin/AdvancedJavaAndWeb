@@ -35,13 +35,13 @@ ProductRepository productDAO = ProductRepository.getInstance();
 		<%-- <%
 		for(ProductVO productVO : list) {
 			%> --%>
-		<c:forEach var="productVO" items="${list}" varStatus="stat">
+		<c:forEach var="product" items="${list}" varStatus="stat">
 			<div class="col-md-4">
-			<img src="images/${productVO.filename}" style="width: 100%;">
-			<h3>${productVO.pname}</h3>
-			<p>${productVO.description}</p>
-			<p>${productVO.u nitPrice}</p>
-			<p>상세정보</p>
+			<img src="images/${product.filename}" style="width: 100%;">
+			<h3>${product.pname}</h3>
+			<p>${product.description}</p>
+			<p>${product.unitPrice}</p>
+			<p><a href="product.jsp?productId=${product.productId}" class="btn btn-secondary">상세정보</a></p>
 			</div>
 			</c:forEach>
 			<%-- <%
