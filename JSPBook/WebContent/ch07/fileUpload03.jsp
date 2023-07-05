@@ -16,7 +16,7 @@ JSP 페이지에 page 디렉티브 태그의 import속성을 사용해 패키지
  -->
 	<form action="fileUpload03_process.jsp" method="post"
 		enctype="multipart/form-data">
-		<p>파일: <input type="file" name="file"></p>
+		<p>파일: <input type="file" name="fileName"></p>
 		<input type="submit" value="파일올리기">
 	</form>
 
