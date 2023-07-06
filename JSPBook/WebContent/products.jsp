@@ -21,7 +21,6 @@ ProductRepository productDAO = ProductRepository.getInstance();
 	scope: 영역
 	ex) 토르 활동 영역: 대전	          / 대한민국          / 아시아                / 지구
 		scope:		 page(동일jsp) / request(동일요청) / session(동일웹브라우저) / application(모든웹브라우저)
-		 
 	 -->
 	<c:set var="list" value="<%=list%>" scope="page" />
 	<%@include file="menu.jsp"%>
@@ -40,7 +39,7 @@ ProductRepository productDAO = ProductRepository.getInstance();
 		<div class="row" align="center">
 		<c:forEach var="product" items="${list}" varStatus="stat">
 			<div class="col-md-4">
-				<img                                  src="images/${product.filename}" style="width: 100%;">
+				<img src="images/${product.filename}" style="width: 100%;">
 				<h3>${product.pname}</h3>
 				<p>${product.description}</p>
 				<p>${product.unitPrice}</p>
