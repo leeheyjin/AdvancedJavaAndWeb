@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>JSPBook</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         id="WebApp_ID" version="3.1">
+    <display-name>JSPBook</display-name>
+    <security-role>
+        <role-name>tomcat</role-name>
+    </security-role>
+
+    <security-role>
+        <role-name>role1</role-name>
+    </security-role>
+
+    <!--
+    시큐리티의 제약사항을 설정
+    JSPBook이라는 웹 애플리케이션에서 해당 URL을 GET방식으로 요청하려면 role1이라는 권한이 있어야함
+     -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>JSPBook</web-resource-name>
+            <url-pattern>/ch10/security01.jsp</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description></description>
+            <role-name>role1</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!--  authentication(인증): 로그인 처리를 위한 페이지를 설정  -->
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
 </web-app>

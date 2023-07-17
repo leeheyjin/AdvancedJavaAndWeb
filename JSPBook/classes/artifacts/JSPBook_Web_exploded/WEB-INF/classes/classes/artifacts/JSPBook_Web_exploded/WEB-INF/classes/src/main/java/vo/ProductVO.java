@@ -10,14 +10,14 @@ public class ProductVO implements Serializable {
 	// 멤버변수
 	private String productId;
 	private String pname;
-	private int unitPrice;
+	private int    unitPrice;
 	private String description;
 	private String manufacturer;
 	private String category;
-	private int unitsInStock;
+	private int    unitsInStock;
 	private String condition;
 	private String filename;
-	private int quantity;
+	private int    quantity;
 
 	// 기본생성자
 	public ProductVO() {
