@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Hello! JSP Programming</h1>
-<p>Welcome to JSP</p>
+안녕~
 </body>
 </html>
+

@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
 	<!-- container : 내용이 들어갈 때 -->
 	<div class="container">
-		<div class="navhar-header">
+		<div class="navbar-header">
 			<a class="navbar-brand" href="./welcome.jsp">Home</a>
 		</div>
 	</div>
