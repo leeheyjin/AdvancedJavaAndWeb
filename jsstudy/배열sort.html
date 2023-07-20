@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // let testArr = [4, 9, 6, 3, 1];
+    // testArr.sort();
+    // console.log("체킁: ", testArr);
+    // // 내림차순 정렬
+    // let testArr2 = structuredClone(testArr); // structuredClone(객체): 객체 복사 함수. 힙 영역에 새로 추가됨
+    // testArr2.sort(function (a, b) {
+    //     console.log(a, b);
+    //     return b - a;
+    // })
+    // console.log("체킁2: ", testArr2);
+
+    // let fNames = ["수지", "미지", "강혁", "하늘", "은비"];
+    // fNames.sort(function (a, b) {
+    //     if (b > a) {
+    //         return 1;
+    //     } else {
+    //         return -1;
+    //     }
+    //     // return b - a; // 문자열 빼기는 존재하지 않기 때문에 알맞게 내림차순 정렬되지 않음
+    // });
+    // console.log("숫자아님 체킁: ", fNames);
+
+    let jsonArr = [
+        { name: "메롱", age: 40 },
+        { name: "승종", age: 35 },
+        { name: "웩ㅆ", age: 30 },
+        { name: "ㅋㅋ", age: 20 },
+        { name: "췡각", age: 15 }
+    ];
+    jsonArr.sort(function (a, b) { // json객체를 정렬하려면 콜백함수를 사용해야함
+        // if (a.name < b.name) {
+        //     return 1;
+        // } else {
+        //     return -1;
+        // }
+        return a.age - b.age;
+    })
+    console.log(jsonArr);
+</script>

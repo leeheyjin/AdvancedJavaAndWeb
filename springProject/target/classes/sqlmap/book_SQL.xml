@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace : 매퍼xml 파일이 여러개일 수 있음
+	이를 구별하기 위한 식별 용도로 사용
+ -->
+<mapper namespace="book">
+    <!--
+    마이바티스에서 제공해주는 데이터 입력을 나타내는 태그
+    1. 들어옴: DAO 객체가 던진 파라미터
+        1) parameterType(o): String, int, VO, List, Map 등
+        2) parameterMap(x)
+    2. 나감: DAO 객체의 메서드쪽으로 리턴
+        1) resultType: String, int HashMap, VO 등
+        2) resultMap: 마이바티스의 resultMap 태그 사용
+    -->
+    <insert id="insert" parameterType="bookVO">
+        <selectKey resultType="int" order="BEFORE" keyProperty="bookId">
+            select nvl(max(book_id), 0) + 1 from book
+        </selectKey>
+        insert into book
+        values (#{bookId}, #{title}, #{category}, #{price}, #{content}, sysdate)
+    </insert>
+
+    <select id="detail" resultType="bookVO" parameterType="bookVO">
+        select * from book where book_id = #{bookId}
+    </select>
+</mapper>

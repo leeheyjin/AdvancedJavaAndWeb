@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // 버블정렬
+    let testArr = [5, 7, 2, 8, 4, 6];
+    // 최댓값 구하기
+    /* 방법1
+    let max = testArr[0];
+    for (let i = 1; i < testArr.length; i++) {
+        if (testArr[i] > max) {
+            max = testArr[i];
+        }
+    }
+    alert("최댓값: " + max);
+    */
+
+    /*
+    let aa = "췡각";
+    let bb = "이상한사람";
+    console.log("바꾸기 전: ", aa, bb);
+    let temp = aa;
+    aa = bb;
+    bb = temp;
+    console.log("바꾼 후: ", aa, bb);
+    */
+
+    // 배열의 0번째에 가장 큰 값을 넣고 싶음(정렬은 자리 바꿈): 교환 로직과 최댓값을 구하는 로직을 합치기
+    // 아래 알고리즘을 버블정렬이라고 함 성능 ㅂㄹ임
+    /*
+    for (let i = 0; i < testArr.length; i++) {
+        for (let j = i + 1; j < testArr.length; j++) {
+            if (testArr[i] < testArr[j]) {
+                let temp = testArr[i];
+                testArr[i] = testArr[j];
+                testArr[j] = temp;
+            }
+        }
+    }
+    alert(testArr);
+    */
+
+    function MyArray() {
+        this.length = 0;
+        return this;
+    }
+
+    MyArray.prototype.push = function (pVal) {
+        this[this.length] = pVal;
+        this.length++;
+        return this;
+    }
+
+    // sort메서드 실제 구현
+    MyArray.prototype.sort = function (pCallback) {
+        for (let i = 0; i < this.length; i++) {
+            for (let j = i + 1; j < this.length; j++) {
+                if (pCallback(this[i], this[j]) < 0) {
+                    let temp = this[i];
+                    this[i] = this[j];
+                    this[j] = temp;
+                }
+            }
+        }
+        return this; // 메서드 체이닝
+    }
+
+    let sujiArr = new MyArray();
+    sujiArr.push(2).push(9).push(3).push(8).push(4).push(7);
+    console.log("초기 상태: ", sujiArr);
+    sujiArr.sort(function (a, b) {
+        return a - b;
+    })
+    console.log("정렬 후 상태: ", sujiArr);
+</script>
