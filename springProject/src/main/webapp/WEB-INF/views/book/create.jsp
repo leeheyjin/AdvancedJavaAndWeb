@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>책 등록하기</title>
+    <title>책 등록</title>
 </head>
 <body>
 <h1>책 등록</h1>
@@ -25,8 +25,13 @@ Client -> 요청(/create) -> Server(create()메소드와 매핑. View에 create.
     <p>설명: <textarea name="content" cols="5" rows="10"></textarea></p>
     <p>
         <input type="submit" value="저장"/>
-        <input type="button" value="목록"/>
+        <input type="button" value="목록" id="list"/>
     </p>
 </form>
+
+<script>
+    document.querySelector("#list").onclick(function () {
+    })
+</script>
 </body>
 </html>

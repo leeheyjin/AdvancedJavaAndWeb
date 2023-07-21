@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.awt.print.Book;
+import java.util.List;
 
 @Slf4j
 @Repository
@@ -16,15 +17,22 @@ public class BookDAO {
     SqlSessionTemplate sqlSessionTemplate;
 
     public int insert(BookVO vo) {
-        log.info("insert 전: " + vo);
-        int result = sqlSessionTemplate.insert("book.insert", vo);
-        log.info("insert 후: " + vo);
-        log.info("result: " + result);
-
-        return result;
+        return sqlSessionTemplate.insert("book.insert", vo);
     }
 
     public BookVO detail(BookVO vo) {
-        return this.sqlSessionTemplate.selectOne("book.deatil", vo);
+        return this.sqlSessionTemplate.selectOne("book.detail", vo);
+    }
+
+    public List<BookVO> list(String keyword) {
+        return this.sqlSessionTemplate.selectList("book.list", keyword);
+    }
+
+    public int updatePost(BookVO vo) {
+        return this.sqlSessionTemplate.update("book.updatePost", vo);
+    }
+
+    public int deletePost(String bookId) {
+        return this.sqlSessionTemplate.delete("book.deletePost", bookId);
     }
 }

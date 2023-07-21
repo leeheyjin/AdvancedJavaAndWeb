@@ -5,12 +5,17 @@ import javax.servlet.http.HttpServletRequest;
 import kr.or.ddit.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.or.ddit.vo.BookVO;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
 
 /* Controller 어노테이션
  스프링 프레임워크에게 "이 클래스는 웹 브라우저의 요청(request)를
@@ -75,13 +80,43 @@ public class BookController {
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public ModelAndView detail(BookVO vo, ModelAndView mav) {
         log.info("BookVO 상세보기 전: " + vo);
-        BookVO detail = this.service.detail(vo);
+        vo = this.service.detail(vo);
         log.info("BookVO 상세보기 후: " + vo);
+        mav.addObject("vo", vo); // data라는 이름으로 vo객체를 보냄 request.setAttribute("data", vo); 와 동일한듯?
         mav.setViewName("book/detail");
         return mav;
     }
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ModelAndView list(ModelAndView mav, @RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
+        log.info("keyword: " + keyword);
+        List<BookVO> list = this.service.list(keyword);
+        mav.addObject("list", list);
+        mav.setViewName("book/list");
+        return mav;
+    }
+
+    @RequestMapping(value = "/updatePost", method = RequestMethod.POST)
+    public ModelAndView updatePost(@ModelAttribute BookVO vo, ModelAndView mav) {
+        int result = this.service.updatePost(vo);
+        if (result > 0) {
+            //redirect: URI를 재요청
+            mav.setViewName("redirect:/detail?bookId=" + vo.getBookId());
+        } else { //업데이트 실패 시 => 책 목록 페이지(list.jsp)로 이동
+            mav.setViewName("redirect:/list");
+        }
+        return mav;
+    }
+
+    @RequestMapping(value = "/deletePost", method = RequestMethod.POST)
+    public ModelAndView deletePost(String bookId, ModelAndView mav) {
+        int result = this.service.deletePost(bookId);
+        if (result > 0) {
+            mav.setViewName("redirect:/list");
+        } else {
+            mav.setViewName("redirect:/detail?bookId=" + bookId);
+        }
+        return mav;
+    }
 }
-
-
-
 

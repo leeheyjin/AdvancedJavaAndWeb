@@ -24,4 +24,47 @@
     <select id="detail" resultType="bookVO" parameterType="bookVO">
         select * from book where book_id = #{bookId}
     </select>
+
+    <!--
+       [책 목록]
+       String keyword = "미션"
+
+       WHERE 1 = 1은 늘 참 (TRUE)임.
+       조건이 2개 이상일 때 WHERE + AND + AND + ...
+       조건이 1개 일 때 WHERE 이어야 함.
+
+       WHERE 조건1( 생략 )
+       AND 조건2 => 오류 발생
+
+       ==> 해결
+       WHERE 1 = 1
+       AND 조건1(생략)
+       AND 조건2 => 정상
+   -->
+    <select id="list" resultType="bookVO" parameterType="String">
+        select *
+        from book
+        where 1 = 1
+        <if test="keyword != null and keyword != ''">
+            and (
+            title    like '%' || #{keyword} || '%' or
+            category like '%' || #{keyword} || '%' or
+            price    like '%' || #{keyword} || '%' or
+            content like '%' || #{keyword} || '%'
+            )
+        </if>
+        order by book_id desc
+    </select>
+
+    <update id="updatePost" parameterType="bookVO">
+        update book
+        set title=#{title}, category=#{category}, price=#{price},
+        content=#{content}, insert_date=sysdate
+        where book_id = #{bookId}
+    </update>
+
+    <delete id="deletePost" parameterType="String">
+        delete from book
+        where book_id = #{bookId}
+    </delete>
 </mapper>
