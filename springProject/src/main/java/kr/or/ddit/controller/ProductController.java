@@ -1,0 +1,119 @@
+package kr.or.ddit.controller;
+
+import kr.or.ddit.service.ProductService;
+import kr.or.ddit.vo.ProductVO;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Slf4j
+@Controller
+public class ProductController {
+    @Autowired
+    ProductService service;
+
+    @RequestMapping(value = "/shopping/welcome", method = RequestMethod.GET)
+    public ModelAndView welcome(ModelAndView mav) {
+        mav.setViewName("shopping/welcome");
+        return mav;
+    }
+
+    @RequestMapping(value = "shopping/addProduct", method = RequestMethod.GET)
+    public ModelAndView addProduct(ModelAndView mav) {
+        mav.setViewName("shopping/addProduct");
+        return mav;
+    }
+
+    @RequestMapping(value = "/shopping/products", method = RequestMethod.GET)
+    public ModelAndView products(ModelAndView mav) {
+        List<ProductVO> list = service.products();
+        mav.addObject("listOfProducts", list);
+        mav.setViewName("shopping/products");
+        return mav;
+    }
+
+    @RequestMapping(value = "/shopping/processAddProduct", method = RequestMethod.POST)
+    public ModelAndView processAddProduct(ModelAndView mav, ProductVO vo) {
+        log.info("vo: " + vo);
+        String uploadFolder = "/Users/leehyejin/Project/ddit/ddit/springProject/src/main/webapp/resources/images";
+        MultipartFile multipartFile = vo.getFileImage();
+        String filename = multipartFile.getOriginalFilename();
+        UUID uuid = UUID.randomUUID();
+        filename = uuid.toString() + "_" + filename;
+        log.info("filename : " + filename);
+
+        File saveFile = new File(uploadFolder, filename);
+        try {
+            multipartFile.transferTo(saveFile);
+            mav.setViewName("redirect:/shopping/products");
+        } catch (IOException e) {
+            e.printStackTrace();
+            mav.setViewName("redirect:/shopping/addProduct");
+        }
+        return mav;
+    }
+
+    @RequestMapping(value = "/shopping/product", method = RequestMethod.GET)
+    public ModelAndView product(ModelAndView mav, String productId) {
+        ProductVO vo = service.product(productId);
+        mav.addObject("product", vo);
+        mav.setViewName("shopping/product");
+        return mav;
+    }
+
+    @RequestMapping(value = "/shopping/addCart", method = RequestMethod.POST)
+    public ModelAndView addCart(@RequestParam String productId, ModelAndView mav, HttpServletRequest request) {
+        if (productId == null || productId.trim().equals("")) {
+            mav.setViewName("redirect:/shopping/products");
+            return mav;
+        }
+
+        ProductVO vo = service.product(productId);
+        if (vo == null) {
+            mav.setViewName("redirect:/shopping/exceptionNoProductId");
+            return mav;
+        }
+
+        HttpSession session = request.getSession();
+        ArrayList<ProductVO> list = (ArrayList<ProductVO>) session.getAttribute("cartlist");
+        if (list == null) {
+            list = new ArrayList<ProductVO>();
+            session.setAttribute("cartlist", list);
+        }
+
+        int count = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getProductId().equals(productId)) {
+                count++;
+                list.get(i).setQuantity(list.get(i).getQuantity() + 1);
+            }
+        }
+
+        if (count == 0) {
+            vo.setQuantity(1);
+            list.add(vo);
+        }
+
+        for (ProductVO product : list) {
+            log.info("vo: " + list);
+        }
+
+        mav.setViewName("redirect:/shopping/product?productId=" + productId);
+        return mav;
+    }
+}

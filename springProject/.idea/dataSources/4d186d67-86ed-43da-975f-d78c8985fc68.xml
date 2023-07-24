@@ -9,10 +9,10 @@
     <schema id="2" parent="1" name="PC09">
       <CreatedTimestamp>2023-07-03.18:23:33</CreatedTimestamp>
       <Current>1</Current>
-      <IntrospectionL1Timestamp>2023-07-19.23:54:17</IntrospectionL1Timestamp>
-      <IntrospectionL2Timestamp>2023-07-19.23:54:17</IntrospectionL2Timestamp>
+      <IntrospectionL1Timestamp>2023-07-21.23:18:50</IntrospectionL1Timestamp>
+      <IntrospectionL2Timestamp>2023-07-21.23:18:50</IntrospectionL2Timestamp>
       <IntrospectionVersion>200820</IntrospectionVersion>
-      <ModifiedTimestamp>2023-07-19.23:06:22</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-07-21.23:18:50</ModifiedTimestamp>
       <ObjectId>48</ObjectId>
     </schema>
     <schema id="3" parent="1" name="PUBLIC">
@@ -179,7 +179,7 @@
     <table id="44" parent="2" name="PRODUCT">
       <CreatedTimestamp>2023-07-03.20:08:52</CreatedTimestamp>
       <DetailsLevel>2</DetailsLevel>
-      <ModifiedTimestamp>2023-07-03.20:08:52</ModifiedTimestamp>
+      <ModifiedTimestamp>2023-07-21.23:18:50</ModifiedTimestamp>
       <ObjectId>20061</ObjectId>
       <TemporaryPreserve>1</TemporaryPreserve>
     </table>
@@ -32049,7 +32049,7 @@
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="4033" parent="44" name="RNAME">
+    <column id="4033" parent="44" name="PNAME">
       <DasType>VARCHAR2(300 byte)|0s</DasType>
       <Position>2</Position>
     </column>

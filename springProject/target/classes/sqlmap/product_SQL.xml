@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace : 매퍼xml 파일이 여러개일 수 있음
+	이를 구별하기 위한 식별 용도로 사용
+ -->
+<mapper namespace="product">
+    <insert id="addProduct" parameterType="productVO">
+        <selectKey resultType="String" order="BEFORE" keyProperty="productId">
+            select substr(max(product_id), 1, 1) || trim((substr(max(product_id), 2) + 1)) from product
+        </selectKey>
+        insert into product (PRODUCT_ID, PNAME, UNIT_PRICE, DESCRIPTION, MANUFACTURER, CATEGORY, UNITS_IN_STOCK,
+        CONDITION,
+        <if test="filename != null and filename != ''">
+            FILENAME,
+        </if>
+        QUANTITY)
+        values (#{productId}, #{pname}, #{unitPrice}, #{description}, #{manufacturer}, #{category}, #{unitsInStock},
+        #{condition},
+        <if test="filename != null and filename != ''">
+            #{filename},
+        </if>
+        #{quantity})
+    </insert>
+
+    <select id="products" resultType="productVO">
+        select * from PRODUCT order by PRODUCT_ID asc
+    </select>
+
+    <select id="product" resultType="productVO" parameterType="String">
+        select * from product where product_id = #{productId}
+    </select>
+</mapper>

@@ -68,7 +68,7 @@ public class BookController {
         //bookVO : BookVO [bookId=0, title=1, category=2, price=3, content=null, insertDate=null]
         log.info("insert 전 BookVO  : " + bookVO);
         int result = this.service.insert(bookVO);
-        log.info("insert result: ", result);
+        log.info("insert result: " + result);
         log.info("insert 후 BookVO  : " + bookVO);
 
         //forwarding
