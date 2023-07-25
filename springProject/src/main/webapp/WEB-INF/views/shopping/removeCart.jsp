@@ -1,6 +1,6 @@
-<%@ page import="dao.ProductRepository" %>
-<%@ page import="vo.ProductVO" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="kr.or.ddit.dao.ProductDAO" %>
+<%@ page import="kr.or.ddit.vo.ProductVO" %><%--
   Created by IntelliJ IDEA.
   User: leehyejin
   Date: 2023/07/17
@@ -15,8 +15,8 @@
         return;
     }
 
-    ProductRepository dao = ProductRepository.getInstance();
-    ProductVO productById = dao.getProductById(productId);
+    ProductDAO dao = new ProductDAO();
+    ProductVO productById = dao.product(productId);
     if (productById == null) {
         response.sendRedirect("exceptionNoProductId.jsp");
         return;

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<div id="disp"></div>
+<button onclick="fAjax()">아작스</button>
+<button onclick="fAjax2()">아닥스2</button>
+<button onclick="fAjax3()">아닥스3</button>
+<script>
+    const $ = {
+
+    };
+    const myDisp = document.querySelector("#disp");
+    $.ajax = function (pSet) {
+        let xhr = new XMLHttpRequest(pSet);
+        xhr.open(pSet.method, pSet.url, pSet.async);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                pSet.success(xhr.responseText);
+            }
+        }
+        xhr.send();
+    };
+
+    // function fDry(pUrl, pCallback) {
+    //     // ajax(Asynchronouse JAvascript Xml)
+    //     // 기본
+    //     let xhr = new XMLHttpRequest();
+    //     xhr.open("get", pUrl, true);
+    //     xhr.onreadystatechange = function () {
+    //         if (xhr.readyState == 4 && xhr.status == 200) {
+    //             pCallback(xhr.responseText);
+    //             alert("군무새 재기좀");
+    //         }
+    //     };
+    //     xhr.send();
+    //     console.log("값 보이낭? ", xhr.responseText);
+    //     alert("병신 재기좀")
+    // };
+
+    function fCommon(pResult) {
+        myDisp.innerHTML += pResult;
+    };
+
+    function fAjax() {
+        $.ajax({
+            method: "get",
+            url: "data.csv",
+            async: true,
+            success: function (result) {
+                myDisp.innerHTML = result;
+            }
+        });
+    };
+
+    function fAjax(pUrl) {
+        $.ajax({
+            method: "get",
+            url: "data.csv",
+            async: true,
+            success: function (result) {
+                myDisp.innerHTML = result;
+            }
+        });
+    };
+
+    function fAjax2() {
+        $.ajax({
+            method: "get",
+            url: "data.html",
+            async: true,
+            success: function (result) {
+                myDisp.innerHTML = result;
+            }
+        });
+    };
+
+    function fAjax3() {
+        $.ajax({
+            method: "get",
+            url: "data.json",
+            async: true,
+            success: function (result) {
+                let jsonData = JSON.parse(result);
+                let tblStr = `
+                <table border=1>
+                    <tr>
+                        <th>이름</th>
+                        <th>나이</th>
+                        <th>별명</th>
+                    </tr>`;
+                for (let i = 0; i < jsonData.length; i++) {
+                tblStr += `<tr>
+                            <td>${jsonData[i].name}</td>
+                            <td>${jsonData[i].age}</td>
+                            <td>${jsonData[i].alias}</td>
+                        </tr>`
+                }
+                tblStr += `</table>`
+                myDisp.innerHTML = tblStr;
+            }
+        });
+    };
+</script>

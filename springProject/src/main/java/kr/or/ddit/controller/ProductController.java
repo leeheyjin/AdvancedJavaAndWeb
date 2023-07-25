@@ -6,9 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -114,6 +116,41 @@ public class ProductController {
         }
 
         mav.setViewName("redirect:/shopping/product?productId=" + productId);
+        return mav;
+    }
+
+    @RequestMapping(value = "/shopping/cart", method = RequestMethod.GET)
+    public ModelAndView cart(HttpServletRequest request, ModelAndView mav) {
+        HttpSession session = request.getSession();
+        String cartId = session.getId();
+        log.info("cartId: " + cartId);
+        List<ProductVO> cartList = (List<ProductVO>) session.getAttribute("cartlist");
+        log.info("cartList: " + cartList);
+        mav.addObject("cartId", cartId);
+        mav.addObject("cartList", cartList);
+        mav.setViewName("shopping/cart");
+        return mav;
+    }
+
+    @RequestMapping(value = "/shopping/removeCart")
+    public ModelAndView removeCart(@RequestParam String productId, ModelAndView mav, HttpServletRequest request) {
+        log.info("productId: " + productId);
+        if (productId == null || productId.trim().equals("")) {
+            mav.setViewName("redirect:/shopping/products");
+        }
+        ProductVO vo = service.product(productId);
+        if (vo == null) {
+            mav.setViewName("shopping/exceptionNoProductId");
+        } else {
+            HttpSession session = request.getSession();
+            List<ProductVO> cartlist = (List<ProductVO>) session.getAttribute("cartlist");
+            for (int i = 0; i < cartlist.size(); i++) {
+                if (cartlist.get(i).getProductId().equals(productId)) {
+                    cartlist.remove(cartlist.get(i));
+                }
+            }
+            mav.setViewName("redirect:/shopping/cart");
+        }
         return mav;
     }
 }

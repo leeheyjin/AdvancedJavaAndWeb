@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<body>
+    <div class="huk bbb">이경민</div>
+    <div class="huk aaa">정은비</div>
+    <div class="huk aaa">김예린</div>
+    <div class="huk bbb">정수지</div>
+</body>
+<script>
+    const withoutNew = function (pSelector) {
+        return new MyDom(pSelector);
+    }
+
+    const MyDom = function (pSelector) {
+        let elements = document.querySelectorAll(pSelector);
+        this.length = elements.length;
+        for (let i = 0; i < this.length; i++) {
+            this[i] = elements[i];
+        }
+        return this;
+    };
+
+    let huks = withoutNew(".huk");
+    console.log(huks[0]);
+    console.log(huks[1]);
+</script>

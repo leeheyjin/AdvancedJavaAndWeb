@@ -45,8 +45,8 @@
             <form name="addForm" action="/shopping/addCart?productId=${product.productId}" method="post">
                 <!-- addToCart() 핸들러 함수 -->
                 <a href="#" class="btn btn-info" onclick="addToCart()"> 상품 주문 &raquo;</a>
-                <a href="cart.jsp" class="btn btn-warning">장바구니&raquo;</a>
-                <a href="products.jsp" class="btn btn-secondary">상품 목록 &raquo</a>
+                <a href="/shopping/cart" class="btn btn-warning">장바구니&raquo;</a>
+                <a href="/shopping/products" class="btn btn-secondary">상품 목록 &raquo</a>
             </form>
             </p>
         </div>
