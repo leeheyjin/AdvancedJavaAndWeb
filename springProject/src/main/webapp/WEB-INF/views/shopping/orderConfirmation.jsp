@@ -48,8 +48,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <title>주문정보</title>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <script src="/resources/js/jquery-3.6.0.js"></script>
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
@@ -109,5 +110,31 @@
     </div>
 </div>
 <jsp:include page="footer.jsp"/>
+<script>
+    $(function () {
+        $("#idThank").on("click", function () {
+            let shippingDate = "${map.shippingDate}";
+            let cartId = "${map.cartId}";
+
+            console.log("shippingDate: " + shippingDate);
+            console.log("cartId: " + cartId);
+
+            let formData = new FormData();
+            formData.append("shippingDate", shippingDate);
+            formData.append("cartId", cartId);
+            $.ajax({
+                url: "/shopping/thankCustomer",
+                processData: false,
+                contentType: false,
+                data: formData,
+                type: "post",
+                dataType: "text",
+                success: function (result) {
+                    console.log("result: " + result)
+                }
+            });
+        })
+    });
+</script>
 </body>
 </html>

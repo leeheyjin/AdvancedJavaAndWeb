@@ -1,27 +1,179 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+</head>
 
 <body>
-    <div class="huk bbb">이경민</div>
-    <div class="huk aaa">정은비</div>
-    <div class="huk aaa">김예린</div>
-    <div class="huk bbb">정수지</div>
-</body>
-<script>
-    const withoutNew = function (pSelector) {
-        return new MyDom(pSelector);
-    }
+    <div class="huk bbb">최서연</div>
+    <div class="huk aaa">조수인</div>
+    <div class="huk aaa">이소연</div>
+    <div class="huk bbb">이혜진</div>
 
-    const MyDom = function (pSelector) {
-        let elements = document.querySelectorAll(pSelector);
-        this.length = elements.length;
-        for (let i = 0; i < this.length; i++) {
-            this[i] = elements[i];
+    <input type="text" value="조수인"><br>
+    <input type="text" value="최서연"><br>
+    <input type="text" value="이소연"><br>
+    <input type="text" value="이혜진"><br>
+
+    <script>
+        (function () {
+            const $ = function (pSel) {
+                return new MyDom(pSel);
+            }
+            const MyDom = function (pSel) {
+                let elems = document.querySelectorAll(pSel);
+                this.length = elems.length;
+                for (let i = 0; i < this.length; i++) {
+                    this[i] = elems[i];
+                }
+                return this;
+            }
+            window.$ = $; //전역변수 $와 지역변수 $를 서로 참조하게끔(곧 같은 곳을 가리키는 별명이 됨)
+            //prototype: 공유
+            //jQuery사용자(개발자)들도 자신마의 메서드(jQuery플러그인이라 부름)
+            //를 추가할 수 있도록(곧 확작) myDom.prototype을 밖에서 접근할 수 있도록
+            //myDom.prototype.메서드이름 = function () {  }
+            $.fn = MyDom.prototype;
+        })();
+
+        //jQuery 플러그인 만들기
+        $.fn.eq = function (pIndex) {
+            return this[pIndex];
         }
-        return this;
-    };
 
-    let huks = withoutNew(".huk");
-    console.log(huks[0]);
-    console.log(huks[1]);
-</script>
+        //innerHTML 속성을 편하게 다루는 메서드 html()
+        //오버로딩(매개변수를 시그니처로 같은 이름의 메서드를 구분하는 것)
+        //자바스크립트에 없음
+        $.fn.html = function (pArg) {
+            if (!pArg) { //매개변수값이 넘어오지 않았을 때 (읽기 - 무조건 첫번째)
+                return this[0].innerHTML;
+            }
+
+            //매개변수로 문자열이 넘어 왔을 때
+            if (typeof (pArg) == "string") {
+                for (let i = 0; i < this.length; i++) {
+                    this[i].innerHTML = pArg;
+                }
+                return this;
+            }
+
+            if (typeof (pArg) == "function") {
+                for (let i = 0; i < this.length; i++) {
+                    this[i].innerHTML = pArg(this[i], i, this[i].innerHTML);
+                }
+                return this;
+            }
+        }
+
+        // value속성을 편하게 쓸 수 있도록 도와주는 val메서드
+        $.fn.val = function (pArg) {
+            if (!pArg) { //매개변수값이 넘어오지 않았을 때 (읽기 - 무조건 첫번째)
+                return this[0].value;
+            }
+
+            //매개변수로 문자열이 넘어 왔을 때
+            if (typeof (pArg) == "string") {
+                for (let i = 0; i < this.length; i++) {
+                    this[i].value = pArg;
+                }
+                return this;
+            }
+
+            if (typeof (pArg) == "function") {
+                for (let i = 0; i < this.length; i++) {
+                    this[i].value = pArg.call(this[i], i, this[i].value);
+                }
+                return this;
+            }
+        }
+
+        // 태그 안의 여러가지 속성을 지정해서 값을 읽고 변경할 수 있는 attr
+        // $.fn.attr = function (pArg) {
+        //     if (!pArg) { //매개변수값이 넘어오지 않았을 때 (읽기 - 무조건 첫번째)
+        //         return this[0].attr;
+        //     }
+
+        //     //매개변수로 문자열이 넘어 왔을 때
+        //     if (typeof (pArg) == "string") {
+        //         for (let i = 0; i < this.length; i++) {
+        //             this[i].attr = pArg;
+        //         }
+        //         return this;
+        //     }
+
+        //     if (typeof (pArg) == "function") {
+        //         for (let i = 0; i < this.length; i++) {
+        //             this[i].attr = pArg.call(this[i], i, this[i].attr);
+        //         }
+        //         return this;
+        //     }
+        // }
+
+        // 태그 안의 여러가지 속성을 지정해서 값을 읽고 변경할 수 있는 attr
+        $.fn.attr = function (pArg1, pArg2) {
+            if (!pArg2) { //매개변수값이 넘어오지 않았을 때 (읽기 - 무조건 첫번째)
+                return this[0][pArg1].attr;
+            }
+
+            //매개변수로 문자열이 넘어 왔을 때
+            if (typeof (pArg2) == "string") {
+                for (let i = 0; i < this.length; i++) {
+                    this[i][pArg1] = pArg2;
+                }
+                return this;
+            }
+
+            if (typeof (pArg2) == "function") {
+                for (let i = 0; i < this.length; i++) {
+                    this[i][pArg1].attr = pArg2.call(this[i], i, this[i].attr);
+                }
+                return this;
+            }
+        }
+
+        $.fn.on = function (pEvent, pCb) {
+            for (let i = 0; i < this.length; i++) {
+                this[i].addEventListener(pEvent, pCb);
+            }
+            return this;
+        }
+
+        $("div").on("click", function () {
+            alert("ㅇㅇ?");
+        })
+
+        // alert($("input").attr("type", "checkbox"));
+        // $("input").attr(function (pIndex, pVal) {
+        //     if (pIndex == 3) {
+        //         return "checkbox";
+        //     }
+        //     return pVal;
+        // })
+
+
+        // $("input[type=text]").val("이미지");
+        // $("input[type=text]").val(function (pIndex, pVal) {
+        //     if (pIndex == 1) {
+        //         return "메에롱 메에롱";
+        //     }
+        //     return pVal;
+        // });
+
+        //alert ($(".huk").html());
+        //$(".huk").html("문자열이 오면 처리됩니다.");
+        // $(".huk").html(function (pIndex, pHTML) {
+        //     //alert("index: " + pIndex + " " + "html: " + pHTML);
+        //     if (pIndex == 0) {
+        //         return pHTML + "짝짝짝!";
+        //     }
+        //     if (pHTML.includes("소연")) {
+        //         return `<h1>${pHTML}짱!</h1>`;
+        //     }
+        //     return pHTML;
+        // })
+    </script>
+</body>
+
+</html>

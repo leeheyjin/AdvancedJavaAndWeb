@@ -55,8 +55,8 @@
 <div class="container">
     <%-- 주문 완료 내용 시작 --%>
     <h2 class="alert alert-danger">주문 감사합니다.</h2>
-    <p>주문은 <%=shipping_shippingDate%>에 배송될 예정입니다.</p>
-    <p>주문번호: <%=shipping_cartId%>
+    <p>주문은 ${sessionScope.shippingDateMap.shippingDate}에 배송될 예정입니다.</p>
+    <p>주문번호: ${sessionScope.cartIdMap.cartId}
     </p>
     <%-- 주문 완료 내용 끝 --%>
 </div>
@@ -64,32 +64,32 @@
     <p><a href="products.jsp" class="btn btn-secondary">&laquo;상품 목록</a></p>
 </div>
 <%@ include file="footer.jsp" %>
-<%
-    // 장바구니 비우기
-    session.removeAttribute("cartlist");
-    // 쿠키 비우기
-    for (int i = 0; i < cookies.length; i++) {
-        Cookie thisCookie = cookies[i];
-        if (thisCookie.getName().equals("shipping_cartId")) {
-            thisCookie.setMaxAge(0);
-        }
-        if (thisCookie.getName().equals("shipping_name")) {
-            thisCookie.setMaxAge(0);
-        }
-        if (thisCookie.getName().equals("shipping_shippingDate")) {
-            thisCookie.setMaxAge(0);
-        }
-        if (thisCookie.getName().equals("shipping_country")) {
-            thisCookie.setMaxAge(0);
-        }
-        if (thisCookie.getName().equals("shipping_zipCode")) {
-            thisCookie.setMaxAge(0);
-        }
-        if (thisCookie.getName().equals("shipping_addressName")) {
-            thisCookie.setMaxAge(0);
-        }
-        response.addCookie(thisCookie);
-    }
-%>
+<%--<%--%>
+<%--    // 장바구니 비우기--%>
+<%--    session.removeAttribute("cartlist");--%>
+<%--    // 쿠키 비우기--%>
+<%--    for (int i = 0; i < cookies.length; i++) {--%>
+<%--        Cookie thisCookie = cookies[i];--%>
+<%--        if (thisCookie.getName().equals("shipping_cartId")) {--%>
+<%--            thisCookie.setMaxAge(0);--%>
+<%--        }--%>
+<%--        if (thisCookie.getName().equals("shipping_name")) {--%>
+<%--            thisCookie.setMaxAge(0);--%>
+<%--        }--%>
+<%--        if (thisCookie.getName().equals("shipping_shippingDate")) {--%>
+<%--            thisCookie.setMaxAge(0);--%>
+<%--        }--%>
+<%--        if (thisCookie.getName().equals("shipping_country")) {--%>
+<%--            thisCookie.setMaxAge(0);--%>
+<%--        }--%>
+<%--        if (thisCookie.getName().equals("shipping_zipCode")) {--%>
+<%--            thisCookie.setMaxAge(0);--%>
+<%--        }--%>
+<%--        if (thisCookie.getName().equals("shipping_addressName")) {--%>
+<%--            thisCookie.setMaxAge(0);--%>
+<%--        }--%>
+<%--        response.addCookie(thisCookie);--%>
+<%--    }--%>
+<%--%>--%>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package kr.or.ddit.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import kr.or.ddit.service.ProductService;
 import kr.or.ddit.vo.ProductVO;
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Slf4j
 @Controller
@@ -152,5 +151,59 @@ public class ProductController {
             mav.setViewName("redirect:/shopping/cart");
         }
         return mav;
+
     }
+
+    @RequestMapping("/shopping/deleteCart")
+    public ModelAndView deleteCart(ModelAndView mav, @RequestParam(value = "cartId") String cartId, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        cartId = (String) session.getAttribute("cartId");
+        if (cartId != null && !cartId.trim().equals("")) {
+            session.removeAttribute("cartlist");
+            mav.setViewName("shopping/cart");
+        } else {
+            mav.setViewName("redirect:/shopping/cart");
+        }
+        return mav;
+    }
+
+    @RequestMapping(value = "/shopping/shippingInfo", method = RequestMethod.GET)
+    public ModelAndView shippingInfo(@RequestParam String cartId, ModelAndView mav, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        cartId = (String) session.getAttribute("cartId");
+        if (cartId == null || cartId.trim().equals("")) {
+            mav.setViewName("redirect:/shopping/cart");
+        }
+        mav.setViewName("shipping/processShippingInfo");
+        return mav;
+    }
+
+    @RequestMapping(value = "/shopping/processShippingInfo", method = RequestMethod.POST)
+    public ModelAndView processShippingInfo(@RequestParam Map<String, Object> param, ModelAndView mav) {
+        mav.addObject("map", param);
+        mav.setViewName("shopping/orderConfirmation");
+        return mav;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/shopping/thankCustomer", method = RequestMethod.POST)
+    public String thankCustomer(ModelAndView mav, HttpSession session, @RequestParam Map<String, Object> param) {
+        Map<String, String> shippingDateMap = new HashMap<String, String>();
+        shippingDateMap.put("shippingDate", param.get("shippingDate").toString());
+        Map<String, String> cartIdMap = new HashMap<String, String>();
+        cartIdMap.put("cartId", param.get("cartId").toString());
+
+        session.setAttribute("shippingDateMap", shippingDateMap);
+        session.setAttribute("cartIdMap", cartIdMap);
+        session.removeAttribute("cartlist");
+        mav.setViewName("shopping/thankCustomer");
+        return "sucess";
+    }
+
+    @RequestMapping(value = "/shopping/thankCustomer", method = RequestMethod.GET)
+    public ModelAndView thankCustomerGet(ModelAndView mav) {
+        mav.setViewName("shopping/thankCustomer");
+        return mav;
+    }
+
 }

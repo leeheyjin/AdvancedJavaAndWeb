@@ -5,8 +5,8 @@
 <html>
 <head>
     <title>배송 정보</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script src="js/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <script src="/resources/js/jquery-3.6.0.js"></script>
 </head>
 <body>
 <!-- ////////////////// header 시작 (menu.jsp) /////////////////// -->
@@ -23,7 +23,7 @@
 <!-- //////////// 배송 정보 시작 //////////////// -->
 <!-- /shippingInfo.jsp?cartId=EC82E2522CC853501CCB5AEC214438BE -->
 <div class="container">
-    <form action="processShippingInfo.jsp" class="form-horizontal"
+    <form action="/shopping/processShippingInfo" class="form-horizontal"
           method="post">
         <input type="hidden" name="cartId" value='<%=request.getParameter("cartId")%>'/>
         <div class="form-group row">
@@ -62,10 +62,10 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-offset-2 col-sm-10">
-                <a href='cart.jsp?cartId=<%=request.getParameter("cartId")%>'
+                <a href='/shopping/cart?cartId=<%=request.getParameter("cartId")%>'
                    class="btn btn-secondary" role="button">이전</a>
                 <input type="submit" class="btn btn-primary" value="등록"/>
-                <a href="checkOutCancelled.jsp" class="btn btn-secondary" role="button">취소</a>
+                <a href="/shopping/checkOutCancelled" class="btn btn-secondary" role="button">취소</a>
                 <button type="button" class="badge badge-counter" id="autoFill">자동채우기</button>
             </div>
         </div>
