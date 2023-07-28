@@ -35,6 +35,7 @@
     "project.structure.last.edited": "모듈",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.23448277",
+    "spring.configuration.checksum": "fee13acfc1999c133cf877b502ef096a",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -141,6 +142,7 @@
       <option name="presentableId" value="Default" />
       <updated>1689763503923</updated>
       <workItem from="1689763505411" duration="1928000" />
+      <workItem from="1690355152967" duration="37000" />
     </task>
     <servers />
   </component>

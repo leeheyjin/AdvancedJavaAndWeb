@@ -206,4 +206,11 @@ public class ProductController {
         return mav;
     }
 
+    @RequestMapping(value = "/shopping/checkOutCancelled")
+    public ModelAndView checkOutCancelled(HttpSession session, ModelAndView mav) {
+        session.removeAttribute("cartlist");
+        mav.setViewName("shopping/checkOutCancelled");
+        return mav;
+    }
+
 }

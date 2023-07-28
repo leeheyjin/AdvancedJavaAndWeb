@@ -20,7 +20,7 @@
     </div>
 </div>
 <%
-session.removeAttribute("cartlist");
+    session.removeAttribute("cartlist");
 %>
 <div class="container">
     <h2 class="alert alert-danger">주문이 취소되었습니다.</h2>
