@@ -57,10 +57,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "프로젝트",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.23448277",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "editing.templates",
     "spring.configuration.checksum": "fee13acfc1999c133cf877b502ef096a",
     "vue.rearranger.settings.migration": "true"
   },
@@ -201,6 +201,10 @@
       <workItem from="1690329842593" duration="6252000" />
       <workItem from="1690358281455" duration="704000" />
       <workItem from="1690506161638" duration="1416000" />
+      <workItem from="1690953680970" duration="286000" />
+      <workItem from="1690954005910" duration="64000" />
+      <workItem from="1690954102655" duration="29000" />
+      <workItem from="1690954142333" duration="165000" />
     </task>
     <servers />
   </component>
