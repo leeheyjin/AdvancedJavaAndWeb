@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class ChatController {
 
-	@GetMapping("/chat")
-	public String chatChat(HttpSession hSession) {
-		
-		hSession.setAttribute("myName", "수인");
-		
-		return "chat";
-	}
+    @GetMapping("/chat")
+    public String chatChat(HttpSession hSession) {
+
+        hSession.setAttribute("myName", "수인");
+
+        return "chat";
+    }
 }

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="net.harawata.mybatipse_1.2.4.202006282327">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../lib/mybatipse/net.harawata.mybatipse_1.2.4.202006282327.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../lib/mybatipse/org.eclipselabs.mybatiseditor.ui_1.1.0.201207062137.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

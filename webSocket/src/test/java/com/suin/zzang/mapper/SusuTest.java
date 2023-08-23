@@ -2,6 +2,7 @@ package com.suin.zzang.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.suin.zzang.service.Susu;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,22 +21,22 @@ import com.suin.zzang.vo.SusuVO;
 //Context설정파일 지정 classpath를 사용해도 됨
 @ContextConfiguration("classpath:config/spring/database-context.xml")
 public class SusuTest {
-	
-	@Autowired
-	private Susu susu;
-	
-	@Test
-	@DisplayName("susu zzang")
-	public void insertTest() {
-		
-		SusuVO susuVO;
-		for(int i=5; i<=105; i++) {
-			susuVO = new SusuVO();
-			susuVO.setTitle("merong"+i);
-			susuVO.setScont("content"+i);
-			susuVO.setSname("suin"+i);			
-			assertEquals(1, susu.insertData(susuVO));
-		}
 
-	}
+    @Autowired
+    private SusuMapper susu;
+
+    @Test
+    @DisplayName("susu zzang")
+    public void insertTest() {
+
+        SusuVO susuVO;
+        for (int i = 5; i <= 105; i++) {
+            susuVO = new SusuVO();
+            susuVO.setTitle("merong" + i);
+            susuVO.setScont("content" + i);
+            susuVO.setSname("suin" + i);
+            assertEquals(1, susu.insertData(susuVO));
+        }
+
+    }
 }
