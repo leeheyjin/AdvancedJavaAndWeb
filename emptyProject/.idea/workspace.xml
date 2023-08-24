@@ -4,41 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b83334d-838b-46c4-b7fe-fb151d288c46" name="변경" comment="" />
+    <list default="true" id="2b83334d-838b-46c4-b7fe-fb151d288c46" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/../springProj/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springProj/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springProject/target/m2e-wtp/web-resources/META-INF/maven/kr.or/ddit/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../springProject/target/m2e-wtp/web-resources/META-INF/maven/kr.or/ddit/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webSocket.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webSocket/src/main/java/com/suin/zzang/controller/SusuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webSocket/src/main/java/com/suin/zzang/controller/SusuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webSocket/target/classes/com/suin/zzang/controller/SusuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webSocket/target/classes/com/suin/zzang/controller/SusuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../webSocket/target/zzang-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/suin/zzang/controller/SusuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../webSocket/target/zzang-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/suin/zzang/controller/SusuController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 8
+}]]></component>
   <component name="ProjectId" id="2SmtIUrEfdl9l5AVfeyfvoTM5KU" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/leehyejin/Project/ddit/ddit/emptyProject&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;모듈&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.23448277&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;fee13acfc1999c133cf877b502ef096a&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/leehyejin/Project/ddit/ddit/emptyProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "모듈",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.23448277",
+    "spring.configuration.checksum": "fee13acfc1999c133cf877b502ef096a",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.78" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.78" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
@@ -144,6 +152,7 @@
       <workItem from="1689763505411" duration="1928000" />
       <workItem from="1690355152967" duration="37000" />
       <workItem from="1690954084358" duration="19000" />
+      <workItem from="1692796976379" duration="15000" />
     </task>
     <servers />
   </component>

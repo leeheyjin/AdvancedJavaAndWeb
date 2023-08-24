@@ -14,6 +14,11 @@ public class SusuController {
     @Autowired
     private Susu susuSVC;
 
+    @GetMapping("/index")
+    public String getView() {
+        return "susu";
+    }
+
     // restful 방식을 적용하면 기본 다섯가지: get(리스트, 하나), post, put, delete
     @ResponseBody
     @GetMapping(value = "/susus", produces = "application/json;charset=utf-8")
