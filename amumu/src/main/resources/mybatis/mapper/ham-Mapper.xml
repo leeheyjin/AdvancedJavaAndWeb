@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.ddit.amumu.mapper.HamMapper">
+
+    <select id="listHam" resultType="HamVO">
+        select *
+        from ham
+    </select>
+
+    <select id="getHam" parameterType="HamVO" resultType="HamVO">
+        select *
+        from ham
+        where ham_num = #{hamNum}
+    </select>
+
+    <insert id="insertHam" parameterType="HamVO">
+        insert into ham
+        values (seq_ham.nextval, #{hamName}, #{hamContent}, #{hamFile})
+    </insert>
+
+    <update id="updateHam" parameterType="HamVO">
+        UPDATE ham
+        SET ham_name=#{hamName},
+            ham_content=#{hamContent},
+            hamFile=#{hamfile}
+        WHERE ham_num = #{hamNum}
+    </update>
+
+    <delete id="deleteHam" parameterType="HamVO">
+        delete
+        from ham
+        where ham_num = #{hamNum}
+    </delete>
+</mapper>
