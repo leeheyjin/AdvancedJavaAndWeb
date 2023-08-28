@@ -15,26 +15,26 @@ public class HamServiceImpl implements HamService {
 
     @Override
     public List<HamVO> listHam() {
-        return null;
+        return hamMapper.listHam();
     }
 
     @Override
     public HamVO getHam(HamVO hamVO) {
-        return null;
+        return hamMapper.getHam(hamVO);
     }
 
     @Override
     public int insertHam(HamVO hamVO) {
-        return 0;
+        return hamMapper.insertHam(hamVO);
     }
 
     @Override
     public int updateHam(HamVO hamVO) {
-        return 0;
+        return hamMapper.updateHam(hamVO);
     }
 
     @Override
     public int deleteHam(HamVO hamVO) {
-        return 0;
+        return hamMapper.deleteHam(hamVO);
     }
 }

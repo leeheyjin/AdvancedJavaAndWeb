@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+</head>
+<body>
+<div id="list"></div>
+<form action="">
+    넘버: <input type="text" name="hamNum" value=""><br>
+    이름: <input type="text" name="hamName" value=""><br>
+    내용: <textarea name="hamContent"></textarea><br>
+    파일: <input type="text" name="hamFile" value=""><br>
+    <button id="create" type="button">생성</button>
+    <button id="search" type="button">조회</button>
+    <button id="modify" type="button">수정</button>
+    <button id="delete" type="button">삭제</button>
+</form>
+<script>
+    const $list = $("#list");
+    $(function () {
+        getList();
+    });
+
+    const $creBtn = $("#create");
+    const $schBtn = $("#search");
+    const $modBtn = $("#modify");
+    const $delBtn = $("#delete");
+
+    const $hamNum = $("input[name=hamNum]");
+    const $hamName = $("input[name=hamName]");
+    const $hamContent = $("textarea[name=hamContent]");
+    const $hamFile = $("input[name=hamFile]");
+    $schBtn.on("click", function () {
+        $.ajax({
+            type: "get",
+            url: `/rest/ham/${$hamNum.val()}`,
+            dataType: "text",
+            success: function (result) {
+                if (result) {
+                    console.log(result);
+                    result = JSON.parse(result);
+                    $hamName.val(result.hamName);
+                    $hamContent.val(result.hamContent);
+                    $hamFile.val(result.hamFile);
+                } else {
+                    alert("없는 번호입니다.");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("code: " + xhr.status);
+                console.log("message: " + xhr.responseText);
+                console.log("error: " + xhr.error);
+            },
+        });
+    });
+
+    $creBtn.on("click", function () {
+        let hamVO = {
+            hamName: $hamName.val(),
+            $hamContent: $hamContent.val(),
+            $hamFile: $hamFile.val()
+        };
+        console.log("hamVO: ", hamVO);
+
+        $.ajax({
+            type: "post",
+            url: "/rest/ham",
+            data: JSON.stringify(hamVO),
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                if (result) {
+                    alert("완료되었습니다");
+                    getList();
+                } else {
+                    alert("입력에 실패했습니다");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("code: " + xhr.status);
+                console.log("message: " + xhr.responseText);
+                console.log("error: " + xhr.error);
+            },
+        });
+    });
+
+    $modBtn.on("click", function () {
+        let hamVO = {
+            hamName: $hamName.val(),
+            $hamContent: $hamContent.val(),
+            $hamFile: $hamFile.val()
+        };
+        console.log("hamVO: ", hamVO);
+
+        $.ajax({
+            type: "put",
+            url: "/rest/ham",
+            data: JSON.stringify(hamVO),
+            contentType: "application/json;charset=utf-8",
+            dataType: "text",
+            success: function (result) {
+                console.log(result);
+                if (result) {
+                    alert("완료되었습니다");
+                    getList();
+                } else {
+                    alert("입력에 실패했습니다");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("code: " + xhr.status);
+                console.log("message: " + xhr.responseText);
+                console.log("error: " + xhr.error);
+            },
+        });
+    });
+
+    $delBtn.on("click", function () {
+        $.ajax({
+            type: "delete",
+            url: `/rest/ham/${$hamNum.val()}`,
+            dataType: "text",
+            success: function (result) {
+                if (result) {
+                    console.log(result);
+                    getList();
+                } else {
+                    alert("없는 번호입니다.");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("code: " + xhr.status);
+                console.log("message: " + xhr.responseText);
+                console.log("error: " + xhr.error);
+            },
+        });
+    });
+
+    function getList() {
+        $.ajax({
+            url: "/rest/ham",
+            type: "get",
+            dataType: "text",
+            success: function (result) {
+                result = JSON.parse(result);
+                console.log(result);
+                result.sort(function (b, a) {
+                    return a.hamNum - b.hamNum;
+                });
+
+                let tblStr = `<table border=1><tr><th>번호</th><th>이름</th><th>내용</th><th>파일명</th></tr>`
+                for (let i = 0; i < result.length; i++) {
+                    tblStr += `<tr>
+                                    <td>${result[i].hamNum}</td>
+                                    <td>${result[i].hamName}</td>
+                                    <td>${result[i].hamContent}</td>
+                                    <td>${result[i].hamFile}</td>
+                                </tr>`
+                }
+                tblStr += `</table>`;
+                $list.html(tblStr);
+            },
+            error: function (xhr, status, error) {
+                console.log("code: " + xhr.status);
+                console.log("message: " + xhr.responseText);
+                console.log("error: " + xhr.error);
+            },
+        });
+    };
+
+</script>
+</body>
+</html>
