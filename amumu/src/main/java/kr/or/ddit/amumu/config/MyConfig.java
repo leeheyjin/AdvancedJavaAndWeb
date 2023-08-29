@@ -9,6 +9,6 @@ public class MyConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         System.out.println("실행 완?");
-        registry.addResourceHandler("/kmerong").addResourceLocations("file:///Users/leehyejin/Project/ddit/upload/amumu");
+        registry.addResourceHandler("/kmerong/**").addResourceLocations("file:///Users/leehyejin/Project/ddit/upload/amumu");
     }
 }

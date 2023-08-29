@@ -28,10 +28,10 @@ public class HamMapperTest {
     }
 
     @Test
-    @DisplayName("안예린 delete")
+    @DisplayName("햠 delete")
     public void deleteTest() {
         HamVO hamVO = new HamVO();
-        hamVO.setHamNum(6);
+        hamVO.setHamNum(4);
         Assertions.assertEquals(1, hamMapper.deleteHam(hamVO));
     }
 
