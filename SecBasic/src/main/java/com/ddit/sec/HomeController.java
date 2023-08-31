@@ -22,12 +22,11 @@ public class HomeController {
         log.info("Welcome home! The client locale is {}.", locale);
 
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String angel = bCryptPasswordEncoder.encode("angel");
-        String angma = bCryptPasswordEncoder.encode("angma");
-        log.debug("ANGEL: " + angel);
-        log.debug("ANGMA: " + angma);
+        String admin = bCryptPasswordEncoder.encode("ADMIN");
+        String user = bCryptPasswordEncoder.encode("USER");
+        log.debug("ADMIN: " + admin);
+        log.debug("USER: " + user);
 
-        log.debug("isSame: " + bCryptPasswordEncoder.matches("angel", angel));
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 

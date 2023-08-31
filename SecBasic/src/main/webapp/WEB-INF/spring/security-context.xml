@@ -7,20 +7,40 @@
 
     <bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder"/>
 
-    <security:http auto-config="true">
-        <security:intercept-url pattern="/angel/*" access="hasRole('ROLE_ANGEL')"/>
-        <security:intercept-url pattern="/*" access="permitAll()"/>
-        <security:form-login login-page="/myLogin"/>
-        <security:logout logout-url="/logout"/>
+    <security:http pattern="/admin/**" authentication-manager-ref="bug">
+        <security:intercept-url pattern="/admin/aaa" access="hasRole('ROLE_ADMIN')"/>
+        <security:form-login login-page="/admin/mylogin" login-processing-url="/admin/login"/>
     </security:http>
 
-    <security:authentication-manager>
+    <security:http pattern="/user/**" authentication-manager-ref="ham">
+        <security:intercept-url pattern="/user/aaa" access="hasRole('ROLE_USER')"/>
+        <security:form-login login-page="/user/youlogin" login-processing-url="/user/login"/>
+    </security:http>
+
+    <!-- 나머지 전부 안 됨! 위 설정과 충돌함 -->
+    <security:http>
+        <security:intercept-url pattern="/ccc" access="hasRole('ROLE_ALL')"/>
+        <security:intercept-url pattern="/*" access="permitAll"/>
+        <security:form-login login-page="/mlogin"/>
+    </security:http>
+
+    <security:authentication-manager id="ham">
         <security:authentication-provider> <!-- 주민등록증 -->
             <security:password-encoder ref="passwordEncoder"/>
-            <security:user-service>
-                <security:user name="ham" authorities="ROLE_ANGEL"
-                               password="$2a$10$WVcPNU8QdzlojCJiEdNMguD7JN19s.IDMnZ2dJyADJI..ce1G/Jg6"/>
-            </security:user-service>
+            <security:admin-service>
+                <security:admin name="ham" authorities="ROLE_ADMIN"
+                                password="$2a$10$nctG1lPix9dm3UYYWm.qSONfKozXPr483rVhW1XDozOAIGFAzJ1hO"/>
+            </security:admin-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <security:authentication-manager id="bug">
+        <security:authentication-provider> <!-- 주민등록증 -->
+            <security:password-encoder ref="passwordEncoder"/>
+            <security:admin-service>
+                <security:admin name="bug" authorities="ROLE_USER"
+                                password="$2a$10$jjx6pgKqD21YC1e0PI661eWKYHZn/AzeCocFG/RsvZ8ZEN61Sx6tG"/>
+            </security:admin-service>
         </security:authentication-provider>
     </security:authentication-manager>
 
