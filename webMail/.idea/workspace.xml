@@ -10,16 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b83334d-838b-46c4-b7fe-fb151d288c46" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/../SecBasic.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecBasic/src/main/java/com/ddit/sec/Facility.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecBasic/src/main/java/com/ddit/sec/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/src/main/java/com/ddit/sec/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecBasic/src/main/java/com/ddit/sec/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/src/main/java/com/ddit/sec/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecBasic/src/main/webapp/WEB-INF/spring/security-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/src/main/webapp/WEB-INF/spring/security-context.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecBasic/target/classes/com/ddit/sec/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/target/classes/com/ddit/sec/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecBasic/target/classes/com/ddit/sec/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/target/classes/com/ddit/sec/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecBasic/target/sec-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/ddit/sec/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/target/sec-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/ddit/sec/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecBasic/target/sec-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/ddit/sec/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/target/sec-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/ddit/sec/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SecBasic/target/sec-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/security-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/target/sec-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/security-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/or/ddit/controller/MailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/sendMail.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/or/ddit/controller/MailController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/kr/or/ddit/controller/MailController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/WEB-INF/spring/root-context.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/sendMail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/sendMail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/resources/summernote/font/summernote.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/resources/summernote/font/summernote.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/resources/summernote/font/summernote.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/resources/summernote/font/summernote.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/resources/summernote/summernote-ko-KR.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/resources/summernote/summernote-lite.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/resources/summernote/summernote-lite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ddit-1.0.0-BUILD-SNAPSHOT/resources/summernote/summernote-lite.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/kr.or/ddit/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/kr.or/ddit/pom.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +81,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.17035218",
+    "settings.editor.selected.configurable": "spring",
     "spring.configuration.checksum": "fee13acfc1999c133cf877b502ef096a",
     "vue.rearranger.settings.migration": "true"
   }
@@ -99,6 +108,7 @@
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="15f3114d-aff1-4306-aa13-a26f8526b3e4" />
         <option name="DEPLOY_TOMCAT_APPS" value="true" />
+        <option name="HTTP_PORT" value="8272" />
         <option name="PRESERVE_SESSIONS" value="true" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
@@ -190,10 +200,15 @@
       <workItem from="1690954084358" duration="19000" />
       <workItem from="1692796976379" duration="15000" />
       <workItem from="1693363352643" duration="4546000" />
+      <workItem from="1693440627094" duration="11097000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
