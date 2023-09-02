@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <table border="1" style="border-collapse:collapse">
+        <tr>
+            <th>TMPLT_CD</th>
+            <th>TMPLT_NM</th>
+            <th>USE_YN</th>
+            <th>CLSF_NM</th>
+            <th>TMPLT_CN</th>
+            <th>SERVICE_CLASS_NM</th>
+            <th>ICON</th>
+            <th>BACKGROUND_COLOR</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>근태조정신청서</td>
+            <td>N</td>
+            <td>근태</td>
+            <td>&lt;table class=&quot;table table-bordered doc-aprvCn&quot;
+                data=&quot;$aprvCn&quot;&gt;<br />&lt;colgroup&gt;<br />&lt;col
+                style=&quot;width:15%&quot;&gt;<br />&lt;col style=&quot;width:35%&quot;&gt;<br />&lt;col
+                style=&quot;width:15%&quot;&gt;<br />&lt;col
+                style=&quot;width:35%&quot;&gt;<br />&lt;/colgroup&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;조정 전&lt;br&gt; 출근시간&lt;/td&gt;<br />&lt;td&gt;&lt;span
+                id=&quot;waBfrBgngDt&quot; class=&quot;auto&quot;&gt;&lt;/span&gt;&lt;/td&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;조정 전&lt;br&gt; 퇴근시간&lt;/td&gt;<br />&lt;td&gt;&lt;span
+                id=&quot;waBfrEndDt&quot;
+                class=&quot;auto&quot;&gt;&lt;/span&gt;&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;조정 후&lt;br&gt; 출근시간&lt;/td&gt;<br />&lt;td&gt;&lt;span
+                id=&quot;waBgngDt&quot; class=&quot;auto&quot;&gt;&lt;/span&gt;&lt;/td&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;조정 후&lt;br&gt; 퇴근시간&lt;/td&gt;<br />&lt;td&gt;&lt;span
+                id=&quot;waEndDt&quot;
+                class=&quot;auto&quot;&gt;&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;조정사유&lt;/td&gt;<br />&lt;td colspan=&quot;3&quot;&gt;<br />&lt;span
+                id=&quot;waReason&quot;
+                class=&quot;auto&quot;&gt;&lt;/span&gt;<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;/table&gt;</td>
+            <td>WorkAdjServiceImpl</td>
+            <td><i class="fa-regular fa-clipboard"></i></td>
+            <td>info</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>휴가신청서</td>
+            <td>N</td>
+            <td>근태</td>
+            <td>&lt;table class=&quot;table table-bordered doc-aprvCn&quot;
+                data=&quot;$aprvCn&quot;&gt;<br />&lt;colgroup&gt;<br />&lt;col
+                style=&quot;width:15%&quot;&gt;<br />&lt;col style=&quot;width:35%&quot;&gt;<br />&lt;col
+                style=&quot;width:15%&quot;&gt;<br />&lt;col
+                style=&quot;width:35%&quot;&gt;<br />&lt;/colgroup&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;휴가항목&lt;/td&gt;<br />&lt;td&gt;&lt;span id=&quot;viType&quot;
+                class=&quot;auto&quot;&gt;&lt;/span&gt;&lt;/td&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;차감일수&lt;/td&gt;<br />&lt;td&gt;&lt;span id=&quot;viDay&quot;
+                class=&quot;auto&quot;&gt;&lt;/span&gt;&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;휴가기간&lt;/td&gt;<br />&lt;td colspan=&quot;3&quot;&gt;&lt;span
+                id=&quot;vacPeriod&quot;
+                class=&quot;auto&quot;&gt;&lt;/span&gt;&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;신청사유&lt;/td&gt;<br />&lt;td colspan=&quot;3&quot;&gt;<br />&lt;span
+                id=&quot;vacReason&quot;
+                class=&quot;auto&quot;&gt;&lt;/span&gt;<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;/table&gt;</td>
+            <td>VacationServiceImpl</td>
+            <td><i class="far fa-id-card"></i></td>
+            <td>info</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>교육신청서</td>
+            <td>Y</td>
+            <td>교육</td>
+            <td>&lt;table class=&quot;table table-bordered doc-aprvCn&quot;
+                data=&quot;$aprvCn&quot;&gt;<br />&lt;colgroup&gt;<br />&lt;col
+                style=&quot;width:15%&quot;&gt;<br />&lt;col style=&quot;width:35%&quot;&gt;<br />&lt;col
+                style=&quot;width:15%&quot;&gt;<br />&lt;col
+                style=&quot;width:35%&quot;&gt;<br />&lt;/colgroup&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;교육명&lt;/td&gt;<br />&lt;td&gt;<br />&lt;span
+                class=&quot;text&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;form-control&quot;
+                name=&quot;&quot; id=&quot;traningNm&quot;&gt;&lt;/span&gt;<br />&lt;/td&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;교육일자&lt;/td&gt;<br />&lt;td&gt;<br />&lt;span
+                class=&quot;date&quot;&gt;&lt;input type=&quot;date&quot; class=&quot;form-control&quot;
+                name=&quot;&quot;
+                id=&quot;trainingDt&quot;&gt;&lt;/span&gt;<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;교육기관&lt;/td&gt;<br />&lt;td&gt;<br />&lt;span
+                class=&quot;text&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;form-control&quot;
+                name=&quot;&quot; id=&quot;trainingPlace&quot;&gt;&lt;/span&gt;<br />&lt;/td&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;교육비&lt;/td&gt;<br />&lt;td&gt;<br />&lt;span
+                class=&quot;text&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;form-control&quot;
+                name=&quot;&quot;
+                id=&quot;trainingCharge&quot;&gt;&lt;/span&gt;<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;담당업무&lt;/td&gt;<br />&lt;td colspan=&quot;3&quot;&gt;<br />&lt;span
+                class=&quot;text&quot;&gt;&lt;input type=&quot;text&quot; class=&quot;form-control&quot;
+                name=&quot;&quot;
+                id=&quot;myJob&quot;&gt;&lt;/span&gt;<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot; rowspan=&quot;4&quot;&gt;해당 교육에 대한 현수준&lt;/td&gt;<br />&lt;td
+                colspan=&quot;3&quot;&gt;<br />&lt;input type=&quot;radio&quot; name=&quot;level&quot;&gt;<br />교육을 이수하지
+                않으면 해당 직무 수행이 불가능하다.<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                colspan=&quot;3&quot;&gt;<br />&lt;input type=&quot;radio&quot; name=&quot;level&quot;&gt;<br />교육을 이수하지
+                않으면 해당 직무 수행에 약간의 차질이 발생한다.<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                colspan=&quot;3&quot;&gt;<br />&lt;input type=&quot;radio&quot; name=&quot;level&quot;&gt;<br />교육을 이수하지
+                않아도 직무수행은 가능하나, 만족스런 수준이 아니다.<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                colspan=&quot;3&quot;&gt;<br />&lt;input type=&quot;radio&quot; name=&quot;level&quot;
+                id=&quot;check1&quot;&gt;<br />교육을 이수하지 않아도 일정수준 이상이나 수준을 한단계 더 높이고
+                싶다.<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td class=&quot;doc-header&quot;
+                rowspan=&quot;5&quot;&gt;해당 교육에 대한 업무연관성&lt;/td&gt;<br />&lt;td colspan=&quot;3&quot;&gt;<br />&lt;input
+                type=&quot;radio&quot; name=&quot;rel&quot; id=&quot;check2&quot;&gt;<br />현재 해당업무를 수행하고
+                있다.<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                colspan=&quot;3&quot;&gt;<br />&lt;input type=&quot;radio&quot; name=&quot;rel&quot;&gt;<br />한달 이내 해당업무
+                수행 예정이다.<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                colspan=&quot;3&quot;&gt;<br />&lt;input type=&quot;radio&quot; name=&quot;rel&quot;&gt;<br />6개월 이내
+                해당업무 수행 예정이다.<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                colspan=&quot;3&quot;&gt;<br />&lt;input type=&quot;radio&quot; name=&quot;rel&quot;&gt;<br />아직 수행예정은
+                없으나 해당업무를 수행하기 위한 사전지식을 습득하고 싶다.<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                colspan=&quot;3&quot;&gt;<br />&lt;input type=&quot;radio&quot; name=&quot;rel&quot;&gt;<br />특정 업무 수행을
+                위해서가 아닌 공통역량(or 기본역량)이라 판단된다.<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;tr&gt;<br />&lt;td
+                class=&quot;doc-header&quot;&gt;참가목적&lt;/td&gt;<br />&lt;td colspan=&quot;3&quot;&gt;<br />&lt;span
+                class=&quot;textarea&quot;&gt;&lt;textarea class=&quot;form-control&quot; rows=&quot;3&quot;
+                id=&quot;trainingReason&quot;&gt;&lt;/textarea&gt;&lt;/span&gt;<br />&lt;/td&gt;<br />&lt;/tr&gt;<br />&lt;/table&gt;
+            </td>
+            <td>null</td>
+            <td><i class="fa-regular fa-clipboard"></i></td>
+            <td>warning</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>지출결의서</td>
+            <td>Y</td>
+            <td>지출</td>
+            <td>ddddddddddddddddddddd</td>
+            <td>null</td>
+            <td><i class="far fa-list-alt"></i></td>
+            <td>success</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>유류비신청서</td>
+            <td>Y</td>
+            <td>지출</td>
+            <td>eeeeeeeeeeeeeeee</td>
+            <td>null</td>
+            <td><i class="far fa-list-alt"></i></td>
+            <td>success</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>경조금신청서</td>
+            <td>Y</td>
+            <td>인사</td>
+            <td>gggggggggggggggggg</td>
+            <td>null</td>
+            <td><i class="far fa-file"></i></td>
+            <td>danger</td>
+        </tr>
+    </table>
+</body>
+
+</html>

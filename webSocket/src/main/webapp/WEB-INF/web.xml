@@ -25,7 +25,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<multipart-config>
-			<location>e:/temp</location>
+			<location>/Users/leehyejin</location>
 			<max-file-size>209715200</max-file-size>
 			<max-request-size>209715200</max-request-size>
 			<file-size-threshold>1024</file-size-threshold>
