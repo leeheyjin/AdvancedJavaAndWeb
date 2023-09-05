@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        div {
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    작년값 <input type="text" name="" id="lastVal" value=""><br>
+    올해값 <input type="text" name="" id="thisVal" value=""><br>
+    <button onclick="fReDraw()">차트다시그리기</button>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+</body>
+<script>
+    const myLastVal = document.querySelector("#lastVal");
+    const myThisVal = document.querySelector("#thisVal");
+
+    function fReDraw() {
+        myChart.data.datasets[0].data = myLastVal.value.split(", ");
+        myChart.data.datasets[1].data = myThisVal.value.split(", ");
+        myChart.update();
+    }
+
+    const ctx = document.getElementById('myChart');
+    const myChart = new Chart(ctx, {
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'age'],
+            datasets: [{
+                type: 'line',
+                label: '작년',
+                data: [12, 19, 3, 5, 2, 3, 20],
+                borderWidth: 1
+            }, {
+                type: 'bar',
+                label: '올해',
+                data: [121, 191, 31, 51, 21, 31, 15],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</html>
