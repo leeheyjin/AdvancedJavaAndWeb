@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이문서는 mybatis 환경 설정 파일입니다. -->
+<!DOCTYPE configuration PUBLIC "//mybatis.org/DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- DB연동에 사용할 properties파일 정보 -->
+	<properties
+		resource="kr/or/ddit/mybatis/config/dbinfo.properties"></properties>
+
+	<!-- mybatis 설정과 관련된 기본 셋팅 선언 -->
+	<settings>
+		<!-- 데이터가 null로 전달이 되었으면 빈칸으로 인지하지 말고 null로 인식해라 -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<!-- SQL문의 피라미터나 결과를 저장할 객체를 지정할 떄 패키지명까지 포함한 전체 이름을 지정해 주어야 하는데 그것을 짧은 
+		이름으로 사용할 별칭을 설정한다. -->
+	<typeAliases>
+		<typeAlias alias="MemberVO" type="kr.or.ddit.member.vo.MemberVO" />
+		<typeAlias alias="chartVO" type="kr.or.ddit.member.vo.ChartVO" />
+		<typeAlias alias="chartCampVO" type="kr.or.ddit.campinfo.vo.ChartCampVO" />
+		<typeAlias alias="couponVO" type="kr.or.ddit.coupon.vo.CouponVO" />
+		<typeAlias alias="CommunityVO" type="kr.or.ddit.community.vo.CommunityVO" />
+		<typeAlias alias="NoticeVO" type="kr.or.ddit.notice.vo.NoticeVO" />
+		<typeAlias alias="MentVO" type="kr.or.ddit.community.vo.MentVO" />
+		<typeAlias alias="EventVO" type="kr.or.ddit.event.vo.EventVO" />
+		<typeAlias alias="CampInfoVO" type="kr.or.ddit.campinfo.vo.CampInfoVO" />
+		<typeAlias alias="ReservationVO" type="kr.or.ddit.reservation.vo.ReservationVo" />
+		<typeAlias alias="CampZoneVO" type="kr.or.ddit.campzone.vo.CampzoneVo" />
+		<typeAlias alias="blackListVO" type="kr.or.ddit.blacklist.vo.BlackListVO" />
+		<typeAlias alias="AlarmVO" type="kr.or.ddit.alarm.vo.AlarmVO" />
+		<typeAlias alias="QuestionVO" type="kr.or.ddit.questionboard.vo.QuestionVO" />
+		<typeAlias alias="AnswerVO" type="kr.or.ddit.answerboard.vo.AnswerVO" />
+		<typeAlias alias="ReportVO" type="kr.or.ddit.report.vo.ReportVO" />
+		<typeAlias alias="WishlistVO" type="kr.or.ddit.wishlist.vo.WishlistVo" />
+	</typeAliases>
+
+	<!-- DB에 연결할 내용을 위에서 가져온 properties파일의 내용을 이용하여 설정한다. -->
+	<environments default="oracleEnv">
+		<environment id="oracleEnv">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${user}" />
+				<property name="password" value="${pass}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- DB에 사용되는 SQL문이 작성된 mapper파일들을 등록한다. -->
+	<mappers>
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-coupon.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-member.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-community.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-campInfo.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-reservation.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-campzone.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-blacklist.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-ment.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-chart.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-chartCamp.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-notice.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-event.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-alarm.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-question.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-answer.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-report.xml" />
+		<mapper resource="kr/or/ddit/mybatis/mappers/yacam-wishlist.xml" />
+	</mappers>
+
+</configuration>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 mybatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Community">
+	
+	<sql id="dynamicCondition">
+   <where>
+      <if test="!(stype == '' or sword == '')">
+           ${stype} like  '%'||#{sword}||'%'
+       </if>
+       
+   </where>
+</sql>
+	
+	<select id="listPerPage" resultType="CommunityVO" parameterType="map">
+		select A.* from 
+     (select rownum as rnum , B.* from
+        ( select * from Community
+          <include refid="dynamicCondition"/> 
+               order by  comm_no desc ) B 
+    <![CDATA[
+          where rownum <= #{end}) A
+       where A.rnum >= #{start} 
+     ]]>      
+	</select>
+	
+	<select id="totalCount" resultType="int" parameterType="map">
+		select count(*) from Community where 1=1
+		<if test="stype == 'comm_ttl' and !(sword == '')">
+		  and comm_ttl like  '%'||#{sword}||'%'
+		</if>
+		<if test="stype == 'mem_id' and !(sword == '')">
+		  and mem_id like  '%'||#{sword}||'%'
+		</if>
+		<if test="stype == 'comm_dtl' and !(sword == '')">
+		  and comm_dtl like  '%'||#{sword}||'%'
+		</if>
+		<!-- <include refid="dynamicCondition"/> -->
+	</select>
+	
+	<insert id="insertCommunity" parameterType="CommunityVO">
+    <selectKey keyProperty="comm_no" resultType="int" order="BEFORE">
+        select community_no_seq.nextval from dual
+    </selectKey>
+    insert into Community (comm_no, mem_id, comm_type, comm_file, comm_ttl, comm_dtl, comm_del, comm_hits, comm_date)
+    values(
+        #{comm_no},
+        #{mem_id},
+        #{comm_type},
+        #{comm_file},
+        #{comm_ttl},
+        #{comm_dtl},
+        #{comm_del},
+        0,
+        sysdate
+    )
+</insert>
+	
+	<update id="updateCommunity" parameterType="CommunityVO">
+		update Community set comm_type = #{comm_type},
+							comm_ttl = #{comm_ttl},
+							comm_file = #{comm_file},
+							comm_dtl = #{comm_dtl}
+		where comm_no = #{comm_no}		
+	</update>
+	
+	<delete id="deleteCommunity" parameterType="int">
+		delete from Community where comm_no = #{data}
+	</delete>
+	
+	<update id="updateHit" parameterType="int">
+		update Community
+		set comm_hits = comm_hits + 1
+		where comm_no = #{data}
+	</update>
+	
+	<select id="selectNo" resultType="CommunityVO" parameterType="int">
+		select * from community
+		where comm_no = #{comm_no}
+	</select>
+
+	
+	<select id="listSelectBoard" resultType="CommunityVO" parameterType="String">
+		
+		select * from community
+		where comm_type =  #{data}
+	</select>
+	
+	
+</mapper>
+		
+		

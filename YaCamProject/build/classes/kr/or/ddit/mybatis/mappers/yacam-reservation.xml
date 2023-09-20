@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 mybatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="reservation">
+
+<!-- 	<insert id="insert" parameterType="ReservationVO"> -->
+<!-- 		insert into reservation (res_no, mem_id, zone_no, camp_no, res_date, res_checkin, res_checkout,res_person, res_car_count, res_price) -->
+<!-- 			values(reservation_no_seq.nextval, #{mem_id}, #{zone_no}, #{camp_no}, sysdate, ,#{res_checkin}, #{res_checkout}, 1, 1, 1) -->
+		
+<update id="updateCoupon" parameterType="ReservationVO">
+  update coupon set cup_status = 'N'
+  where cup_no = #{cup_no}
+</update>
+
+<!-- 	</insert> -->
+<insert id="insertPayment" parameterType="ReservationVO">
+  insert into payment (pay_no, pay_amount, pay_date, pay_cancel, cup_no, res_no, mem_id, zone_no, camp_no)
+  values (payment_no_seq.nextval, #{res_price}, sysdate, 'N', #{cup_no}, #{res_no}, #{mem_id}, #{zone_no}, #{camp_no})
+</insert>
+
+
+<insert id="insert" parameterType="ReservationVO">
+  insert into reservation (res_no, mem_id, zone_no, camp_no, res_date, res_checkin, res_checkout, res_person, res_car_count, res_price)
+  values (reservation_no_seq.nextval, #{mem_id}, #{zone_no}, #{camp_no}, to_date(sysdate,'YYYY-MM-DD'), to_date(#{res_checkin},'YYYY-MM-DD'), to_date(#{res_checkout},'YYYY-MM-DD'), #{res_person}, #{res_car_count}, #{res_price})
+</insert>
+
+
+<select id="selectReservation" parameterType="String" resultType="ReservationVO" >
+	select * from reservation where zone_no=#{zone_no}
+</select>
+
+<select id="selectCampzone" parameterType="CampZoneVO" resultType="CampZoneVO">
+	select * from campzone where camp_no=#{camp_no} and zone_no=#{zone_no}
+</select>
+
+
+<!-- select distinct zone_no, camp_no -->
+<!-- from reservation -->
+<!-- where (to_char(res_checkin,'YYYY-MM-DD') between #{res_checkin} and #{res_checkout})  -->
+<!-- or to_char(res_checkout,'YYYY-MM-DD') between #{res_checkin} and to_char(to_date(#{res_checkout}, 'YYYY-MM-DD')- 1) and camp_no='' -->
+<select id="dateCheck" resultType="ReservationVO" parameterType="ReservationVO">
+
+select distinct zone_no, camp_no
+from reservation
+where ((to_char(res_checkin,'YYYY-MM-DD') between #{res_checkin} and #{res_checkout})
+or (to_char(res_checkout,'YYYY-MM-DD') between #{res_checkin} and to_char(to_date(#{res_checkout}, 'YYYY-MM-DD')- 1)))
+and camp_no=#{camp_no}
+</select>
+
+<select id="zoneCheck" resultType="CampZoneVO" parameterType="ReservationVO">
+SELECT *
+FROM campzone
+WHERE camp_no = #{camp_no}
+  AND (zone_no, camp_no) NOT IN (
+    SELECT DISTINCT zone_no, camp_no
+    FROM reservation
+    WHERE (
+        (to_char(res_checkin, 'YYYY-MM-DD') BETWEEN #{res_checkin} AND #{res_checkout})
+        OR (to_char(res_checkout, 'YYYY-MM-DD') BETWEEN #{res_checkin} AND to_char(to_date(#{res_checkout}, 'YYYY-MM-DD') - 1))
+    )
+    AND camp_no = #{camp_no}
+  ) order by zone_no
+</select>
+
+<select id="selectMyReservation" resultType="ReservationVO" parameterType="String">
+SELECT *
+FROM reservation
+WHERE res_no = (SELECT MAX(res_no) 
+FROM reservation) 
+and (reservation.res_checkout>sysdate) 
+and mem_id=#{mem_id}
+</select>
+
+<delete id="deleteReservation" parameterType="String">
+delete reservation where zone_no = #{zone_no}
+</delete>
+
+</mapper>
+		
+		

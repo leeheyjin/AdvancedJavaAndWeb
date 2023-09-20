@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+/* 바디 및 배경 */
+body{
+	background-color: #f6f6f6;
+	font-family: "mapleBold";	
+}
+
+/* 헤더 */
+#header{
+	width: 100%;
+	height: 74px;
+	margin: 0px auto;
+	position: relative;
+	background-color: #fff;
+}
+/* 탑 */
+#top{
+	display: flex;
+	width: 100%;
+	height: 60px;
+	position: relative;
+}
+#logoimg{
+	margin-left: 5px;
+	margin-bottom: 10px;
+	width: 170px;
+	height: 85px;
+}
+#login{
+	border-radius: 8px;
+	position: absolute;
+	right: 50px;
+	top: 15px;
+}
+#mypage{
+	border-radius: 8px;
+	position: absolute;
+	right: 150px;
+	top: 15px;
+}
+#logout{
+	border-radius: 8px;
+	position: absolute;
+	right: 50px;
+	top: 15px;
+}
+#button{
+	color: ivory;
+	background-color: limegreen;
+	width: 70px;
+	height: 30px;
+	border-radius: 80px;
+	font-weight: bold;
+}
+#button-my{
+	color: ivory;
+	background-color: limegreen;
+	width: 90px;
+	height: 30px;
+	border-radius: 80px;
+	font-weight: bold;
+}
+#button-out{
+	color: ivory;
+	background-color: red;
+	width: 70px;
+	height: 30px;
+	border-radius: 80px;
+	font-weight: bold;
+}
+/* 이벤트 */
+#event{
+	border: 1px solid red;
+	width: 100%;
+	height: 848px;
+	position: relative;
+}
+#main{
+	border: 1px solid red;
+	width: 60%;
+	height: 848px;
+	position: relative;
+	left: 388px;
+    top: 150px;
+}
+#eventNav{
+	background-color: #FFF3EE;
+	height: 70px;
+	width: 100%;
+	position: relative;
+    top: -13px;
+    text-align: center;
+}
+h2{
+	font-size: 20px;
+	font-weight: bold;
+	padding-top: 20px;
+}
+#eventBox{
+	border: 1px solid red;
+	width: 60%;
+	height: 281px;
+	position: relative;
+}
+/* 풋터 */
+#footer{
+	position: relative;
+	top: 200px;
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
+}
+#customerOne{
+	height: 150px;
+	margin-left: 30px;
+}
+#customerTwo{
+	height: 150px;
+	margin-left: 300px;
+}
+#mainContent{	
+	display: flex;
+	flex-direction: row;
+	font-weight: bold;
+	color: gray;
+}
+#center{
+	font-size: 2px;
+	font-weight: bold;
+	color: black;
+}
+#content{
+	font-size: 1px;
+	margin-top: 5px;
+	color: gray;
+}
+/* 빈 공간 */
+#zero{
+	position: relative;
+	bottom: 46px;
+	width: 100%;
+	height: 30px;
+	background-color: #fff;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 mybatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="campzone">
+
+<!-- 	campzone 리스트 출력 -->
+	<select id="getAllList" resultType="CampZoneVO">
+		select * from campzone
+	</select>
+	
+<!--  -->
+	<select id="selectVo" resultType="CampZoneVO">
+		select * from campzone where camp_name=#{camp_name}, camp_no=#{camp_no}
+	</select>
+	
+<!-- 	campinfo 선택된거 값 가져오기 -->
+	<select id="selectCampInfoVo" resultType="CampInfoVO">
+		select * from campinfo where camp_name=#{campname} and camp_no=#{campno}
+	</select>
+	
+<!-- 	campzone 선택된거 값 가져오기 -->
+	<select id="selectCampZonevo" parameterType="String" resultType="CampZoneVO">
+		select * from campzone where camp_no=#{camp_no}
+	</select>
+	
+	
+	<select id="selectList" resultType="CampZoneVO" parameterType="CampZoneVO">
+	select * from campzone where camp_no=#{camp_no} and zone_type=#{zone_type}
+	</select>
+	
+	<select id="selectMyzone" resultType="CampZoneVO" parameterType="CampZoneVO">
+	select * from campzone where zone_no=#{zone_no} and camp_no=#{camp_no}
+	</select>
+
+	
+</mapper>
+		
+		

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 mybatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="Report">
+	
+	<sql id="dynamicCondition">
+   <where>
+      <if test="!(stype == '' or sword == '')">
+           ${stype} like  '%'||#{sword}||'%'
+       </if>
+   </where>
+	</sql>
+	
+	<insert id="insertReport" parameterType="ReportVO">
+    <selectKey keyProperty="rep_no" resultType="int" order="BEFORE">
+        select report_no_seq.nextval from dual
+    </selectKey>
+    insert into Report (rep_no, rep_reason, rep_dtl, comm_no, mem_id)
+    values(
+        #{rep_no},
+        #{rep_reason},
+        #{rep_dtl},
+        #{comm_no},
+        #{mem_id}
+    )
+</insert>
+	
+	<delete id="deleteReport" parameterType="int">
+		delete from Report where rep_no = #{data}
+	</delete>
+	
+	<update id="updateCount" parameterType="int">
+		update Report
+		set rep_count = rep_count + 1
+		where comm_no = #{data}
+	</update>
+	
+	<select id="countReport" parameterType="String" resultType="int">
+		select count(*) from report
+		where mem_id=#{mem_id}
+	</select>
+	
+	<select id="reportlistAll" resultType="ReportVO">
+		select * from report
+	</select>
+	
+	
+</mapper>
+		
+		

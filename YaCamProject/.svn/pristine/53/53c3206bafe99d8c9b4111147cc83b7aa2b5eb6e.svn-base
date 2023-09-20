@@ -1,0 +1,274 @@
+@charset "UTF-8";
+
+/*바디 배경*/
+body{
+	background-color: #f6f6f6;
+}
+
+/* 헤더 */
+#header{
+	width: 60%;
+	height: 200px;
+	margin: 0px auto;
+	position: relative;
+	background-color: #f6f6f6;
+}
+#headerTwo{
+	width: 60%;
+	height: 200px;
+	margin: 0px auto;
+	position: relative;
+	background-color: #fff;
+}
+/* 헤더 네브 */
+#head_box {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    line-height: 40px;
+    background-color: #FF5918;
+    font-weight: bold;
+    color: #fff;
+    font-size: 25px;
+    padding-top: 20px;
+    border-bottom: 2px solid #ddd;
+}
+#user{
+	font-weight: bold;
+	color: #FF5918;
+	font-size: 20px;
+}
+#insert{
+	font-weight: bold;
+	color: #FF5918;
+	font-size: 15px;
+}
+#nav{
+	width: 100%;
+	height: 150px;
+	display: flex;
+	flex-direction: row;
+	background-color: #fff;
+}
+#nav-up{
+	width: 100%;
+	height: 165px;
+	display: flex;
+	flex-direction: row;
+	background-color: #fff;
+}
+#nav_myinfo{
+	width: 300px;
+	height: 100%;
+	display: flex;
+	margin-left: 20px;
+	
+}
+#nav_report{
+	position: absolute;
+	top: 150px;
+	right: 26px;
+	width: 90px;
+	
+}
+#report{
+	font-weight: bold;
+	color: #222;
+	margin-top: 30px;
+	margin-left: 10px;
+	font-size: 13px;
+}
+#nav_manu{
+	position: absolute;
+	right: 30px;
+	top: 85px;
+}
+
+#nav_text{
+	display: inline-block;
+	width: 200px;
+	height: 60px;
+	margin-top: 40px;
+	padding: 20px;
+	padding-right: 0px;
+	font-size: 20px;
+}
+#nav_user{
+	display: inline-block;
+	width: 100%;
+	height: 60px;
+	margin-top: 40px;
+	padding: 25px;
+	padding-left: 0px;
+}
+#nav_td{
+	border-top: 1px solid #85b8fa;
+	border-bottom: 1px solid #85b8fa;
+	text-align: center;
+	line-height: 20px;
+	padding : 5px;
+	font-weight: bold;
+	font-size: 12px;
+	background-color: #4492f7;
+	color: #fff;
+}
+#nav_tdTwo{
+	border-bottom: 1px solid #85b8fa;
+	text-align: center;
+	line-height: 20px;
+	padding : 5px;
+	font-size: 12px;
+	background-color: #fff;
+	font-weight: bold;
+	color: #fd5700; 
+}
+#table{
+	border: 1px solid #85b8fa;
+	width: 100%;
+	background-color: #fff;
+	margin-top: 53px;
+	margin-left: 20px;
+}
+/* 바디 */
+#mainBody{
+	width: 60%;
+	height: 500px;
+	background-color: #fff;
+	margin-left: 385px;
+}
+#body{
+	width: 60%;
+	height: 541px;
+	margin: 0px auto;
+	background-color: #f6f6f6;
+}
+/* 테이블 */
+table{
+	width: 100%;
+	background-color: #fff;
+}
+tr{
+	box-sizing: content-box;
+	height: 32px;
+	width: 100px;
+}
+#std{
+	border: 1px solid #85b8fa;
+	text-align: center;
+	padding : 5px;
+	width: 100px;
+	height: 20px;
+}
+td{
+	border: 1px solid #85b8fa;
+	padding : 5px;
+	width: 100px;
+	height: 20px;
+}
+
+
+#box_size{
+	width: 70%;	
+	margin: 0px auto;
+}
+.tdOne{
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #4492f7;
+	color: #fff;
+}
+.tdTwo{
+	font-size: 13px;
+	font-weight: bold;
+	background-color: #fff;
+}
+#text{
+	width: 140px;
+}
+#title{
+	font-size: 20px;
+	color: ivory;
+	background-color: #4492f7;
+	font-weight: bold;
+}
+#inside{
+	border: 1px solid #85b8fa;
+	font-size: 13px;
+	color: #4d4d4d;
+	background-color: #fff;
+	font-weight: bold;
+}
+/* 이미지 */
+#user_img{
+	margin-top: 20px;
+	width: 100px;
+}
+#clock{
+	width: 50px;
+	height: 50px;
+	margin: 20px;
+	margin-top: 40px;
+}
+
+
+/* 버튼 */
+.mypaage_button{
+	display: inline-block;
+	width: 400px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: #4492f7;
+	color: ivory;
+	font-weight: bold;	
+	}
+.mypaage_button_one{
+	display: inline-block;
+	width: 120px;
+	height: 40px;
+	border-radius: 10px;
+	margin: 7px;
+	background-color: #4492f7;
+	color: ivory;
+	font-weight: bold;
+}
+
+#sub{
+	display: inline-block;
+	border-radius: 10px;
+	height : 50px;
+	width : 200px;
+	text-align: center;
+	margin : 0px auto;
+	margin-left: 475px;
+	margin-top: 30px;
+	background-color: limegreen;
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+}
+form{
+	text-align: center;
+}
+/*빈공간*/
+#zeroOne{
+	width: 100%;
+	height: 75px;
+	background-color: #f6f6f6;
+}
+#zero{
+	width: 100%;
+	height: 100px;
+	background-color: #f6f6f6;
+}
+#zeroTwo{
+	width: 60%;
+	height: 55px;
+	margin: 0px auto;
+	background-color: #fff;
+}
+#zeroThrid{
+	width: 60%;
+	height: 30px;
+	margin: 0px auto;
+	background-color: #f6f6f6;
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 mybatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="black">
+
+<insert id="insertBlackList" parameterType="String">
+	insert into blacklist values(BLACKLIST_NO_SEQ.nextval,#{mem_id},sysdate)
+</insert>
+<select id="blacklistAll" resultType="blackListVO">
+	select * from blacklist
+</select>
+
+<select id="deleteBlacklist" parameterType="String">
+	delete blacklist where mem_id=#{mem_id}
+</select>
+
+</mapper>
+		
+		

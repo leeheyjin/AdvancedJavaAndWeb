@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fc8a3d25-fb12-458e-8a10-30ae8e394d35" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../SecBasic/target/m2e-wtp/web-resources/META-INF/maven/com.ddit/sec/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/target/m2e-wtp/web-resources/META-INF/maven/com.ddit/sec/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SecBasic/target/m2e-wtp/web-resources/META-INF/maven/com.ddit/sec/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SecBasic/target/m2e-wtp/web-resources/META-INF/maven/com.ddit/sec/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springProject/target/m2e-wtp/web-resources/META-INF/maven/kr.or/ddit/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../springProject/target/m2e-wtp/web-resources/META-INF/maven/kr.or/ddit/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/java/test01/test01.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/java/test01/test01.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/java/test02/test02.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/java/test02/test02.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2V8WoMXdE8Fjr41XdoSVs90qcIV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="compactDirectories" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.Test02_Reflection">
+    <configuration name="Test01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.java.test03.Test01" />
+      <module name="test.java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.test03.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test02_Reflection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.java.test03.Test02_Reflection" />
+      <module name="test.java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.java.test03.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test02_Reflection" />
+        <item itemvalue="Application.Test01" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fc8a3d25-fb12-458e-8a10-30ae8e394d35" name="Changes" comment="" />
+      <created>1694218364973</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694218364973</updated>
+      <workItem from="1694218366289" duration="4410000" />
+      <workItem from="1694230549122" duration="1858000" />
+      <workItem from="1694407172893" duration="5000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

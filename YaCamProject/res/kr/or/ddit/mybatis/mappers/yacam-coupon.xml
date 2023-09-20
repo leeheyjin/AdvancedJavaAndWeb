@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 mybatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="coupon">
+
+	<insert id="createCoupon" parameterType="couponVO">
+	insert into coupon values(#{cup_no},#{mem_id},#{cup_name},#{cup_status},sysdate,sysdate+90)
+	</insert>
+	
+	<select id="selectCoupon" parameterType="String" resultType="couponVO">
+	select * from coupon where mem_id= #{mem_id} and cup_status = 'Y'
+	</select>
+
+</mapper>

@@ -1,0 +1,238 @@
+@charset "UTF-8";
+
+#main icon{
+	display: block;
+	margin: auto;
+	cursor: zoom-in;
+	background-color: hsl(0, 0%, 90%);
+	transition: background-color 300ms;
+}
+@font-face {
+	font-family: 'TheJamsil5Bold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+html, body{
+    min-width: 1500px;
+	min-height: 937px;    
+    font-family: "TheJamsil5Bold";
+    font-weight: 400;
+	transform: rotate(0.03deg);
+	margin:0;
+	position: relative;	
+}
+
+/*바디 배경*/
+body{
+	background-color: #f6f6f6;
+}
+
+/* 헤더 */
+#header{
+	width: 60%;
+	height: 206px;
+	margin: 0px auto;
+	position: relative;
+	background-color: #f6f6f6;
+}
+hr{
+	border: 3px solid #FF6529;
+	margin: 0 auto;
+    color: inherit;
+    opacity: .25;
+}
+#img2{
+	float: left;
+	margin-top: 15px;
+	margin-left: 30px;
+}
+/* 헤더 네브 */
+#head_box{
+	width: 100%;
+    height: 60px;
+    text-align: center;
+    line-height: 40px;
+    background-color: #fff;
+    font-weight: bold;
+    color: #FF5918;
+    font-size: 25px;
+    border-bottom: 2px solid #ddd;
+}
+
+사용자 에이전트 스타일시트
+div {
+    display: block;
+}
+#user {
+    font-weight: bold;
+    color: #FF5918;
+    font-size: 20px;
+}
+#insert1{
+	font-weight: bold;
+	color: #fd5700;
+	font-size: 15px;
+    margin-bottom: 3px;
+	
+}
+#insert{
+	font-weight: bold;
+	color: #fd5700;
+	font-size: 15px;
+}
+#nav{
+	width: 100%;
+	height: 138px;
+	display: flex;
+	flex-direction: row;
+	background-color: #f6f6f6;
+}
+#nav_myinfo{
+	width: 300px;
+	height: 100%;
+	display: flex;
+	margin-left: 20px;
+	
+}
+#nav_manu{
+	margin-left: 61.5%;
+}
+#nav_report{
+    width: 200px;
+    margin-top: -146px;
+    margin-left: 158px;
+}
+#report{
+    font-weight: bold;
+    color: #FF5918;
+    margin: 10px;
+    font-size: 13px;
+    width: 200px;
+	margin-top: 120%;
+    margin-left: -117%;
+}
+#nav_text{
+	display: inline-block;
+	width: 200px;
+	height: 60px;
+	margin-top: 40px;
+	padding: 20px;
+	padding-right: 0px;
+}
+#nav_user{
+	display: inline-block;
+	width: 100%;
+	height: 60px;
+	margin-top: 40px;
+	padding: 25px;
+	padding-left: 0px;
+}
+/* 바디 */
+#body{
+	width: 60%;
+	margin: 0px auto;
+	background-color: #f6f6f6;
+}
+#my,#reser,#coupon,#board,#save{
+	background-color: #fff;
+	font-weight: bold;
+	color: #FF6529;
+}
+/* 테이블 */
+table{
+	width: 100%;
+	background-color: #fff;
+	border: 2px solid #FF5918;
+}
+tr{
+	height: 95px;
+}
+td{
+	border-right: 1px solid #FF5918;
+	border-bottom: 1px solid #FF5918;
+	text-align: center;
+	line-height: 50px;
+	vertical-align: middle;
+}
+/* 이미지 */
+#user_img{
+	margin-top: 20px;
+	width: 100px;
+}
+#clock{
+	width: 50px;
+	height: 50px;
+	margin: 20px;
+}
+/* 버튼 */
+#deleteuser{
+	border-color: #fff;
+	background-color: #ff0b40;
+	color: #fff;
+	border-style: none;
+	cursor: pointer;
+}
+.mypaage_button{
+	display: inline-block;
+	width: 400px;
+	height: 40px;
+	border-radius: 10px;
+	border-color: #fff;
+	background-color: #FF6529;
+	color: #fff;
+	font-weight: bold;
+	border-style: none;
+	cursor: pointer;
+	}
+.mypaage_button_one{
+	display: inline-block;
+	width: 120px;
+	height: 40px;
+	border-radius: 10px;
+	margin: 7px;
+	border-color: #fff;
+	background-color: #FF6529;
+	color: #fff;
+	font-weight: bold;
+	border-style: none;
+	cursor: pointer;
+}
+
+/* 풋터 */
+#footer{
+	background-color: #fff;
+	display: flex;
+	flex-direction: row;
+}
+#customerOne{
+	height: 150px;
+	margin-left: 30%;
+}
+#customerTwo{
+	height: 150px;
+	margin-left: 300px;
+}
+#mainContent{	
+	display: flex;
+	flex-direction: row;
+	font-weight: bold;
+	color: gray;
+}
+#center{
+	font-size: 2px;
+	font-weight: bold;
+	color: black;
+}
+#content{
+	font-size: 1px;
+	margin-top: 5px;
+	color: gray;
+}
+/* 빈 공간 */
+#zero{
+	width: 100%;
+	height: 30px;
+	background-color: #fff;
+	
+}

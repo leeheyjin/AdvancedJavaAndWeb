@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 mybatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="campInfo">
+
+	<select id="getCampInfoList" resultType="CampInfoVO">
+	    select * from campinfo
+	
+	</select>
+	
+	<!-- 동적쿼리 -->
+	<!-- <sql id="dynamicCondition">
+	   <where>
+	      <if test="!()">
+	         ${
+	      </if>
+	   </where>
+	</sql> -->
+	
+	<select id="getSearchCamp" parameterType="Map" resultType="CampInfoVO">
+	   <!-- SELECT *
+		  FROM campinfo
+		  WHERE 
+		    <if test="region != null and region != ''">
+		      camp_no = (
+		        SELECT distinct A.camp_no 
+		        FROM campinfo A, campzone B 
+		        WHERE A.camp_no = B.camp_no		
+		          AND A.camp_addr LIKE #{region}||'%'
+		          <if test="type2 != null and type2 != ''">
+		            AND A.camp_facility_info LIKE '%'||#{type2}||'%'
+		          </if>
+		          <if test="type1 != null and type1 != ''">
+		            AND B.zone_type LIKE '%'||#{type1}||'%'
+		          </if>
+		      )
+		    </if> -->
+		    <!-- <if test="region == null and type1 == null and type2 == null and search != null" >
+			   select distinct * from campinfo where camp_name like '%'||#{search}||'%'
+		    </if> -->
+		    
+		    <if test="region == null and type1 == null and type2 == null and search == null">
+			   select distinct * from campinfo 
+		    </if>
+		    
+		    SELECT distinct A.camp_no, camp_name, camp_addr, camp_tel, camp_refund, camp_business_name, camp_business_no, camp_info, camp_facility_info, camp_policy, camp_res_info, camp_precautions, camp_instructions, camp_poto
+				FROM campinfo A
+				JOIN campzone B ON A.camp_no = B.camp_no
+				WHERE
+				  1 = 1
+				<if test="search != null or serch != ''">
+		    	  AND A.camp_name LIKE '%'||#{search}||'%'
+		    	</if>
+				<if test="region != null or region != ''">
+				  AND A.camp_addr LIKE #{region}||'%'
+				  <if test="type2 != null or type2 != ''">
+				  AND A.camp_facility_info LIKE '%'||#{type2}||'%'
+				  </if>
+				  <if test="type1 != null or type1 !=''">
+				  AND B.zone_type LIKE '%'||#{type1}||'%'
+				  </if> 
+		    	</if>
+	</select>
+		    	
+		    	<!-- <if test="region == null">
+				  <if test="type2 != null">
+				  AND A.camp_facility_info LIKE '%'||#{type2}||'%'
+				  </if>
+				  <if test="type1 != null">
+				  AND B.zone_type LIKE '%'||#{type1}||'%'
+				  </if> 
+		    	</if>
+		    	
+		    	<if test="region == null and type2 == null">
+				  <if test="type1 != null">
+				  AND B.zone_type LIKE '%'||#{type1}||'%'
+				  </if> 
+		    	</if> -->
+		    	
+	<select id="selectCampName" resultType="CampInfoVO" parameterType="String">
+		select * from campinfo where camp_no=#{camp_no}
+	</select>
+</mapper>
+		
+		

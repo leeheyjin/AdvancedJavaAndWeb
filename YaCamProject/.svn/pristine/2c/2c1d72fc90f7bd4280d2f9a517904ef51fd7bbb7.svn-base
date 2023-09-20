@@ -1,0 +1,230 @@
+@charset "UTF-8";
+#main icon{
+	display: block;
+	margin: auto;
+	cursor: zoom-in;
+	background-color: hsl(0, 0%, 90%);
+	transition: background-color 300ms;
+}
+@font-face {
+	font-family: 'TheJamsil5Bold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+html, body{
+    min-width: 1500px;
+	background-color: #f6f6f6;
+	font-family: "TheJamsil5Bold";
+	font-weight: 400;
+	transform: rotate(0.03deg);
+}
+/* 헤더 */
+#header{
+	width: 100%;
+	height: 67px;
+	margin: 0px auto;
+	position: relative;
+	background-color: #fff;
+	
+}
+hr{
+	border: 3px solid #FF6529;
+	margin: 0 auto;
+    color: inherit;
+    opacity: .25;
+}
+/* 탑 */
+#top{
+	display: flex;
+	width: 100%;
+	height: 60px;
+	position: relative;
+}
+#logoimg{
+	margin-left: 5px;
+	margin-bottom: 10px;
+	width: 170px;
+	height: 85px;
+}
+#login{
+	border-radius: 8px;
+	position: absolute;
+	right: 50px;
+	top: 15px;
+}
+#mypage{
+	border-radius: 8px;
+	position: absolute;
+	right: 150px;
+	top: 15px;
+}
+#logout{
+	border-radius: 8px;
+	position: absolute;
+	right: 50px;
+	top: 15px;
+}
+#button{
+	color: #FF5918;
+	background-color: f8f9fa;
+	width: 70px;
+	height: 30px;
+	border : 2px solid #FF6529;
+	border-radius: 10px;
+	font-weight: bold;
+}
+#button-my{
+	color: #FF5918;
+	background-color: f8f9fa;
+	width: 90px;
+	height: 30px;
+	border : 2px solid #FF6529;
+	border-radius: 10px;
+	font-weight: bold;
+	cursor: pointer;
+}
+#button-out{
+	color: #FF5918;
+	background-color: f8f9fa;
+	width: 70px;
+	height: 30px;
+	border : 2px solid #FF6529;
+	border-radius: 10px;
+	font-weight: bold;
+	cursor: pointer;
+}
+#button-my:hover{
+	color: #FF6529;
+	background-color: #d3d4d5;
+	border-color: #FF4D07;
+}
+#button-my div{
+	font-family: "TheJamsil5Bold";
+	font-weight: bold;
+	transform: rotate(0.03deg);
+	margin:0;
+	font-size: 13px;
+}
+#button-out:hover{
+	color: #FF6529;
+	background-color: #d3d4d5;
+	border-color: #FF4D07;
+}
+#button-out div{
+	font-family: "TheJamsil5Bold";
+	font-weight: bold;
+	transform: rotate(0.03deg);
+	margin:0;
+	font-size: 13px;
+}
+/* 검색창 */
+#searchTop{
+	text-align: center;
+}
+#search{
+	border: 3px solid #FF5918;
+	width: 800px;
+	height: 50px;
+	border-radius: 8px;
+	position: relative;
+	left: 40px;
+    top: -16px;
+}
+#btn{
+	border: 3px solid #FF5918;
+	width: 100px;
+	height: 50px;
+	border-radius: 8px;
+	position: relative;
+	left: 60px;
+	top: -16px;
+	cursor: pointer;
+	background-color: #fff;
+	font-weight: bold;
+	font-size: 15px;
+	color: #FF5918;
+	
+}
+#searchNav{
+	background-color: #fff;
+	height: 70px;
+	width: 100%;
+	position: relative;
+	top: -1px;
+    text-align: center;
+}
+#head2 {
+    font-size: 25px;
+    font-weight: bold;
+    padding-top: 0px;
+    color: #FF6529;
+}
+#searchGude{
+	margin-top: 10px;
+    margin-left: -320px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FF5918;
+}
+#submit {
+    display: block;
+    width: 145px;
+    height: 59px;
+    position: static;
+    margin-left: 1418px;
+    border-radius: 10px;
+    color: #FF5918;
+    border: 3px solid #FF5918;
+    cursor: pointer;
+    margin-top: -74px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #fff;
+}
+#submit:hover {
+	background-color:  #f8cfbf;
+}
+#submit:active {
+	background-color :  #f8cfbf;
+}
+
+/* 풋터 */
+#footer{
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    margin-top: 310px;
+}
+#customerOne{
+	height: 150px;
+	margin-left: 30%;
+}
+#customerTwo{
+	height: 150px;
+	margin-left: 300px;
+}
+#mainContent{	
+	display: flex;
+	flex-direction: row;
+	font-weight: bold;
+	color: gray;
+}
+#center{
+	font-size: 2px;
+	font-weight: bold;
+	color: black;
+}
+#content{
+	font-size: 1px;
+	margin-top: 5px;
+	color: gray;
+}
+/* 빈 공간 */
+#zero{
+	width: 100%;
+	height: 35px;
+	background-color: #fff;
+	
+}

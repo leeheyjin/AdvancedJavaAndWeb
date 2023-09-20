@@ -1,0 +1,291 @@
+@charset "UTF-8";
+
+#main icon{
+   display: block;
+   margin: auto;
+   cursor: zoom-in;
+   background-color: hsl(0, 0%, 90%);
+   transition: background-color 300ms;
+}
+@font-face {
+   font-family: 'TheJamsil5Bold';
+   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+   font-weight: 700;
+   font-style: normal;
+}
+html, body{
+    min-width: 1500px;
+    min-height: 663px;
+    text-align: center;
+    font-family: "TheJamsil5Bold";
+    transform: rotate(0.03deg);
+    background-color: #f6f6f6;
+	position: relative;
+}
+
+/*로그인 페이지 영역*/
+#login{
+    color : #FF6529;
+    width: 400px;
+    height: 500px;;
+    margin : 50px auto;
+}
+    
+#login div{
+   margin-top : 50px;
+}
+.join{
+   text-align: center;
+}
+.input_style{
+   margin: 0px auto;
+   display: block;
+   width: 300px;
+}
+#login-id,#login-pass{
+   margin-left: 0%;
+}
+#id2,#pass2{
+   margin-left: 0%;
+   text-decoration: none;
+   color: #FF5918;
+}
+#idfind{
+   color : #FF6529;
+   width: 400px;
+   height: 500px;;
+   margin : 50px auto;
+}
+
+#idfind div{
+   margin-top : 20px;
+}
+#lo{
+   background-color: #f6f6f6;
+   border-color: #f6f6f6;
+   border-style: none;
+   color: #FF6529;
+   font-weight: 700;
+   text-decoration: none;
+   height: 20px;
+}
+#login div {
+    margin-top: 2px;
+    font-family: "TheJamsil5Bold";
+	font-weight: bold;
+	transform: rotate(0.03deg);
+	margin:0;
+	font-size: 20px;
+}
+a:visited {
+  color : #FF6529;
+}
+.input_styles{
+	width:300px;
+	padding : 10px;
+	border-radius: 4px;
+	border : 3px solid #FF6529;
+	font-size: 14px;
+	margin-top: 8px;
+}
+.input_button_sub{
+   margin: 0px auto;
+   display: block;
+   width: 300px;
+   cursor:pointer;
+}
+/*회원가입*/
+div#mem{
+   width : 40%;
+   color : #000;
+   margin: 20px auto;
+}
+div#mem>form{
+    margin: 20px auto;
+}
+div#mem>form>div{
+   margin: 20px auto;
+   width: 500px;
+   padding-bottom: 20px;
+}
+    
+.input_style{
+    width:300px;
+    padding : 10px;
+    border-radius: 4px;
+    border : 3px solid #FF6529;
+    font-size: 14px;
+    margin-top: 8px;
+}
+.input_styles{
+    width: 300px;
+    padding : 10px;
+    border-radius: 4px;
+    border : 3px solid #FF6529;
+    font-size: 14px;
+    margin-top: 8px;
+}
+#m{
+	margin-right: 72px;
+}
+
+    .find{
+        width:200px;
+        padding : 10px;
+        border-radius: 4px;
+        border : 1px solid #898989;
+        font-size: 14px;
+        margin-top: 8px;
+    }
+    
+    .input_style_sub{
+        width:220px;
+        padding : 10px;
+        border-radius: 4px;
+        border : 1px solid #898989;
+        font-size: 14px;
+        margin-top: 8px;
+        border: 3px solid #FF5918;
+    }
+    .input_button{
+        width: 80px;
+        padding:8px;
+        font-size: 14px;
+        border-radius: 4px;
+        border : 1px solid green;
+        background: green;
+        color: #f2f2f2;
+        cursor: pointer;
+    }
+    
+     #checkid{
+        width: 80px;
+        padding:8px;
+        font-size: 14px;
+        border-radius: 4px;
+        border : none;
+        background: #f8f9fa;
+        color: #FF6529;
+        cursor: pointer;
+        
+    }
+    #checkid div{
+	    font-family: "TheJamsil5Bold";
+		font-weight: bold;
+		transform: rotate(0.03deg);
+		margin:0;
+		font-size: 13px;
+    }
+    #checkid:hover{
+    	color: #FF6529;
+    	background-color: #d3d4d5;
+    	border-color: #c6c7c8
+    }
+    .input_button_sub1{
+        width: 320px;
+        padding:8px;
+        font-size: 14px;
+        border-radius: 4px;
+        border : none;
+        background: #f8f9fa;
+        color: #FF6529;
+        cursor: pointer;
+    }
+    .input_button_sub1:hover{
+    	color: #FF6529;
+    	background-color: #d3d4d5;
+    	border-color: #c6c7c8
+    }
+     .input_button_sub1 div{
+	    font-family: "TheJamsil5Bold";
+		font-weight: bold;
+		transform: rotate(0.03deg);
+		margin:0;
+		font-size: 13px;
+    }
+      .input_button_sub2{
+        width: 320px;
+        padding:8px;
+        font-size: 14px;
+        border-radius: 4px;
+        border : none;
+        background: #f8f9fa;
+        color: #FF6529;
+        cursor: pointer;
+    }
+    .input_button_sub2:hover{
+    	color: #FF6529;
+    	background-color: #d3d4d5;
+    	border-color: #c6c7c8
+    }
+	.input_button_sub2 div{
+	    font-family: "TheJamsil5Bold";
+		font-weight: bold;
+		transform: rotate(0.03deg);
+		margin:0;
+		font-size: 13px;
+    }
+    .input_button_sub3{
+        width: 95px;
+        padding: 0px;
+        font-size: 14px;
+        border-radius: 4px;
+        border : none;
+        background: #d3d4d5;
+        color: #FF6529;
+        cursor: pointer;
+    }
+    .input_button_sub3:hover{
+    	color: #FF6529;
+    	background-color: #d3d4d5;
+    	border-color: #c6c7c8
+    }
+	.input_button_sub3 div{
+	    font-family: "TheJamsil5Bold";
+		font-weight: bold;
+		transform: rotate(0.03deg);
+		margin:0;
+		font-size: 13px;
+		padding-bottom: 8px;
+    }
+    .join{
+        font-size: 42px;
+        font-weight: bold;
+        color: #FF6529;
+    }
+    .pw_position{
+		margin: 0px auto;
+	    position: relative;
+	    display: block;
+	    width: 325px;
+    }
+    .pw_absolute{
+        position: absolute;
+        left : 67%;
+        top : 40%;
+        width:20px;
+        height: 20px;;
+    }
+    .pwc_position{
+        border: 1px solid red;
+        position: relative;
+    }
+    .pwc_absolute{
+        position: absolute;
+        left : 67%;
+        top : 40%;
+        width:20px;
+        height: 20px;;
+    }
+    .find {
+	    width: 200px;
+	    padding: 10px;
+	    border-radius: 4px;
+	    border: 3px solid #FF6529;
+	    font-size: 14px;
+	    margin-top: 8px;
+}
+a{
+	color: #FF6529;
+	text-decoration: none;
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 mybatis에서 처리할 SQL문을 작성하는 문서입니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="chartCamp">
+
+<!-- <select id="chartAmount" resultType="chartCampVO"> -->
+<!-- select a.camp_no, camp_name, camp_addr, b.zone_type, b.zone_no, sum(pay_amount) as amount -->
+<!-- from campinfo a -->
+<!-- inner join campzone b on a.camp_no = b.camp_no -->
+<!-- inner join reservation c on c.camp_no = b.camp_no -->
+<!-- inner join payment d on d.res_no = c.res_no -->
+<!-- where zone_type = (select b.zone_type from payment a, campzone b where a.zone_no = b.zone_no and a.pay_no is not null)  -->
+<!-- group by a.camp_no, camp_name, camp_addr, b.zone_type, b.zone_no -->
+<!-- </select> -->
+<select id="chartAmount" resultType="chartCampVO">
+select camp_name ,sum(pay_amount) amount, camp_addr 
+from payment a 
+inner join campinfo b 
+on a.camp_no = b.camp_no group by camp_name, camp_addr
+</select>
+	
+	
+
+
+</mapper>
